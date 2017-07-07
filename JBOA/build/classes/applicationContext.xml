@@ -90,6 +90,25 @@
 	<bean id="randomAction" class="cn.jboa.action.RandomAction"
 		scope="prototype">
 	</bean>
+	<bean id="leaveEdiAction" class="cn.jboa.action.LeaveEdiAction" scope="prototype">
+	<property name="leaveService" ref="leaveService"></property>
+	</bean>
+	
+	<bean id="getLeaveById" class="cn.jboa.action.GetLeaveById" scope="prototype">
+	<property name="leaveService" ref="leaveService"></property>
+	</bean>
+	
+	<bean id="leaveToCheck" class="cn.jboa.action.LeaveToCheck" scope="prototype">
+	<property name="leaveService" ref="leaveService"></property>
+	</bean>
+	
+	<bean id="checkLeave" class="cn.jboa.action.CheckLeave" scope="prototype">
+	<property name="leaveService" ref="leaveService"></property>
+	</bean>
+	
+	<bean id="saveLeave" class="cn.jboa.action.SaveLeave" scope="prototype">
+	<property name="leaveService" ref="leaveService"></property>
+	</bean>
 	
 	<!-- 定义事务管理器 :提供对事务处理的全面支持和统一管理-->
 	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
@@ -100,15 +119,15 @@
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<!-- 定义事务属性,声明事务规则 -->
 		<tx:attributes>
-			<tx:method name="find*" read-only="true" />
-			<tx:method name="search*" read-only="true" />
-			<tx:method name="query*" read-only="true" />
+			<tx:method name="find*"  />
+			<tx:method name="search*"  />
+			<tx:method name="query*"  />
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="register" propagation="REQUIRED" />
 			<tx:method name="del*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
 			<tx:method name="do*" propagation="REQUIRED" />
-			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED"  />
 		</tx:attributes>
 	</tx:advice>
 	

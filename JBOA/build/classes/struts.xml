@@ -28,11 +28,27 @@
          	<result type="redirectAction">claim_voucher_edit.jsp</result>
          </action>       -->      
 		<action name="leave_searchLeave" class="leaveAction">
-		<result name="success">leave_list.jsp</result>
+		<result name="success">jsp/leave/leave_list.jsp</result>
 		</action>
 		
 		<action name="claimVoucher_deleteClaimVoucherById" class="claimVoucherAction" method="deleteClaimVoucher">
 			<result name="success" type="redirectAction">jsp/claim/claimVoucher_searchClaimVoucher</result>
+		</action>
+		
+		<action name="leave_toEdit" class="leaveEdiAction">
+		<result name="success" >leave_edit.jsp</result>
+		</action>
+		<action name="leave_getLeaveById" class="getLeaveById">
+		<result name="success">jsp/leave/leave_view.jsp</result>
+		</action>
+		<action name="leave_toCheck" class="leaveToCheck">
+		<result name="success">jsp/leave/leave_check.jsp</result>
+		</action>
+		<action name="leave_checkLeave" class="checkLeave">
+		<result type="redirectAction">leave_searchLeave</result>
+		</action>
+		<action name="leave_saveLeave" class="saveLeave">
+		<result type="redirectAction">leave_searchLeave</result>
 		</action>
 
     </package>
