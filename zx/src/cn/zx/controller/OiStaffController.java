@@ -155,15 +155,15 @@ public class OiStaffController {
 	
 	//退回任务
 	@RequestMapping(value="/oi_staff_return.html")
-	public String returnTask(String task_id,String task_status,String task_del_reasion) throws UnsupportedEncodingException{
+	public String returnTask(String task_id,String task_status,String task_reasion) throws UnsupportedEncodingException{
 		
-		String task_reasion=new String(task_del_reasion.getBytes("ISO8859-1"),"UTF-8");
-		System.out.println(task_id+"=========="+task_status+"===="+task_reasion);
+		String task_del_reasion=new String(task_reasion.getBytes("ISO8859-1"),"UTF-8");
+		System.out.println(task_id+"=========="+task_status+"===="+task_del_reasion);
 		
 		CompanyTask companyTask = new CompanyTask();
 		companyTask.setTask_id(Integer.parseInt(task_id));
 		if(Integer.parseInt(task_status)==5 || Integer.parseInt(task_status)==4){
-			companyTask.setTask_del_reasion(task_reasion);
+			companyTask.setTask_del_reasion(task_del_reasion);
 			companyTask.setTask_status(3);
 		}
 		boolean flag = companyTaskService.returnTask(companyTask);
