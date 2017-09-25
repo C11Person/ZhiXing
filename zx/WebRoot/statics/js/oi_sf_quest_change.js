@@ -12,12 +12,13 @@ jQuery(function(){
 function questTo(){
     var html="";
     $.ajax({
-        url:"data/oi_sf_branch.json",
+    	type:'post',
+        url:"staff/oi_sf_branch.json",
         success:function(obj){
             console.log(obj);
             for(var i=0;i<obj.length;i++){
                 var objL=obj[i];
-                html+=`<option value="${objL.val}">${objL.name}</option>`;
+                html+=`<option value="${objL.dept_id}">${objL.dept_name}</option>`;
             }
             $("#st_publicTo").find("#select1").html(html);
         }
@@ -28,11 +29,11 @@ function questTo(){
         var selData=_self.val();
         $.ajax({
             type:'post',
-            url:"",
+            url:"staff/oi_sf_branch_staff.json?selData="+selData,
             data:{data:selData},
             success:function(msg){
                 $.each(msg,function(index,value){
-                    html1+=`<option value="${value.val}">${value.name}</option>`
+                    html1+=`<option value="${value.user_id}">${value.realname}</option>`
                 });
                 $("#st_publicTo").find("#select2").html(html1);
             }

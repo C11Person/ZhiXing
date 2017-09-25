@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!--标题填写-->
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number"  placeholder="测试任务" disabled>
+                        <input class="weui-input" type="number"  placeholder="${companyTask.task_title}" disabled>
                     </div>
                 </div>
                 <!--标题填写结束-->
@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="weui-cells">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <input class="weui-input" id="datetime-picker" type="text" value="2012-12-12 12:13" readonly="">
+                        <input class="weui-input" id="datetime-picker" type="text" value="${currentTime}" readonly="">
                     </div>
                 </div>
             </div>

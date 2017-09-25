@@ -21,7 +21,7 @@ function selectAllTaskByUserId() {
 				if(data[i].task_status==5){
 					table+="<ul class='weui-media-box__info'><li class='weui-media-box__info__meta'><a href='javascript:;'>取消</a></li><li class='weui-media-box__info__meta weui-media-box__info__meta_extra'><a href='javascript:;'>提醒</a></li></ul>";
 				}else if(data[i].task_status==3){
-					table+="<ul class='weui-media-box__info'><li class='weui-media-box__info__meta'><a href='javascript:;' name='"+data[i].task_status+"' task_id='"+data[i].task_id+"'>拒绝退回</a></li><li class='weui-media-box__info__meta weui-media-box__info__meta_extra'><a href='staff/oi_staff_transpond.html?task_id="+data[i].task_id+"'&typeId=2>转发</a></li><li class='weui-media-box__info__meta weui-media-box__info__meta_extra'><a href='javascript:;'>取消</a></li></ul>";
+					table+="<ul class='weui-media-box__info'><li class='weui-media-box__info__meta'><a href='javascript:;' name='"+data[i].task_status+"' task_id='"+data[i].task_id+"'>拒绝退回</a></li><li class='weui-media-box__info__meta weui-media-box__info__meta_extra'><a href='staff/oi_staff_tsk_detail.html?task_id="+data[i].task_id+"&typeId=2'>转发</a></li><li class='weui-media-box__info__meta weui-media-box__info__meta_extra'><a href='javascript:;'>取消</a></li></ul>";
 				}else if(data[i].task_status==4){
 					table+="<ul class='weui-media-box__info'><li class='weui-media-box__info__meta'><a href='javascript:;'>取消</a></li><li class='weui-media-box__info__meta weui-media-box__info__meta_extra'><a href='javascript:;'>催办</a></li></ul>";
 				}

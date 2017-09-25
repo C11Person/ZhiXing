@@ -13,7 +13,7 @@ function selectAllTaskByToUserId() {
 			$("#weui-panel__bd2").html("");
 			var table = "";
 			for (var i = 0; i < data.length; i++) {
-				table += "<a href='staff/oi_staff_tsk_detail.html?task_id="+data[i].task_id+"'&typeId=1><div task-status='" + data[i].task_status + "' class='weui-media-box weui-media-box_appmsg'><div class='weui-media-box__hd'><img class='weui-media-box__thumb' src=''></div><div class='weui-media-box__bd'><h4 class='weui-media-box__title'>"
+				table += "<a href='staff/oi_staff_tsk_detail.html?task_id="+data[i].task_id+"&typeId=1'><div task-status='" + data[i].task_status + "' class='weui-media-box weui-media-box_appmsg'><div class='weui-media-box__hd'><img class='weui-media-box__thumb' src=''></div><div class='weui-media-box__bd'><h4 class='weui-media-box__title'>"
 					+ data[i].to_user
 					+ "</h4><p class='weui-media-box__desc'>"
 					+ "<h6>时间：" + data[i].task_start_time + "到 " + data[i].task_end_time + "</h6>"

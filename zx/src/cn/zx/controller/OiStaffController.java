@@ -127,16 +127,16 @@ public class OiStaffController {
 		 for (int i = 0; i < companyTasks.size(); i++) {
 			System.out.println(companyTasks.get(i).getTask_title());
 		}
-		 return JSONArray.toJSONStringWithDateFormat(companyTasks,"yyyy-MM-dd hh:mm:ss");
+		 return JSONArray.toJSONStringWithDateFormat(companyTasks,"yyyy-MM-dd hh:mm");
 	}
 	
 	//根据任务Id查询详细内容
 	@RequestMapping(value="/oi_staff_tsk_detail.html")
 	public String selectTaskByTaskId(String task_id,String typeId,HttpServletRequest request){
 		CompanyTask companyTask = companyTaskService.selectTaskByTaskId(Integer.parseInt(task_id));
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");// 设置日期格式
 		if(Integer.parseInt(typeId)==1){
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");// 设置日期格式
+			
 			// 格式化日期
 			String startTime = sdf.format(companyTask.getTask_start_time());
 			String endTime = sdf.format(companyTask.getTask_end_time());
@@ -144,9 +144,14 @@ public class OiStaffController {
 			request.setAttribute("task_start_time", startTime);
 			request.setAttribute("task_end_time", endTime);
 			return "staff/oi_staff_tsk_detail";
-		}else if(Integer.parseInt(typeId)==2){
-			
+		}else{
+			// 格式化日期
+			String currentTime = sdf.format(new Date());
+			request.setAttribute("companyTask", companyTask);
+			request.setAttribute("currentTime", currentTime);
+			return "staff/oi_staff_transpond";
 		}
+		
 
 	}
 	
@@ -220,20 +225,14 @@ public class OiStaffController {
 		boolean flag1 = staffTaskLogService.addTaskProgressLog(staffTaskLog);
 	}*/
 	
-	//跳转转发任务
-	@RequestMapping(value="/oi_staff_transpond.html")
-	public String redirectUpdateToUser(String task_id){
-		CompanyTask companyTask = companyTaskService.selectTaskByTaskId(Integer.parseInt(task_id));
-		
-	}
 	
 	//转发任务
-	public String updateToUser(){
+/*	public String updateToUser(){
 		CompanyTask companyTask = new CompanyTask();
 		companyTask.setTask_id(1);
 		companyTask.setTo_user(2);
 		boolean flag = companyTaskService.updateToUser(companyTask);
-	}
+	}*/
 	
 	//查询接收任务职员待办任务
 /*	public String selectAllToDOTaskByToUser(){
