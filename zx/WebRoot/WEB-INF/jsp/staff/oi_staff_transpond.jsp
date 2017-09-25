@@ -8,32 +8,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html lang="en">
   <head>
     <base href="<%=basePath%>">
-    
-    <meta charset="utf-8"/>
+  	<meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="IE=Edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>任务发布</title>
+    <title>任务转发</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/weui.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/jquery-weui.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/tsk_mobile.css"/>
 
   </head>
-<body>
-	<div class="stuff_container">
-        <form id="task_release_container">
+  
+  <body>
+   	<div class="stuff_container">
+        <form id="task_release_container2">
             <!--任务级别单选部分：是否紧急-->
             <div class="weui-cells__title">任务标题</div>
             <div class="weui-cells weui-cells_form">
                 <!--标题填写-->
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number"  placeholder="请输入任务标题">
+                        <input class="weui-input" type="number"  placeholder="测试任务" disabled>
                     </div>
                 </div>
                 <!--标题填写结束-->
             </div>
+            <!--截止时间选择-->
+            <div class="weui-cells__title">截止时间</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="datetime-picker" type="text" value="2012-12-12 12:13" readonly="">
+                    </div>
+                </div>
+            </div>
+            <!--截止时间结束-->
             <!--发布对象选择-->
             <div class="weui-cells__title">发布对象</div>
             <div class="weui-cells" id="st_publicTo">
@@ -49,17 +59,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
             <!--发布对象结束-->
-            <!--任务截止时间-->
-            <div class="weui-cells__title">任务截止时间</div>
-            <div class="weui-cells weui-cells_form">
-                <div class="weui-cell">
-                    <div class="weui-cell__hd"><label for="task_time" class="weui-label">时间</label></div>
-                    <div class="weui-cell__bd">
-                        <input class="weui-input" id="datetime-picker" type="text" value="2012-12-12 12:13" readonly="">
-                    </div>
-                </div>
-            </div>
-            <!--任务时间结束-->
             <!--任务级别单选部分：是否紧急-->
             <div class="weui-cells__title">任务紧急</div>
             <div class="weui-cells weui-cells_radio">
@@ -87,7 +86,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </label>
                 <!--任务级别：紧急 结束-->
             </div>
-            <!--任务级别单选部分 结束-->
             <!--任务级别单选部分：是否重要-->
             <div class="weui-cells__title">任务重要</div>
             <div class="weui-cells weui-cells_radio">
@@ -115,41 +113,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!--任务级别：紧急 结束-->
             </div>
             <!--任务级别单选部分 结束-->
-            <!--任务描述部分-->
-            <div class="weui-cells__title">任务描述</div>
+            <!--任务留言-->
+            <div class="weui-cells__title">任务留言</div>
             <div class="weui-cells weui-cells_form">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <textarea class="weui-textarea" placeholder="请输入描述" rows="3"></textarea>
+                        <textarea class="weui-textarea" name="" placeholder="此处留下任务留言" rows="3"></textarea>
                         <div class="weui-textarea-counter"><span>0</span>/200</div>
                     </div>
                 </div>
             </div>
-            <!--任务描述部分结束-->
-            <!--上传任务图片部分-->
-            <div class="weui-cells weui-cells_form">
-                <div class="weui-cell">
-                    <div class="weui-cell__bd">
-                        <div class="weui-uploader">
-                            <div class="weui-uploader__hd">
-                                <p class="weui-uploader__title">图片上传</p>
-                                <div class="weui-uploader__info">0/2</div>
-                            </div>
-                            <div class="weui-uploader__bd">
-                                <ul class="weui-uploader__files" id="uploaderFiles">
-                                </ul>
-                                <div class="weui-uploader__input-box">
-                                    <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--上传人物图片部分结束-->
+            <!--任务留言结束-->
             <!--提交按钮-->
             <div class="form_submit_button">
-                <a href="javascript:;" id="oi_quest_submit_btn" class="weui-btn weui-btn_primary">确认无误，发布</a>
+                <a href="javascript:;" class="weui-btn weui-btn_primary">确认无误，提交</a>
             </div>
             <!--提交按钮结束-->
         </form>
@@ -195,25 +172,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--页面底部导航结束-->
     <script src="${pageContext.request.contextPath }/statics/js/jquery-1.11.3.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/jquery-weui.min.js"></script>
-    <script src="${pageContext.request.contextPath }/statics/js/oi_sf_quest_pub.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/oi_sf_quest_change.js"></script>
-    <script>
-        jQuery(function(){
-            /*doSomethings*/
-//            发布任务ajax表单提交
-            $("#oi_quest_submit_btn").click(function(){
-                var formData=$("#task_release_container").serialize();
-                alert(formData);
-                $.ajax({
-                    type:'post',
-                    url:"发送任务发布数据到后台",
-                    data:formData,
-                    success:function(msg){
-                        /*发送成功之后要做的事情*/
-                    }
-                })
-            })
-        })
-    </script>
-</body>
+  </body>
 </html>

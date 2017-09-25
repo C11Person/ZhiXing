@@ -16,8 +16,8 @@ $(function(){
                     title: '拒绝理由',
                     input:"请输入拒绝理由",
                     empty:false,
-                    onOK: function () {
-                        window.location.href="";
+                    onOK: function (input) {
+                        window.location.href="staff/oi_staff_return.html?task_id="+task_id+"&task_status="+task_status+"&task_reback_reasion="+input;
                     }
                 });
             break;

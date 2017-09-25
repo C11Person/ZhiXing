@@ -1,14 +1,18 @@
 package cn.zx.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
@@ -92,7 +96,6 @@ public class OiStaffController {
 		}
 	}*/
 	
-	
 	//查询当前员工的所有任务
 	@RequestMapping(value="/selectAllTaskByToUserId.json",method=RequestMethod.POST)
 	@ResponseBody
@@ -127,11 +130,25 @@ public class OiStaffController {
 		 return JSONArray.toJSONStringWithDateFormat(companyTasks,"yyyy-MM-dd hh:mm:ss");
 	}
 	
-	
 	//根据任务Id查询详细内容
-/*	public String selectTaskByTaskId(){
-		CompanyTask companyTask = companyTaskService.selectTaskByTaskId(2);
-	}*/
+	@RequestMapping(value="/oi_staff_tsk_detail.html")
+	public String selectTaskByTaskId(String task_id,String typeId,HttpServletRequest request){
+		CompanyTask companyTask = companyTaskService.selectTaskByTaskId(Integer.parseInt(task_id));
+		
+		if(Integer.parseInt(typeId)==1){
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");// 设置日期格式
+			// 格式化日期
+			String startTime = sdf.format(companyTask.getTask_start_time());
+			String endTime = sdf.format(companyTask.getTask_end_time());
+			request.setAttribute("companyTask", companyTask);
+			request.setAttribute("task_start_time", startTime);
+			request.setAttribute("task_end_time", endTime);
+			return "staff/oi_staff_tsk_detail";
+		}else if(Integer.parseInt(typeId)==2){
+			
+		}
+
+	}
 	
 	
 	//修改任务状态
@@ -153,18 +170,23 @@ public class OiStaffController {
 		
 	}
 	
-	//退回任务
+	//退回任务和拒绝退回任务
 	@RequestMapping(value="/oi_staff_return.html")
-	public String returnTask(String task_id,String task_status,String task_reasion) throws UnsupportedEncodingException{
+	public String returnTask(@RequestParam(required = false) String task_id,@RequestParam(required = false) String task_status,@RequestParam(required = false) String task_reasion,@RequestParam(required = false) String task_reback_reasion) throws UnsupportedEncodingException{
 		
-		String task_del_reasion=new String(task_reasion.getBytes("ISO8859-1"),"UTF-8");
-		System.out.println(task_id+"=========="+task_status+"===="+task_del_reasion);
+		
+		System.out.println(task_id+"=========="+task_status+"====");
 		
 		CompanyTask companyTask = new CompanyTask();
 		companyTask.setTask_id(Integer.parseInt(task_id));
 		if(Integer.parseInt(task_status)==5 || Integer.parseInt(task_status)==4){
+			String task_del_reasion=new String(task_reasion.getBytes("ISO8859-1"),"UTF-8");
 			companyTask.setTask_del_reasion(task_del_reasion);
 			companyTask.setTask_status(3);
+		}else if(Integer.parseInt(task_status)==3){
+			String reback_reasion=new String(task_reback_reasion.getBytes("ISO8859-1"),"UTF-8");
+			companyTask.setTask_reback_reasion(reback_reasion);
+			companyTask.setTask_status(5);;
 		}
 		boolean flag = companyTaskService.returnTask(companyTask);
 		if(flag){
@@ -198,13 +220,20 @@ public class OiStaffController {
 		boolean flag1 = staffTaskLogService.addTaskProgressLog(staffTaskLog);
 	}*/
 	
+	//跳转转发任务
+	@RequestMapping(value="/oi_staff_transpond.html")
+	public String redirectUpdateToUser(String task_id){
+		CompanyTask companyTask = companyTaskService.selectTaskByTaskId(Integer.parseInt(task_id));
+		
+	}
+	
 	//转发任务
-/*	public String updateToUser(){
+	public String updateToUser(){
 		CompanyTask companyTask = new CompanyTask();
 		companyTask.setTask_id(1);
 		companyTask.setTo_user(2);
 		boolean flag = companyTaskService.updateToUser(companyTask);
-	}*/
+	}
 	
 	//查询接收任务职员待办任务
 /*	public String selectAllToDOTaskByToUser(){

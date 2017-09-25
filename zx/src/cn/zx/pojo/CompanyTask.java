@@ -2,6 +2,8 @@ package cn.zx.pojo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class CompanyTask {
     private Integer task_id;
 
@@ -14,11 +16,9 @@ public class CompanyTask {
     private Integer user_id;
 
     private Integer task_obj;
-
+    
     private Date task_start_time;
-
     private Date task_end_time;
-
     private Date task_complete_time;
 
     private Integer task_progress;
