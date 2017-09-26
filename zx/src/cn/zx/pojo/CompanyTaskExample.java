@@ -715,63 +715,63 @@ public class CompanyTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdIsNull() {
-            addCriterion("task_cd is null");
+        public Criteria andTask_urgentIsNull() {
+            addCriterion("task_urgent is null");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdIsNotNull() {
-            addCriterion("task_cd is not null");
+        public Criteria andTask_urgentIsNotNull() {
+            addCriterion("task_urgent is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdEqualTo(Integer value) {
-            addCriterion("task_cd =", value, "task_cd");
+        public Criteria andTask_urgentEqualTo(Integer value) {
+            addCriterion("task_urgent =", value, "task_urgent");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdNotEqualTo(Integer value) {
-            addCriterion("task_cd <>", value, "task_cd");
+        public Criteria andTask_urgentNotEqualTo(Integer value) {
+            addCriterion("task_urgent <>", value, "task_urgent");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdGreaterThan(Integer value) {
-            addCriterion("task_cd >", value, "task_cd");
+        public Criteria andTask_urgentGreaterThan(Integer value) {
+            addCriterion("task_urgent >", value, "task_urgent");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("task_cd >=", value, "task_cd");
+        public Criteria andTask_urgentGreaterThanOrEqualTo(Integer value) {
+            addCriterion("task_urgent >=", value, "task_urgent");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdLessThan(Integer value) {
-            addCriterion("task_cd <", value, "task_cd");
+        public Criteria andTask_urgentLessThan(Integer value) {
+            addCriterion("task_urgent <", value, "task_urgent");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdLessThanOrEqualTo(Integer value) {
-            addCriterion("task_cd <=", value, "task_cd");
+        public Criteria andTask_urgentLessThanOrEqualTo(Integer value) {
+            addCriterion("task_urgent <=", value, "task_urgent");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdIn(List<Integer> values) {
-            addCriterion("task_cd in", values, "task_cd");
+        public Criteria andTask_urgentIn(List<Integer> values) {
+            addCriterion("task_urgent in", values, "task_urgent");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdNotIn(List<Integer> values) {
-            addCriterion("task_cd not in", values, "task_cd");
+        public Criteria andTask_urgentNotIn(List<Integer> values) {
+            addCriterion("task_urgent not in", values, "task_urgent");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdBetween(Integer value1, Integer value2) {
-            addCriterion("task_cd between", value1, value2, "task_cd");
+        public Criteria andTask_urgentBetween(Integer value1, Integer value2) {
+            addCriterion("task_urgent between", value1, value2, "task_urgent");
             return (Criteria) this;
         }
 
-        public Criteria andTask_cdNotBetween(Integer value1, Integer value2) {
-            addCriterion("task_cd not between", value1, value2, "task_cd");
+        public Criteria andTask_urgentNotBetween(Integer value1, Integer value2) {
+            addCriterion("task_urgent not between", value1, value2, "task_urgent");
             return (Criteria) this;
         }
 
@@ -1342,6 +1342,76 @@ public class CompanyTaskExample {
 
         public Criteria andIs_cuiNotBetween(Integer value1, Integer value2) {
             addCriterion("is_cui not between", value1, value2, "is_cui");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathIsNull() {
+            addCriterion("task_picpath is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathIsNotNull() {
+            addCriterion("task_picpath is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathEqualTo(String value) {
+            addCriterion("task_picpath =", value, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathNotEqualTo(String value) {
+            addCriterion("task_picpath <>", value, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathGreaterThan(String value) {
+            addCriterion("task_picpath >", value, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathGreaterThanOrEqualTo(String value) {
+            addCriterion("task_picpath >=", value, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathLessThan(String value) {
+            addCriterion("task_picpath <", value, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathLessThanOrEqualTo(String value) {
+            addCriterion("task_picpath <=", value, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathLike(String value) {
+            addCriterion("task_picpath like", value, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathNotLike(String value) {
+            addCriterion("task_picpath not like", value, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathIn(List<String> values) {
+            addCriterion("task_picpath in", values, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathNotIn(List<String> values) {
+            addCriterion("task_picpath not in", values, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathBetween(String value1, String value2) {
+            addCriterion("task_picpath between", value1, value2, "task_picpath");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_picpathNotBetween(String value1, String value2) {
+            addCriterion("task_picpath not between", value1, value2, "task_picpath");
             return (Criteria) this;
         }
     }

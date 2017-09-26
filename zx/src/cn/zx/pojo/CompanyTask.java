@@ -2,8 +2,6 @@ package cn.zx.pojo;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class CompanyTask {
     private Integer task_id;
 
@@ -16,14 +14,16 @@ public class CompanyTask {
     private Integer user_id;
 
     private Integer task_obj;
-    
+
     private Date task_start_time;
+
     private Date task_end_time;
+
     private Date task_complete_time;
 
     private Integer task_progress;
 
-    private Integer task_cd;
+    private Integer task_urgent;
 
     private Integer task_important;
 
@@ -42,6 +42,8 @@ public class CompanyTask {
     private Integer is_delay;
 
     private Integer is_cui;
+
+    private String task_picpath;
 
     public Integer getTask_id() {
         return task_id;
@@ -123,12 +125,12 @@ public class CompanyTask {
         this.task_progress = task_progress;
     }
 
-    public Integer getTask_cd() {
-        return task_cd;
+    public Integer getTask_urgent() {
+        return task_urgent;
     }
 
-    public void setTask_cd(Integer task_cd) {
-        this.task_cd = task_cd;
+    public void setTask_urgent(Integer task_urgent) {
+        this.task_urgent = task_urgent;
     }
 
     public Integer getTask_important() {
@@ -201,5 +203,13 @@ public class CompanyTask {
 
     public void setIs_cui(Integer is_cui) {
         this.is_cui = is_cui;
+    }
+
+    public String getTask_picpath() {
+        return task_picpath;
+    }
+
+    public void setTask_picpath(String task_picpath) {
+        this.task_picpath = task_picpath == null ? null : task_picpath.trim();
     }
 }

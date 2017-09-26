@@ -23,6 +23,7 @@
 
 <body>
 	<div class="stuff_container">
+	 <input type="hidden" name="task_id" id="task_id" value="${companyTask.task_id}">
 		<form id="task_release_container">
 			<!--任务级别单选部分：是否紧急-->
 			<div class="weui-cells__title">任务标题</div>
@@ -83,9 +84,7 @@
 			<div class="weui-cells__title">任务日志</div>
 			<div class="weui-cells">
 				<div class="weui-cell">
-					<div class="weui-cell__ft">
-						<small>2011-11-11 9:30 任务进度60%</small>
-					</div>
+					<div class="weui-cell__ft" id="weui-cell__ft"><!-- <small>2011-11-11 9:30 任务进度60%</small> --></div>
 				</div>
 			</div>
 			<!--任务日志结束-->
@@ -130,5 +129,6 @@
 	<!--页面底部导航结束-->
 	<script src="${pageContext.request.contextPath }/statics/js/jquery-1.11.3.min.js"></script>
 	<script src="${pageContext.request.contextPath }/statics/js/jquery-weui.min.js"></script>
+	<script src="${pageContext.request.contextPath }/statics/js/task_log.js"></script>
 </body>
 </html>

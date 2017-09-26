@@ -22,14 +22,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 <body>
 	<div class="stuff_container">
-        <form id="task_release_container">
+        <form id="task_release_container" action="staff/addTask.html" method="post">
             <!--任务级别单选部分：是否紧急-->
             <div class="weui-cells__title">任务标题</div>
             <div class="weui-cells weui-cells_form">
                 <!--标题填写-->
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number"  placeholder="请输入任务标题">
+                        <input class="weui-input" type="text" name="task_title" placeholder="请输入任务标题">
                     </div>
                 </div>
                 <!--标题填写结束-->
@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <select class="weui-select weui-flex__item" name="select1" id="select1">
                             <option selected value="0">请选择发布对象</option>
                         </select>
-                        <select class="weui-select weui-flex__item" name="select2" id="select2">
+                        <select class="weui-select weui-flex__item" name="to_user" id="select2">
                             <option selected value="0">请选择发布对象</option>
                         </select>
                     </div>
@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label for="task_time" class="weui-label">时间</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" id="datetime-picker" type="text" value="2012-12-12 12:13" readonly="">
+                        <input class="weui-input" id="datetime-picker" type="text" name="task_end_time" value="${currentTime}" readonly="">
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <p>一般</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" class="weui-check" name="radio1" id="x11">
+                        <input type="radio" class="weui-check" name="task_urgent" value="1" id="x11">
                         <span class="weui-icon-checked"></span>
                     </div>
                 </label>
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <p>紧急</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
+                        <input type="radio" name="task_urgent" value="2" class="weui-check" id="x12" checked="checked">
                         <span class="weui-icon-checked"></span>
                     </div>
                 </label>
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <p>一般</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" class="weui-check" name="radio2" id="x13">
+                        <input type="radio" class="weui-check" name="task_important" value="1" id="x13">
                         <span class="weui-icon-checked"></span>
                     </div>
                 </label>
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <p>重要</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" name="radio2" class="weui-check" id="x14" checked="checked">
+                        <input type="radio" name="task_important" class="weui-check" value="2" id="x14" checked="checked">
                         <span class="weui-icon-checked"></span>
                     </div>
                 </label>
@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="weui-cells weui-cells_form">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <textarea class="weui-textarea" placeholder="请输入描述" rows="3"></textarea>
+                        <textarea class="weui-textarea" name="task_content" placeholder="请输入描述" rows="3"></textarea>
                         <div class="weui-textarea-counter"><span>0</span>/200</div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <ul class="weui-uploader__files" id="uploaderFiles">
                                 </ul>
                                 <div class="weui-uploader__input-box">
-                                    <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                                    <input id="uploaderInput" class="weui-uploader__input" type="file" name="attachs" accept="image/*" multiple="">
                                 </div>
                             </div>
                         </div>
@@ -204,14 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#oi_quest_submit_btn").click(function(){
                 var formData=$("#task_release_container").serialize();
                 alert(formData);
-                $.ajax({
-                    type:'post',
-                    url:"发送任务发布数据到后台",
-                    data:formData,
-                    success:function(msg){
-                        /*发送成功之后要做的事情*/
-                    }
-                })
+                $("#task_release_container").submit();
             })
         })
     </script>

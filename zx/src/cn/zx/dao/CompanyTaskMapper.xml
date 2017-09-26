@@ -12,7 +12,7 @@
     <result column="task_end_time" jdbcType="TIMESTAMP" property="task_end_time" />
     <result column="task_complete_time" jdbcType="TIMESTAMP" property="task_complete_time" />
     <result column="task_progress" jdbcType="INTEGER" property="task_progress" />
-    <result column="task_cd" jdbcType="INTEGER" property="task_cd" />
+    <result column="task_urgent" jdbcType="INTEGER" property="task_urgent" />
     <result column="task_important" jdbcType="INTEGER" property="task_important" />
     <result column="task_content" jdbcType="VARCHAR" property="task_content" />
     <result column="task_status" jdbcType="INTEGER" property="task_status" />
@@ -22,6 +22,7 @@
     <result column="is_forward" jdbcType="TINYINT" property="is_forward" />
     <result column="is_delay" jdbcType="INTEGER" property="is_delay" />
     <result column="is_cui" jdbcType="INTEGER" property="is_cui" />
+    <result column="task_picpath" jdbcType="VARCHAR" property="task_picpath" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -83,8 +84,8 @@
   </sql>
   <sql id="Base_Column_List">
     task_id, company_id, task_title, to_user, user_id, task_obj, task_start_time, task_end_time, 
-    task_complete_time, task_progress, task_cd, task_important, task_content, task_status, 
-    task_del_reasion, task_reback_reasion, is_remark, is_forward, is_delay, is_cui
+    task_complete_time, task_progress, task_urgent, task_important, task_content, task_status, 
+    task_del_reasion, task_reback_reasion, is_remark, is_forward, is_delay, is_cui, task_picpath
   </sql>
   <select id="selectByExample" parameterType="cn.zx.pojo.CompanyTaskExample" resultMap="BaseResultMap">
     select
@@ -120,17 +121,19 @@
     insert into company_task (task_id, company_id, task_title, 
       to_user, user_id, task_obj, 
       task_start_time, task_end_time, task_complete_time, 
-      task_progress, task_cd, task_important, 
+      task_progress, task_urgent, task_important, 
       task_content, task_status, task_del_reasion, 
       task_reback_reasion, is_remark, is_forward, 
-      is_delay, is_cui)
+      is_delay, is_cui, task_picpath
+      )
     values (#{task_id,jdbcType=INTEGER}, #{company_id,jdbcType=INTEGER}, #{task_title,jdbcType=VARCHAR}, 
       #{to_user,jdbcType=INTEGER}, #{user_id,jdbcType=INTEGER}, #{task_obj,jdbcType=INTEGER}, 
       #{task_start_time,jdbcType=TIMESTAMP}, #{task_end_time,jdbcType=TIMESTAMP}, #{task_complete_time,jdbcType=TIMESTAMP}, 
-      #{task_progress,jdbcType=INTEGER}, #{task_cd,jdbcType=INTEGER}, #{task_important,jdbcType=INTEGER}, 
+      #{task_progress,jdbcType=INTEGER}, #{task_urgent,jdbcType=INTEGER}, #{task_important,jdbcType=INTEGER}, 
       #{task_content,jdbcType=VARCHAR}, #{task_status,jdbcType=INTEGER}, #{task_del_reasion,jdbcType=VARCHAR}, 
       #{task_reback_reasion,jdbcType=VARCHAR}, #{is_remark,jdbcType=TINYINT}, #{is_forward,jdbcType=TINYINT}, 
-      #{is_delay,jdbcType=INTEGER}, #{is_cui,jdbcType=INTEGER})
+      #{is_delay,jdbcType=INTEGER}, #{is_cui,jdbcType=INTEGER}, #{task_picpath,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.CompanyTask">
     insert into company_task
@@ -165,8 +168,8 @@
       <if test="task_progress != null">
         task_progress,
       </if>
-      <if test="task_cd != null">
-        task_cd,
+      <if test="task_urgent != null">
+        task_urgent,
       </if>
       <if test="task_important != null">
         task_important,
@@ -194,6 +197,9 @@
       </if>
       <if test="is_cui != null">
         is_cui,
+      </if>
+      <if test="task_picpath != null">
+        task_picpath,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -227,8 +233,8 @@
       <if test="task_progress != null">
         #{task_progress,jdbcType=INTEGER},
       </if>
-      <if test="task_cd != null">
-        #{task_cd,jdbcType=INTEGER},
+      <if test="task_urgent != null">
+        #{task_urgent,jdbcType=INTEGER},
       </if>
       <if test="task_important != null">
         #{task_important,jdbcType=INTEGER},
@@ -256,6 +262,9 @@
       </if>
       <if test="is_cui != null">
         #{is_cui,jdbcType=INTEGER},
+      </if>
+      <if test="task_picpath != null">
+        #{task_picpath,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -298,8 +307,8 @@
       <if test="record.task_progress != null">
         task_progress = #{record.task_progress,jdbcType=INTEGER},
       </if>
-      <if test="record.task_cd != null">
-        task_cd = #{record.task_cd,jdbcType=INTEGER},
+      <if test="record.task_urgent != null">
+        task_urgent = #{record.task_urgent,jdbcType=INTEGER},
       </if>
       <if test="record.task_important != null">
         task_important = #{record.task_important,jdbcType=INTEGER},
@@ -328,6 +337,9 @@
       <if test="record.is_cui != null">
         is_cui = #{record.is_cui,jdbcType=INTEGER},
       </if>
+      <if test="record.task_picpath != null">
+        task_picpath = #{record.task_picpath,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -345,7 +357,7 @@
       task_end_time = #{record.task_end_time,jdbcType=TIMESTAMP},
       task_complete_time = #{record.task_complete_time,jdbcType=TIMESTAMP},
       task_progress = #{record.task_progress,jdbcType=INTEGER},
-      task_cd = #{record.task_cd,jdbcType=INTEGER},
+      task_urgent = #{record.task_urgent,jdbcType=INTEGER},
       task_important = #{record.task_important,jdbcType=INTEGER},
       task_content = #{record.task_content,jdbcType=VARCHAR},
       task_status = #{record.task_status,jdbcType=INTEGER},
@@ -354,7 +366,8 @@
       is_remark = #{record.is_remark,jdbcType=TINYINT},
       is_forward = #{record.is_forward,jdbcType=TINYINT},
       is_delay = #{record.is_delay,jdbcType=INTEGER},
-      is_cui = #{record.is_cui,jdbcType=INTEGER}
+      is_cui = #{record.is_cui,jdbcType=INTEGER},
+      task_picpath = #{record.task_picpath,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -389,8 +402,8 @@
       <if test="task_progress != null">
         task_progress = #{task_progress,jdbcType=INTEGER},
       </if>
-      <if test="task_cd != null">
-        task_cd = #{task_cd,jdbcType=INTEGER},
+      <if test="task_urgent != null">
+        task_urgent = #{task_urgent,jdbcType=INTEGER},
       </if>
       <if test="task_important != null">
         task_important = #{task_important,jdbcType=INTEGER},
@@ -419,6 +432,9 @@
       <if test="is_cui != null">
         is_cui = #{is_cui,jdbcType=INTEGER},
       </if>
+      <if test="task_picpath != null">
+        task_picpath = #{task_picpath,jdbcType=VARCHAR},
+      </if>
     </set>
     where task_id = #{task_id,jdbcType=INTEGER}
   </update>
@@ -433,7 +449,7 @@
       task_end_time = #{task_end_time,jdbcType=TIMESTAMP},
       task_complete_time = #{task_complete_time,jdbcType=TIMESTAMP},
       task_progress = #{task_progress,jdbcType=INTEGER},
-      task_cd = #{task_cd,jdbcType=INTEGER},
+      task_urgent = #{task_urgent,jdbcType=INTEGER},
       task_important = #{task_important,jdbcType=INTEGER},
       task_content = #{task_content,jdbcType=VARCHAR},
       task_status = #{task_status,jdbcType=INTEGER},
@@ -442,7 +458,8 @@
       is_remark = #{is_remark,jdbcType=TINYINT},
       is_forward = #{is_forward,jdbcType=TINYINT},
       is_delay = #{is_delay,jdbcType=INTEGER},
-      is_cui = #{is_cui,jdbcType=INTEGER}
+      is_cui = #{is_cui,jdbcType=INTEGER},
+      task_picpath = #{task_picpath,jdbcType=VARCHAR}
     where task_id = #{task_id,jdbcType=INTEGER}
   </update>
 </mapper>
