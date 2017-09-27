@@ -95,8 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="weui-slider-box weui-cell" id="oi_sf_tsk_progress">
                     <div class="weui-slider">
                         <div id="sliderInner" class="weui-slider__inner">
-                            <div id="sliderTrack" style="width:${companyTask.task_progress};" class="weui-slider__track"></div>
-                            <div id="sliderHandler" style="left:${companyTask.task_progress};" class="weui-slider__handler"></div>
+                            <div id="sliderTrack" style="width:${companyTask.task_progress}%;" class="weui-slider__track"></div>
+                            <div id="sliderHandler" style="left:${companyTask.task_progress}%;" class="weui-slider__handler"></div>
                         </div>
                     </div>
                     <div id="sliderValue" class="weui-slider-box__value">${companyTask.task_progress}</div>
@@ -137,32 +137,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="staff_bottom_fixed">
         <div class="weui-tab">
             <div class="weui-tabbar">
-                <a href="oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
                     <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_dialog.png" alt="">
                     </div>
                     <p class="weui-tabbar__label">消息</p>
                 </a>
-                <a href="oi_staff_task_center.html" class="weui-tabbar__item">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_task_center.html" class="weui-tabbar__item">
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_datetime.png" alt="">
                     </div>
                     <p class="weui-tabbar__label">任务</p>
                 </a>
-                <a href="oi_staff_publish.html" class="weui-tabbar__item">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_publish.html" class="weui-tabbar__item">
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_button.png" alt="">
                     </div>
                     <p class="weui-tabbar__label">发布</p>
                 </a>
-                <a href="oi_staff_data_center.html" class="weui-tabbar__item">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_data_center.html" class="weui-tabbar__item">
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_article.png" alt="">
                     </div>
                     <p class="weui-tabbar__label">统计</p>
                 </a>
-                <a href="oi_staff_info.html" class="weui-tabbar__item">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_info.html" class="weui-tabbar__item">
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_cell.png" alt="">
                     </div>

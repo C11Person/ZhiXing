@@ -29,6 +29,9 @@ public class CompanyTaskTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");
 		CompanyTaskService  companyTaskService = (CompanyTaskService) context.getBean("companyTaskService");
 		CompanyStafferService  companyStafferService = (CompanyStafferService) context.getBean("companyStafferService");
+		
+		CompanyStaffer companyStaffer = companyStafferService.selectStaffByDepartAndPost(2,1);
+		System.out.println("============"+companyStaffer.getDept_name()+"========================="+companyStaffer.getLevel_name()+"================="+companyStaffer.getPost_name());
 		/*CompanyStaffer companyStaffer = new CompanyStaffer();
 		companyStaffer.setUser_id(1);
 		companyStaffer.setEmail("123456@qq.com");
@@ -49,7 +52,8 @@ public class CompanyTaskTest {
 			System.out.println("修改手机号失败");
 		}*/
 		
-		CompanyTask companyTask = new CompanyTask();
+		
+/*		CompanyTask companyTask = new CompanyTask();
 		companyTask.setTask_id(1);
 		companyTask.setTask_del_reasion("不想做");
 		companyTask.setTask_status(3);
@@ -58,7 +62,7 @@ public class CompanyTaskTest {
 			System.out.println("退回任务成功");
 		}else{
 			System.out.println("退回任务失败");
-		}
+		}*/
 		
 /*		//查询待办任务
 		ApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");

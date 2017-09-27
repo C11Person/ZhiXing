@@ -33,6 +33,25 @@ public class CompanyStafferServiceImpl implements CompanyStafferService {
 		return companyStafferMapper.updateByPrimaryKeySelective(companyStaffer)==1;
 	}
 
+	@Override
+	public CompanyStaffer selectStafferByUserId(Integer user_id) {
+		return companyStafferMapper.selectByPrimaryKey(user_id);
+	}
+
+	@Override
+	public List<CompanyStaffer> staffLogin(CompanyStafferExample companyStafferExample) {
+		return companyStafferMapper.selectByExample(companyStafferExample);
+	}
+
+	@Override
+	public CompanyStaffer selectStaffByDepartAndPost(Integer user_id, Integer company_id) {
+		return companyStafferMapper.selectStaffByDepartAndPost(user_id, company_id);
+	}
+
+
+
+
+
 	
 
 }

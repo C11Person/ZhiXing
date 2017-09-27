@@ -21,7 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <a href="staff/staffAddTask.html">发布任务</a>
-    <a href="staff/selectAllToUserTask.html">我接收的</a>
+    <a href="staff/oi_staff_msg.html">首页</a>
   </body>
 </html>

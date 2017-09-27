@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.zx.dao.CompanyPostLevelMapper">
   <resultMap id="BaseResultMap" type="cn.zx.pojo.CompanyPostLevel">
-    <id column="post_le_id" jdbcType="SMALLINT" property="post_le_id" />
-    <result column="post_id" jdbcType="SMALLINT" property="post_id" />
+    <id column="post_le_id" jdbcType="INTEGER" property="post_le_id" />
+    <result column="post_id" jdbcType="INTEGER" property="post_id" />
     <result column="company_id" jdbcType="INTEGER" property="company_id" />
     <result column="level" jdbcType="INTEGER" property="level" />
     <result column="level_name" jdbcType="VARCHAR" property="level_name" />
     <result column="o" jdbcType="INTEGER" property="o" />
-    <result column="status" jdbcType="BIT" property="status" />
+    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
-    <result column="isdelete" jdbcType="BIT" property="isdelete" />
+    <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
     <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
     <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
   </resultMap>
@@ -90,15 +90,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from company_post_level
-    where post_le_id = #{post_le_id,jdbcType=SMALLINT}
+    where post_le_id = #{post_le_id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from company_post_level
-    where post_le_id = #{post_le_id,jdbcType=SMALLINT}
+    where post_le_id = #{post_le_id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="cn.zx.pojo.CompanyPostLevelExample">
     delete from company_post_level
@@ -109,12 +109,12 @@
   <insert id="insert" parameterType="cn.zx.pojo.CompanyPostLevel">
     insert into company_post_level (post_le_id, post_id, company_id, 
       level, level_name, o, 
-      status, remark, isdelete, create_time, 
-      update_time)
-    values (#{post_le_id,jdbcType=SMALLINT}, #{post_id,jdbcType=SMALLINT}, #{company_id,jdbcType=INTEGER}, 
+      status, remark, isdelete, 
+      create_time, update_time)
+    values (#{post_le_id,jdbcType=INTEGER}, #{post_id,jdbcType=INTEGER}, #{company_id,jdbcType=INTEGER}, 
       #{level,jdbcType=INTEGER}, #{level_name,jdbcType=VARCHAR}, #{o,jdbcType=INTEGER}, 
-      #{status,jdbcType=BIT}, #{remark,jdbcType=VARCHAR}, #{isdelete,jdbcType=BIT}, #{create_time,jdbcType=TIMESTAMP}, 
-      #{update_time,jdbcType=TIMESTAMP})
+      #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.CompanyPostLevel">
     insert into company_post_level
@@ -155,10 +155,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="post_le_id != null">
-        #{post_le_id,jdbcType=SMALLINT},
+        #{post_le_id,jdbcType=INTEGER},
       </if>
       <if test="post_id != null">
-        #{post_id,jdbcType=SMALLINT},
+        #{post_id,jdbcType=INTEGER},
       </if>
       <if test="company_id != null">
         #{company_id,jdbcType=INTEGER},
@@ -173,13 +173,13 @@
         #{o,jdbcType=INTEGER},
       </if>
       <if test="status != null">
-        #{status,jdbcType=BIT},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
       </if>
       <if test="isdelete != null">
-        #{isdelete,jdbcType=BIT},
+        #{isdelete,jdbcType=INTEGER},
       </if>
       <if test="create_time != null">
         #{create_time,jdbcType=TIMESTAMP},
@@ -199,10 +199,10 @@
     update company_post_level
     <set>
       <if test="record.post_le_id != null">
-        post_le_id = #{record.post_le_id,jdbcType=SMALLINT},
+        post_le_id = #{record.post_le_id,jdbcType=INTEGER},
       </if>
       <if test="record.post_id != null">
-        post_id = #{record.post_id,jdbcType=SMALLINT},
+        post_id = #{record.post_id,jdbcType=INTEGER},
       </if>
       <if test="record.company_id != null">
         company_id = #{record.company_id,jdbcType=INTEGER},
@@ -217,13 +217,13 @@
         o = #{record.o,jdbcType=INTEGER},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=BIT},
+        status = #{record.status,jdbcType=INTEGER},
       </if>
       <if test="record.remark != null">
         remark = #{record.remark,jdbcType=VARCHAR},
       </if>
       <if test="record.isdelete != null">
-        isdelete = #{record.isdelete,jdbcType=BIT},
+        isdelete = #{record.isdelete,jdbcType=INTEGER},
       </if>
       <if test="record.create_time != null">
         create_time = #{record.create_time,jdbcType=TIMESTAMP},
@@ -238,15 +238,15 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update company_post_level
-    set post_le_id = #{record.post_le_id,jdbcType=SMALLINT},
-      post_id = #{record.post_id,jdbcType=SMALLINT},
+    set post_le_id = #{record.post_le_id,jdbcType=INTEGER},
+      post_id = #{record.post_id,jdbcType=INTEGER},
       company_id = #{record.company_id,jdbcType=INTEGER},
       level = #{record.level,jdbcType=INTEGER},
       level_name = #{record.level_name,jdbcType=VARCHAR},
       o = #{record.o,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=BIT},
+      status = #{record.status,jdbcType=INTEGER},
       remark = #{record.remark,jdbcType=VARCHAR},
-      isdelete = #{record.isdelete,jdbcType=BIT},
+      isdelete = #{record.isdelete,jdbcType=INTEGER},
       create_time = #{record.create_time,jdbcType=TIMESTAMP},
       update_time = #{record.update_time,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -257,7 +257,7 @@
     update company_post_level
     <set>
       <if test="post_id != null">
-        post_id = #{post_id,jdbcType=SMALLINT},
+        post_id = #{post_id,jdbcType=INTEGER},
       </if>
       <if test="company_id != null">
         company_id = #{company_id,jdbcType=INTEGER},
@@ -272,13 +272,13 @@
         o = #{o,jdbcType=INTEGER},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=BIT},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
       <if test="isdelete != null">
-        isdelete = #{isdelete,jdbcType=BIT},
+        isdelete = #{isdelete,jdbcType=INTEGER},
       </if>
       <if test="create_time != null">
         create_time = #{create_time,jdbcType=TIMESTAMP},
@@ -287,20 +287,20 @@
         update_time = #{update_time,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where post_le_id = #{post_le_id,jdbcType=SMALLINT}
+    where post_le_id = #{post_le_id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.zx.pojo.CompanyPostLevel">
     update company_post_level
-    set post_id = #{post_id,jdbcType=SMALLINT},
+    set post_id = #{post_id,jdbcType=INTEGER},
       company_id = #{company_id,jdbcType=INTEGER},
       level = #{level,jdbcType=INTEGER},
       level_name = #{level_name,jdbcType=VARCHAR},
       o = #{o,jdbcType=INTEGER},
-      status = #{status,jdbcType=BIT},
+      status = #{status,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR},
-      isdelete = #{isdelete,jdbcType=BIT},
+      isdelete = #{isdelete,jdbcType=INTEGER},
       create_time = #{create_time,jdbcType=TIMESTAMP},
       update_time = #{update_time,jdbcType=TIMESTAMP}
-    where post_le_id = #{post_le_id,jdbcType=SMALLINT}
+    where post_le_id = #{post_le_id,jdbcType=INTEGER}
   </update>
 </mapper>

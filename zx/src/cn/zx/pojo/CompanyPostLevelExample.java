@@ -115,52 +115,52 @@ public class CompanyPostLevelExample {
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idEqualTo(Short value) {
+        public Criteria andPost_le_idEqualTo(Integer value) {
             addCriterion("post_le_id =", value, "post_le_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idNotEqualTo(Short value) {
+        public Criteria andPost_le_idNotEqualTo(Integer value) {
             addCriterion("post_le_id <>", value, "post_le_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idGreaterThan(Short value) {
+        public Criteria andPost_le_idGreaterThan(Integer value) {
             addCriterion("post_le_id >", value, "post_le_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idGreaterThanOrEqualTo(Short value) {
+        public Criteria andPost_le_idGreaterThanOrEqualTo(Integer value) {
             addCriterion("post_le_id >=", value, "post_le_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idLessThan(Short value) {
+        public Criteria andPost_le_idLessThan(Integer value) {
             addCriterion("post_le_id <", value, "post_le_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idLessThanOrEqualTo(Short value) {
+        public Criteria andPost_le_idLessThanOrEqualTo(Integer value) {
             addCriterion("post_le_id <=", value, "post_le_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idIn(List<Short> values) {
+        public Criteria andPost_le_idIn(List<Integer> values) {
             addCriterion("post_le_id in", values, "post_le_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idNotIn(List<Short> values) {
+        public Criteria andPost_le_idNotIn(List<Integer> values) {
             addCriterion("post_le_id not in", values, "post_le_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idBetween(Short value1, Short value2) {
+        public Criteria andPost_le_idBetween(Integer value1, Integer value2) {
             addCriterion("post_le_id between", value1, value2, "post_le_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_le_idNotBetween(Short value1, Short value2) {
+        public Criteria andPost_le_idNotBetween(Integer value1, Integer value2) {
             addCriterion("post_le_id not between", value1, value2, "post_le_id");
             return (Criteria) this;
         }
@@ -175,52 +175,52 @@ public class CompanyPostLevelExample {
             return (Criteria) this;
         }
 
-        public Criteria andPost_idEqualTo(Short value) {
+        public Criteria andPost_idEqualTo(Integer value) {
             addCriterion("post_id =", value, "post_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_idNotEqualTo(Short value) {
+        public Criteria andPost_idNotEqualTo(Integer value) {
             addCriterion("post_id <>", value, "post_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_idGreaterThan(Short value) {
+        public Criteria andPost_idGreaterThan(Integer value) {
             addCriterion("post_id >", value, "post_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_idGreaterThanOrEqualTo(Short value) {
+        public Criteria andPost_idGreaterThanOrEqualTo(Integer value) {
             addCriterion("post_id >=", value, "post_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_idLessThan(Short value) {
+        public Criteria andPost_idLessThan(Integer value) {
             addCriterion("post_id <", value, "post_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_idLessThanOrEqualTo(Short value) {
+        public Criteria andPost_idLessThanOrEqualTo(Integer value) {
             addCriterion("post_id <=", value, "post_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_idIn(List<Short> values) {
+        public Criteria andPost_idIn(List<Integer> values) {
             addCriterion("post_id in", values, "post_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_idNotIn(List<Short> values) {
+        public Criteria andPost_idNotIn(List<Integer> values) {
             addCriterion("post_id not in", values, "post_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_idBetween(Short value1, Short value2) {
+        public Criteria andPost_idBetween(Integer value1, Integer value2) {
             addCriterion("post_id between", value1, value2, "post_id");
             return (Criteria) this;
         }
 
-        public Criteria andPost_idNotBetween(Short value1, Short value2) {
+        public Criteria andPost_idNotBetween(Integer value1, Integer value2) {
             addCriterion("post_id not between", value1, value2, "post_id");
             return (Criteria) this;
         }
@@ -485,52 +485,52 @@ public class CompanyPostLevelExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Boolean value) {
+        public Criteria andStatusEqualTo(Integer value) {
             addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Boolean value) {
+        public Criteria andStatusNotEqualTo(Integer value) {
             addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Boolean value) {
+        public Criteria andStatusGreaterThan(Integer value) {
             addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Boolean value) {
+        public Criteria andStatusLessThan(Integer value) {
             addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
             addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Boolean> values) {
+        public Criteria andStatusIn(List<Integer> values) {
             addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Boolean> values) {
+        public Criteria andStatusNotIn(List<Integer> values) {
             addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
             addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
@@ -615,52 +615,52 @@ public class CompanyPostLevelExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteEqualTo(Boolean value) {
+        public Criteria andIsdeleteEqualTo(Integer value) {
             addCriterion("isdelete =", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteNotEqualTo(Boolean value) {
+        public Criteria andIsdeleteNotEqualTo(Integer value) {
             addCriterion("isdelete <>", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteGreaterThan(Boolean value) {
+        public Criteria andIsdeleteGreaterThan(Integer value) {
             addCriterion("isdelete >", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andIsdeleteGreaterThanOrEqualTo(Integer value) {
             addCriterion("isdelete >=", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteLessThan(Boolean value) {
+        public Criteria andIsdeleteLessThan(Integer value) {
             addCriterion("isdelete <", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteLessThanOrEqualTo(Boolean value) {
+        public Criteria andIsdeleteLessThanOrEqualTo(Integer value) {
             addCriterion("isdelete <=", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteIn(List<Boolean> values) {
+        public Criteria andIsdeleteIn(List<Integer> values) {
             addCriterion("isdelete in", values, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteNotIn(List<Boolean> values) {
+        public Criteria andIsdeleteNotIn(List<Integer> values) {
             addCriterion("isdelete not in", values, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsdeleteBetween(Integer value1, Integer value2) {
             addCriterion("isdelete between", value1, value2, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsdeleteNotBetween(Integer value1, Integer value2) {
             addCriterion("isdelete not between", value1, value2, "isdelete");
             return (Criteria) this;
         }

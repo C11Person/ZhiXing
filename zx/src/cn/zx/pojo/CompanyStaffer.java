@@ -9,6 +9,8 @@ public class CompanyStaffer {
 
     private String account;
 
+    private String sf_password;
+
     private String realname;
 
     private String face;
@@ -52,6 +54,44 @@ public class CompanyStaffer {
     private Date next_promotion_time;
 
     private Date last_promotion_time;
+    
+    private String post_name;
+    private String level_name;
+    private String dept_name;
+    private String company_name;
+    public String getCompany_name() {
+		return company_name;
+	}
+
+	public void setCompany_name(String company_name) {
+		this.company_name = company_name;
+	}
+
+	public String getPost_name() {
+		return post_name;
+	}
+
+	public void setPost_name(String post_name) {
+		this.post_name = post_name;
+	}
+
+	public String getLevel_name() {
+		return level_name;
+	}
+
+	public void setLevel_name(String level_name) {
+		this.level_name = level_name;
+	}
+
+	public String getDept_name() {
+		return dept_name;
+	}
+
+	public void setDept_name(String dept_name) {
+		this.dept_name = dept_name;
+	}
+
+	
 
     public Integer getUser_id() {
         return user_id;
@@ -75,6 +115,14 @@ public class CompanyStaffer {
 
     public void setAccount(String account) {
         this.account = account == null ? null : account.trim();
+    }
+
+    public String getSf_password() {
+        return sf_password;
+    }
+
+    public void setSf_password(String sf_password) {
+        this.sf_password = sf_password == null ? null : sf_password.trim();
     }
 
     public String getRealname() {

@@ -31,7 +31,7 @@ function selectAllTaskByToUserId() {
 			$("#weui-panel__bd2").html(table);
 		},
 		error : function(data) { //当访问时候，404，500 等非200的错误状态码
-			alert("加载我接收的任务失败");
+			$.alert("加载我接收的任务失败");
 		}
 	});
 }

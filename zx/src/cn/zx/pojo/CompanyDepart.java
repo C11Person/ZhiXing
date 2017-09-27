@@ -9,17 +9,15 @@ public class CompanyDepart {
 
     private String dept_name;
 
-    private Byte status;
-
-    private Integer com_id;
+    private Integer status;
 
     private Integer o;
 
     private String pingyin;
 
-    private Byte level;
+    private Integer level;
 
-    private Byte isdelete;
+    private Integer isdelete;
 
     public Integer getDept_id() {
         return dept_id;
@@ -53,20 +51,12 @@ public class CompanyDepart {
         this.dept_name = dept_name == null ? null : dept_name.trim();
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Integer getCom_id() {
-        return com_id;
-    }
-
-    public void setCom_id(Integer com_id) {
-        this.com_id = com_id;
     }
 
     public Integer getO() {
@@ -85,19 +75,19 @@ public class CompanyDepart {
         this.pingyin = pingyin == null ? null : pingyin.trim();
     }
 
-    public Byte getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(Byte level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
-    public Byte getIsdelete() {
+    public Integer getIsdelete() {
         return isdelete;
     }
 
-    public void setIsdelete(Byte isdelete) {
+    public void setIsdelete(Integer isdelete) {
         this.isdelete = isdelete;
     }
 }

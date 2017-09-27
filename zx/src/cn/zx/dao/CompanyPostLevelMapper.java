@@ -10,7 +10,7 @@ public interface CompanyPostLevelMapper {
 
     int deleteByExample(CompanyPostLevelExample example);
 
-    int deleteByPrimaryKey(Short post_le_id);
+    int deleteByPrimaryKey(Integer post_le_id);
 
     int insert(CompanyPostLevel record);
 
@@ -18,7 +18,7 @@ public interface CompanyPostLevelMapper {
 
     List<CompanyPostLevel> selectByExample(CompanyPostLevelExample example);
 
-    CompanyPostLevel selectByPrimaryKey(Short post_le_id);
+    CompanyPostLevel selectByPrimaryKey(Integer post_le_id);
 
     int updateByExampleSelective(@Param("record") CompanyPostLevel record, @Param("example") CompanyPostLevelExample example);
 

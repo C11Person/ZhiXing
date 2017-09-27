@@ -1,6 +1,8 @@
 jQuery(function(){
-    questTo();
+	questTo();
 });
+
+
 //部门成员加载
 function questTo(){
     var html="";
@@ -30,6 +32,6 @@ function questTo(){
                 });
                 $("#st_publicTo").find("#select2").html(html1);
             }
-        })
+        });
     })
 }

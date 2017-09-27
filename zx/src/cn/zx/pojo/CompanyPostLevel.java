@@ -3,9 +3,9 @@ package cn.zx.pojo;
 import java.util.Date;
 
 public class CompanyPostLevel {
-    private Short post_le_id;
+    private Integer post_le_id;
 
-    private Short post_id;
+    private Integer post_id;
 
     private Integer company_id;
 
@@ -15,29 +15,29 @@ public class CompanyPostLevel {
 
     private Integer o;
 
-    private Boolean status;
+    private Integer status;
 
     private String remark;
 
-    private Boolean isdelete;
+    private Integer isdelete;
 
     private Date create_time;
 
     private Date update_time;
 
-    public Short getPost_le_id() {
+    public Integer getPost_le_id() {
         return post_le_id;
     }
 
-    public void setPost_le_id(Short post_le_id) {
+    public void setPost_le_id(Integer post_le_id) {
         this.post_le_id = post_le_id;
     }
 
-    public Short getPost_id() {
+    public Integer getPost_id() {
         return post_id;
     }
 
-    public void setPost_id(Short post_id) {
+    public void setPost_id(Integer post_id) {
         this.post_id = post_id;
     }
 
@@ -73,11 +73,11 @@ public class CompanyPostLevel {
         this.o = o;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -89,11 +89,11 @@ public class CompanyPostLevel {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Boolean getIsdelete() {
+    public Integer getIsdelete() {
         return isdelete;
     }
 
-    public void setIsdelete(Boolean isdelete) {
+    public void setIsdelete(Integer isdelete) {
         this.isdelete = isdelete;
     }
 

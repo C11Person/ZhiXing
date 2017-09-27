@@ -1,5 +1,7 @@
 package cn.zx.pojo;
 
+import java.util.Date;
+
 public class CompanyPost {
     private Integer post_id;
 
@@ -11,7 +13,11 @@ public class CompanyPost {
 
     private Integer o;
 
-    private Byte isdelete;
+    private Integer isdelete;
+
+    private Date create_time;
+
+    private Date update_time;
 
     public Integer getPost_id() {
         return post_id;
@@ -53,11 +59,27 @@ public class CompanyPost {
         this.o = o;
     }
 
-    public Byte getIsdelete() {
+    public Integer getIsdelete() {
         return isdelete;
     }
 
-    public void setIsdelete(Byte isdelete) {
+    public void setIsdelete(Integer isdelete) {
         this.isdelete = isdelete;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    public Date getUpdate_time() {
+        return update_time;
+    }
+
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
     }
 }

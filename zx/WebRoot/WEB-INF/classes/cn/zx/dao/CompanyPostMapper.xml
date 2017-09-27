@@ -7,7 +7,9 @@
     <result column="post_name" jdbcType="VARCHAR" property="post_name" />
     <result column="post_remark" jdbcType="VARCHAR" property="post_remark" />
     <result column="o" jdbcType="INTEGER" property="o" />
-    <result column="isdelete" jdbcType="TINYINT" property="isdelete" />
+    <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    post_id, company_id, post_name, post_remark, o, isdelete
+    post_id, company_id, post_name, post_remark, o, isdelete, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="cn.zx.pojo.CompanyPostExample" resultMap="BaseResultMap">
     select
@@ -102,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="cn.zx.pojo.CompanyPost">
     insert into company_post (post_id, company_id, post_name, 
-      post_remark, o, isdelete
-      )
+      post_remark, o, isdelete, 
+      create_time, update_time)
     values (#{post_id,jdbcType=INTEGER}, #{company_id,jdbcType=INTEGER}, #{post_name,jdbcType=VARCHAR}, 
-      #{post_remark,jdbcType=VARCHAR}, #{o,jdbcType=INTEGER}, #{isdelete,jdbcType=TINYINT}
-      )
+      #{post_remark,jdbcType=VARCHAR}, #{o,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.CompanyPost">
     insert into company_post
@@ -129,6 +131,12 @@
       <if test="isdelete != null">
         isdelete,
       </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="post_id != null">
@@ -147,7 +155,13 @@
         #{o,jdbcType=INTEGER},
       </if>
       <if test="isdelete != null">
-        #{isdelete,jdbcType=TINYINT},
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -176,7 +190,13 @@
         o = #{record.o,jdbcType=INTEGER},
       </if>
       <if test="record.isdelete != null">
-        isdelete = #{record.isdelete,jdbcType=TINYINT},
+        isdelete = #{record.isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.create_time != null">
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update_time != null">
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -190,7 +210,9 @@
       post_name = #{record.post_name,jdbcType=VARCHAR},
       post_remark = #{record.post_remark,jdbcType=VARCHAR},
       o = #{record.o,jdbcType=INTEGER},
-      isdelete = #{record.isdelete,jdbcType=TINYINT}
+      isdelete = #{record.isdelete,jdbcType=INTEGER},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -211,7 +233,13 @@
         o = #{o,jdbcType=INTEGER},
       </if>
       <if test="isdelete != null">
-        isdelete = #{isdelete,jdbcType=TINYINT},
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
       </if>
     </set>
     where post_id = #{post_id,jdbcType=INTEGER}
@@ -222,7 +250,9 @@
       post_name = #{post_name,jdbcType=VARCHAR},
       post_remark = #{post_remark,jdbcType=VARCHAR},
       o = #{o,jdbcType=INTEGER},
-      isdelete = #{isdelete,jdbcType=TINYINT}
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
     where post_id = #{post_id,jdbcType=INTEGER}
   </update>
 </mapper>

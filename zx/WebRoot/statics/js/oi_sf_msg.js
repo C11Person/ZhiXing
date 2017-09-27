@@ -1,6 +1,9 @@
 /**
  * Created by kemplaw on 2017/9/22.
  */
+function shuaxin() {
+		window.location.reload();
+}
 $(function(){
     /*按钮点击事件处理*/
     $("#sf_tsk_backlog,#sf_tsk_backlog_2,#sf_tsk_backlog_3").on("click",".weui-media-box__info__meta a",function(){
@@ -36,17 +39,24 @@ $(function(){
                 console.log(_self);
                 $.confirm("确认取消？", function() {
                     //点击确认后的回调函数
-                    $.ajax({
-                        type:"post",
-                        url:"",
-                        data:"",
-                        success:function(){
-                            _self.parent().parent().parent().parent().remove();
-                        }
-                    })
-                }, function() {
-                    //点击取消后的回调函数
+                	$.ajax({
+                		type : "post", //请求类型
+                		url : "staff/oi_staff_cancel.json?task_id="+task_id, //请求的url
+                		dataType : "json", //ajax接口（请求url）返回的数据类型
+                		success : function(data) { //data：返回数据（json对象）
+                			if(data==true){
+                				$.alert("取消任务成功");
+                				setTimeout('shuaxin()',1000);
+                			}else{
+                				$.alert("取消任务失败");
+                			}
+                		},
+                		error : function(data) { //当访问时候，404，500 等非200的错误状态码
+                			$.alert("取消任务失败");
+                		}
+                	});
                 });
+
                 break;
             case "催办":
                 console.log(_self);

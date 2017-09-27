@@ -295,6 +295,76 @@ public class CompanyStafferExample {
             return (Criteria) this;
         }
 
+        public Criteria andSf_passwordIsNull() {
+            addCriterion("sf_password is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordIsNotNull() {
+            addCriterion("sf_password is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordEqualTo(String value) {
+            addCriterion("sf_password =", value, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordNotEqualTo(String value) {
+            addCriterion("sf_password <>", value, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordGreaterThan(String value) {
+            addCriterion("sf_password >", value, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordGreaterThanOrEqualTo(String value) {
+            addCriterion("sf_password >=", value, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordLessThan(String value) {
+            addCriterion("sf_password <", value, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordLessThanOrEqualTo(String value) {
+            addCriterion("sf_password <=", value, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordLike(String value) {
+            addCriterion("sf_password like", value, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordNotLike(String value) {
+            addCriterion("sf_password not like", value, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordIn(List<String> values) {
+            addCriterion("sf_password in", values, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordNotIn(List<String> values) {
+            addCriterion("sf_password not in", values, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordBetween(String value1, String value2) {
+            addCriterion("sf_password between", value1, value2, "sf_password");
+            return (Criteria) this;
+        }
+
+        public Criteria andSf_passwordNotBetween(String value1, String value2) {
+            addCriterion("sf_password not between", value1, value2, "sf_password");
+            return (Criteria) this;
+        }
+
         public Criteria andRealnameIsNull() {
             addCriterion("realname is null");
             return (Criteria) this;

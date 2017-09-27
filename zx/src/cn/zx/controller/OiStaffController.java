@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,9 @@ import com.alibaba.fastjson.JSONArray;
 
 import cn.zx.pojo.CompanyDepart;
 import cn.zx.pojo.CompanyDepartExample;
+import cn.zx.pojo.CompanyNewsExample;
 import cn.zx.pojo.CompanyDepartExample.Criteria;
+import cn.zx.pojo.CompanyNews;
 import cn.zx.pojo.CompanyStaffer;
 import cn.zx.pojo.CompanyStafferExample;
 import cn.zx.pojo.CompanyTask;
@@ -29,6 +32,7 @@ import cn.zx.pojo.CompanyTaskExample;
 import cn.zx.pojo.StaffTaskLog;
 import cn.zx.pojo.StaffTaskLogExample;
 import cn.zx.service.CompanyDepartService;
+import cn.zx.service.CompanyNewsService;
 import cn.zx.service.CompanyStafferService;
 import cn.zx.service.CompanyTaskService;
 import cn.zx.service.StaffTaskLogService;
@@ -44,9 +48,11 @@ public class OiStaffController {
 	CompanyStafferService companyStafferService;
 	@Autowired
 	StaffTaskLogService staffTaskLogService;
+	@Autowired
+	CompanyNewsService companyNewsService;
 
 	// 跳转发布任务
-	@RequestMapping(value = "/staffAddTask.html")
+	@RequestMapping(value = "/oi_staff_publish.html")
 	public String redirectAddTask(HttpServletRequest request) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");// 设置日期格式
 		String currentTime = sdf.format(new Date());
@@ -55,7 +61,7 @@ public class OiStaffController {
 	}
 
 	// 我接收的任务
-	@RequestMapping(value = "/selectAllToUserTask.html")
+	@RequestMapping(value = "/oi_staff_task_center.html")
 	public String redirectSelectAllToUserTask() {
 		return "staff/oi_staff_task_center";
 	}
@@ -63,10 +69,11 @@ public class OiStaffController {
 	// 根据公司ID查询公司部门
 	@RequestMapping(value = "/oi_sf_branch.json", method = RequestMethod.POST)
 	@ResponseBody
-	public String selectDepartByCompanyId() {
+	public String selectDepartByCompanyId(HttpSession session) {
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
 		cn.zx.pojo.CompanyDepartExample example = new CompanyDepartExample();
 		cn.zx.pojo.CompanyDepartExample.Criteria createCriteria = example.createCriteria();
-		createCriteria.andCompany_idEqualTo(1);
+		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());
 		example.setOrderByClause("o");
 
 		List<CompanyDepart> companyDeparts = companyDepartService.selectDepartByCompanyId(example);
@@ -76,11 +83,12 @@ public class OiStaffController {
 	// 根据公司ID和部门ID查询员工
 	@RequestMapping(value = "/oi_sf_branch_staff.json", method = RequestMethod.POST)
 	@ResponseBody
-	public String selectStaffByCompanyIdAndDepartId(String selData) {
+	public String selectStaffByCompanyIdAndDepartId(String selData,HttpSession session) {
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
 		System.out.println("fsdafsaf" + selData);
 		cn.zx.pojo.CompanyStafferExample example = new CompanyStafferExample();
 		cn.zx.pojo.CompanyStafferExample.Criteria createCriteria = example.createCriteria();
-		createCriteria.andCompany_idEqualTo(1);
+		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());
 		createCriteria.andDepartEqualTo(Integer.parseInt(selData));
 
 		List<CompanyStaffer> companyStaffers = companyStafferService.selectStaffByCompanyIdAndDepartId(example);
@@ -90,14 +98,14 @@ public class OiStaffController {
 	// 发布任务
 	@RequestMapping(value = "/addTask.html", method = RequestMethod.POST)
 	public String staffAddTask(String task_title, String to_user, String task_end_time, String task_urgent,
-			String task_important, String task_content, HttpServletRequest request,
-			@RequestParam(value = "attachs", required = false) MultipartFile[] attachs) throws ParseException {
+			String task_important, String task_content, HttpServletRequest request,HttpSession session) throws ParseException {
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
 		System.out.println(task_end_time + "1111111111111111111111");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");// 设置日期格式
 		Date end_time = sdf.parse(task_end_time);
 		CompanyTask companyTask = new CompanyTask();
-		companyTask.setCompany_id(1);
-		companyTask.setUser_id(1);
+		companyTask.setCompany_id(companyStaffer.getCompany_id());
+		companyTask.setUser_id(companyStaffer.getUser_id());
 		companyTask.setTo_user(Integer.parseInt(to_user));
 		companyTask.setTask_title(task_title);
 		companyTask.setTask_end_time(end_time);
@@ -120,11 +128,12 @@ public class OiStaffController {
 	// 查询当前员工的所有任务
 	@RequestMapping(value = "/selectAllTaskByToUserId.json", method = RequestMethod.POST)
 	@ResponseBody
-	public String selectAllTaskByToUserId() {
+	public String selectAllTaskByToUserId(HttpSession session) {
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
 		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
 		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
-		createCriteria.andTo_userEqualTo(1);
-		createCriteria.andCompany_idEqualTo(1);// 公司ID
+		createCriteria.andTo_userEqualTo(companyStaffer.getUser_id());
+		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());// 公司ID
 		example.setOrderByClause("task_start_time");
 
 		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);
@@ -137,11 +146,12 @@ public class OiStaffController {
 	// 查询当前员工发布的所有任务
 	@RequestMapping(value = "/selectAllTaskByUserId.json", method = RequestMethod.POST)
 	@ResponseBody
-	public String selectAllTaskByUserId() {
+	public String selectAllTaskByUserId(HttpSession session) {
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
 		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
 		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
-		createCriteria.andUser_idEqualTo(1);
-		createCriteria.andCompany_idEqualTo(1);// 公司ID
+		createCriteria.andUser_idEqualTo(companyStaffer.getUser_id());
+		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());// 公司ID
 		example.setOrderByClause("task_start_time");
 
 		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByUserId(example);
@@ -157,23 +167,23 @@ public class OiStaffController {
 			@RequestParam(required = false) String task_status, HttpServletRequest request) {
 		CompanyTask companyTask = companyTaskService.selectTaskByTaskId(Integer.parseInt(task_id));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");// 设置日期格式
-		
+
 		cn.zx.pojo.StaffTaskLogExample example = new StaffTaskLogExample();
 		cn.zx.pojo.StaffTaskLogExample.Criteria createCriteria = example.createCriteria();
 		createCriteria.andTask_idEqualTo(Integer.parseInt(task_id));
 		example.setOrderByClause("sub_time");
 
 		List<StaffTaskLog> staffTaskLogs = staffTaskLogService.selectTaskLogByTaskId(example);
-		
+
 		if (Integer.parseInt(task_status) == 1 || Integer.parseInt(task_status) == 2
-				|| Integer.parseInt(task_status) == 3) {
+				|| Integer.parseInt(task_status) == 3 || Integer.parseInt(task_status) == 5) {
 			// 格式化日期
 			String startTime = sdf.format(companyTask.getTask_start_time());
 			String endTime = sdf.format(companyTask.getTask_end_time());
 			request.setAttribute("companyTask", companyTask);
 			request.setAttribute("task_start_time", startTime);
 			request.setAttribute("task_end_time", endTime);
-			request.setAttribute("staffTaskLogs",staffTaskLogs);
+			request.setAttribute("staffTaskLogs", staffTaskLogs);
 			return "staff/oi_staff_tsk_detail";
 		} else {
 			// 格式化日期
@@ -183,8 +193,8 @@ public class OiStaffController {
 			String currentTime = sdf.format(new Date());
 			request.setAttribute("companyTask", companyTask);
 			request.setAttribute("currentTime", currentTime);
-			request.setAttribute("task_id",task_id);
-			request.setAttribute("staffTaskLogs",staffTaskLogs);
+			request.setAttribute("task_id", task_id);
+			request.setAttribute("staffTaskLogs", staffTaskLogs);
 			request.setAttribute("task_start_time", startTime);
 			request.setAttribute("task_end_time", endTime);
 			return "staff/oi_staff_edit";
@@ -198,36 +208,36 @@ public class OiStaffController {
 			@RequestParam(required = false) String task_status, HttpServletRequest request) {
 		CompanyTask companyTask = companyTaskService.selectTaskByTaskId(Integer.parseInt(task_id));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");// 设置日期格式
-		// 格式化日期
-		String startTime = sdf.format(companyTask.getTask_start_time());
-		String endTime = sdf.format(companyTask.getTask_end_time());
-		
-		
-/*		cn.zx.pojo.StaffTaskLogExample example = new StaffTaskLogExample();
-		cn.zx.pojo.StaffTaskLogExample.Criteria createCriteria = example.createCriteria();
-		createCriteria.andTask_idEqualTo(Integer.parseInt(task_id));
-		example.setOrderByClause("sub_time");
 
-		List<StaffTaskLog> staffTaskLogs = staffTaskLogService.selectTaskLogByTaskId(example);*/
-		
-		request.setAttribute("companyTask", companyTask);
-		request.setAttribute("task_start_time", startTime);
-		request.setAttribute("task_end_time", endTime);
-		/*request.setAttribute("staffTaskLogs",staffTaskLogs);*/
-		return "staff/oi_staff_tsk_detail";
+		if (Integer.parseInt(task_status) == 3) {
+			String currentTime = sdf.format(new Date());
+			request.setAttribute("companyTask", companyTask);
+			request.setAttribute("currentTime", currentTime);
+			return "staff/oi_staff_transpond";
+		} else {
+			// 格式化日期
+			String startTime = sdf.format(companyTask.getTask_start_time());
+			String endTime = sdf.format(companyTask.getTask_end_time());
+
+			request.setAttribute("companyTask", companyTask);
+			request.setAttribute("task_start_time", startTime);
+			request.setAttribute("task_end_time", endTime);
+			/* request.setAttribute("staffTaskLogs",staffTaskLogs); */
+			return "staff/oi_staff_tsk_detail";
+		}
 
 	}
-	
-	//加载日志
+
+	// 加载日志
 	@RequestMapping(value = "/selectTaskLogByTaskId.json", method = RequestMethod.POST)
 	@ResponseBody
 	public String selectTaskLogByTaskId(String task_id) {
-		System.out.println("==================================="+task_id);
+		System.out.println("===================================" + task_id);
 		cn.zx.pojo.StaffTaskLogExample example = new StaffTaskLogExample();
 		cn.zx.pojo.StaffTaskLogExample.Criteria createCriteria = example.createCriteria();
 		createCriteria.andTask_idEqualTo(Integer.parseInt(task_id));
 		example.setOrderByClause("sub_time");
-		
+
 		List<StaffTaskLog> staffTaskLogs = staffTaskLogService.selectTaskLogByTaskId(example);
 		return JSONArray.toJSONStringWithDateFormat(staffTaskLogs, "yyyy-MM-dd HH:mm");
 	}
@@ -241,7 +251,6 @@ public class OiStaffController {
 		if (Integer.parseInt(task_status) == 5) {
 			companyTask.setTask_status(4);
 		}
-
 		boolean flag = companyTaskService.updateTaskStatus(companyTask);
 		if (flag) {
 			return "staff/oi_staff_task_center";
@@ -250,7 +259,22 @@ public class OiStaffController {
 		}
 
 	}
+	
+	//取消任务
+	@RequestMapping(value = "/oi_staff_cancel.json",method=RequestMethod.POST)
+	@ResponseBody
+	public boolean cancelTask(String task_id) {
+		System.out.println("==================================="+task_id);
+		CompanyTask companyTask = new CompanyTask();
+		companyTask.setTask_id(Integer.parseInt(task_id));
+		companyTask.setTask_status(1);
+		boolean flag = companyTaskService.updateTaskStatus(companyTask);
+		
+		System.out.println("================================================="+flag);
+		return flag;
 
+	}
+	
 	// 退回任务和拒绝退回任务
 	@RequestMapping(value = "/oi_staff_return.html")
 	public String returnTask(@RequestParam(required = false) String task_id,
@@ -281,12 +305,12 @@ public class OiStaffController {
 	}
 
 	// 编辑任务进度
-	@RequestMapping(value="/updateTaskProgress.html",method=RequestMethod.POST)
-	public String updateTaskProgress(String task_id,String task_progress,String nod_desc,HttpServletRequest request) {
+	@RequestMapping(value = "/updateTaskProgress.html", method = RequestMethod.POST)
+	public String updateTaskProgress(String task_id, String task_progress, String nod_desc,
+			HttpServletRequest request) {
 
-		
 		CompanyTask companyTask = new CompanyTask();
-		if(Integer.parseInt(task_progress)==100){
+		if (Integer.parseInt(task_progress) == 100) {
 			companyTask.setTask_status(2);
 		}
 		companyTask.setTask_id(Integer.parseInt(task_id));
@@ -300,57 +324,127 @@ public class OiStaffController {
 
 		boolean flag = companyTaskService.updateTaskProgress(companyTask);
 		boolean flag1 = staffTaskLogService.addTaskProgressLog(staffTaskLog);
-		
-		if(flag==true && flag1==true){
+
+		if (flag == true && flag1 == true) {
 			return "staff/oi_staff_task_center";
-		}else{
+		} else {
 			return "";
 		}
 	}
 
 	// 转发任务
-	/*
-	 * public String updateToUser(){ CompanyTask companyTask = new
-	 * CompanyTask(); companyTask.setTask_id(1); companyTask.setTo_user(2);
-	 * boolean flag = companyTaskService.updateToUser(companyTask); }
-	 */
+	@RequestMapping(value = "/oi_staff_transpond.html", method = RequestMethod.POST)
+	public String updateToUser(CompanyTask companyTask, String end_time) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");// 设置日期格式
+		Date task_end_time = sdf.parse(end_time);
+		companyTask.setTask_end_time(task_end_time);
+		companyTask.setTask_status(5);
+		boolean flag = companyTaskService.updateToUser(companyTask);
+		if (flag) {
+			return "staff/oi_staff_task_center";
+		} else {
+			return "";
+		}
+	}
 
 	// 查询接收任务职员待办任务
-	/*
-	 * public String selectAllToDOTaskByToUser(){ cn.zx.pojo.CompanyTaskExample
-	 * example = new CompanyTaskExample();
-	 * cn.zx.pojo.CompanyTaskExample.Criteria createCriteria
-	 * =example.createCriteria(); createCriteria.andCompany_idEqualTo(1);
-	 * createCriteria.andTo_userEqualTo(1);
-	 * createCriteria.andTask_statusBetween(1,3);
-	 * 
-	 * List<CompanyTask> companyTasks =
-	 * companyTaskService.selectAllTaskByToUserId(example); }
-	 */
+	@RequestMapping(value = "/selectAllToDOTaskByToUser.json")
+	@ResponseBody
+	public String selectAllToDOTaskByToUser(HttpSession session) {
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
+		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
+		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
+		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());
+		createCriteria.andTo_userEqualTo(companyStaffer.getUser_id());
+		createCriteria.andTask_statusBetween(4, 5);
+		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);
+		return JSONArray.toJSONStringWithDateFormat(companyTasks, "yyyy-MM-dd HH:mm");
+	}
 
 	// 查询职员待办任务
-	/*
-	 * public String selectAllToDOTaskByUserId(){ cn.zx.pojo.CompanyTaskExample
-	 * example = new CompanyTaskExample();
-	 * cn.zx.pojo.CompanyTaskExample.Criteria createCriteria
-	 * =example.createCriteria(); createCriteria.andCompany_idEqualTo(1);
-	 * createCriteria.andUser_idEqualTo(1);
-	 * createCriteria.andTask_statusBetween(1,3);
-	 * 
-	 * List<CompanyTask> companyTasks =
-	 * companyTaskService.selectAllTaskByToUserId(example); }
-	 */
+	@RequestMapping(value = "/selectAllToDOTaskByUserId.json")
+	@ResponseBody
+	public String selectAllToDOTaskByUserId(HttpSession session) {
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
+		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
+		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
+		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());
+		createCriteria.andUser_idEqualTo(companyStaffer.getUser_id());
+		createCriteria.andTask_statusBetween(3,5);
+
+		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);
+		return JSONArray.toJSONStringWithDateFormat(companyTasks, "yyyy-MM-dd HH:mm");
+	}
 
 	// =========================================================================
 
 	// 职员修改邮箱地址
-	/*
-	 * public String staffUpdateEmailOrTelphone(){ CompanyStaffer companyStaffer
-	 * = new CompanyStaffer(); companyStaffer.setUser_id(1);
-	 * companyStaffer.setEmail("123456@qq.com"); boolean flag =
-	 * companyStafferService.staffUpdateEmailOrTelphone(companyStaffer); }
-	 */
+	@RequestMapping(value = "/staffUpdateEmailOrPhone.json")
+	@ResponseBody
+	public int staffUpdateEmail(@RequestParam(required = false) String email,
+			@RequestParam(required = false) String phone,HttpSession session) {
+		CompanyStaffer companyStaff= (CompanyStaffer) session.getAttribute("companyStaffer");
+		CompanyStaffer companyStaffer = new CompanyStaffer();
+		companyStaffer.setUser_id(companyStaff.getUser_id());
+		if (email != null) {
+			companyStaffer.setEmail(email);
+		}
+		if (phone != null) {
+			companyStaffer.setPhone(phone);
+		}
+		boolean flag = companyStafferService.staffUpdateEmailOrTelphone(companyStaffer);
+		if(flag){
+			return 1;
+		}else{
+			return 2;
+		}
+	}
 
 	// 根据公司Id查询所有职员
 
+	// 跳转消息中心
+	@RequestMapping(value = "/oi_staff_msg.html")
+	public String redirectStaffMsg() {
+		return "staff/oi_staff_msg";
+	}
+
+	// 跳转统计
+	@RequestMapping(value = "/oi_staff_data_center.html")
+	public String redirectStaffDataCenter() {
+		return "staff/oi_staff_data_center";
+	}
+
+	// 跳转个人中心
+	@RequestMapping(value = "/oi_staff_info.html")
+	public String redirectStaffInfo(HttpServletRequest request,HttpSession session) {
+		CompanyStaffer companyStaff= (CompanyStaffer) session.getAttribute("companyStaffer");
+		CompanyStaffer conCompanyStaffer = companyStafferService.selectStaffByDepartAndPost(companyStaff.getUser_id(),companyStaff.getCompany_id());
+		System.out.println(conCompanyStaffer.getCompany_name()+"==================="+companyStaff.getDept_name());
+		request.setAttribute("conCompanyStaffer", conCompanyStaffer);
+		return "staff/oi_staff_info";
+	}
+
+	// 跳转通讯录
+	@RequestMapping(value = "/oi_staff_contact.html")
+	public String redirectContact() {
+		return "staff/oi_staff_contact";
+	}
+
+	// 跳转我的名片
+	@RequestMapping(value = "/oi_staff_busCard.html")
+	public String redirectStaffBusCard() {
+		return "staff/oi_staff_busCard";
+	}
+	
+	//企业公告信息
+	@RequestMapping(value="/selectCompanyNews")
+	@ResponseBody
+	public String selectCompanyNews(HttpSession session){
+		CompanyStaffer companyStaff= (CompanyStaffer) session.getAttribute("companyStaffer");
+		cn.zx.pojo.CompanyNewsExample example = new CompanyNewsExample();
+		cn.zx.pojo.CompanyNewsExample.Criteria createCriteria = example.createCriteria();
+		createCriteria.andCompany_idEqualTo(companyStaff.getCompany_id());
+		List<CompanyNews> companyNews = companyNewsService.selectAllCompanyNewsByCompanyId(example);
+		return JSONArray.toJSONStringWithDateFormat(companyNews,"yyyy-MM-dd HH:mm");
+	}
 }

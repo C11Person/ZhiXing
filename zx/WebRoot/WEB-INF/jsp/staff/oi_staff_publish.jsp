@@ -19,9 +19,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/jquery-weui.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/tsk_mobile.css"/>
 
+
   </head>
-<body>
+ <body>
 	<div class="stuff_container">
+	<input type="hidden" id="userId" value="${sessionScope.companyStaffer.user_id}">
         <form id="task_release_container" action="staff/addTask.html" method="post">
             <!--任务级别单选部分：是否紧急-->
             <div class="weui-cells__title">任务标题</div>
@@ -29,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!--标题填写-->
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="text" name="task_title" placeholder="请输入任务标题">
+                        <input class="weui-input" type="text" name="task_title" id="task_title" placeholder="请输入任务标题">
                     </div>
                 </div>
                 <!--标题填写结束-->
@@ -40,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="weui-cell weui-cell_select">
                     <div class="weui-cell__bd weui-flex">
                         <select class="weui-select weui-flex__item" name="select1" id="select1">
-                            <option selected value="0">请选择发布对象</option>
+                             <option selected value="0">请选择发布对象</option>
                         </select>
                         <select class="weui-select weui-flex__item" name="to_user" id="select2">
                             <option selected value="0">请选择发布对象</option>
@@ -158,32 +160,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="staff_bottom_fixed">
         <div class="weui-tab">
             <div class="weui-tabbar">
-                <a href="oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
                     <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_dialog.png" alt="">
                     </div>
                     <p class="weui-tabbar__label">消息</p>
                 </a>
-                <a href="oi_staff_task_center.html" class="weui-tabbar__item">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_task_center.html" class="weui-tabbar__item">
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_datetime.png" alt="">
                     </div>
                     <p class="weui-tabbar__label">任务</p>
                 </a>
-                <a href="oi_staff_publish.html" class="weui-tabbar__item">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_publish.html" class="weui-tabbar__item">
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_button.png" alt="">
                     </div>
                     <p class="weui-tabbar__label">发布</p>
                 </a>
-                <a href="oi_staff_data_center.html" class="weui-tabbar__item">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_data_center.html" class="weui-tabbar__item">
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_article.png" alt="">
                     </div>
                     <p class="weui-tabbar__label">统计</p>
                 </a>
-                <a href="oi_staff_info.html" class="weui-tabbar__item">
+                <a href="${pageContext.request.contextPath }/staff/oi_staff_info.html" class="weui-tabbar__item">
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_cell.png" alt="">
                     </div>
@@ -196,16 +198,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="${pageContext.request.contextPath }/statics/js/jquery-1.11.3.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/jquery-weui.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/oi_sf_quest_pub.js"></script>
-    <script src="${pageContext.request.contextPath }/statics/js/oi_sf_quest_change.js"></script>
+   <script src="${pageContext.request.contextPath }/statics/js/oi_sf_quest_change.js"></script>
     <script>
         jQuery(function(){
             /*doSomethings*/
 //            发布任务ajax表单提交
             $("#oi_quest_submit_btn").click(function(){
                 var formData=$("#task_release_container").serialize();
-                alert(formData);
-                $("#task_release_container").submit();
-            })
+                var task_title =$("#task_title").val();
+                var user = $("#select2").val();
+                var user_id =$("#userId").val();
+                if(user==user_id && task_title==""){
+                	$.alert("请填写任务标题 \n并且不能给自己发布任务");
+                }else if(task_title==""){
+                	$.alert("请填写任务标题");
+                }else if(user==user_id){
+                	$.alert("不能给自己发布任务");
+                }else{
+                	$("#task_release_container").submit();
+                }
+			 })
         })
     </script>
 </body>
