@@ -40,13 +40,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <!--员工姓名结束-->
                         <!--员工信息详细-->
                         <p class="weui-media-box__desc">
-                            <h6>你与${conCompanyStaffer.company_name}共同奋斗<strong>999</strong>天</h6>
+                            <h6>你与${conCompanyStaffer.company_name}共同奋斗<strong>${longtime}</strong>天</h6>
                             <h6>${conCompanyStaffer.dept_name}[${conCompanyStaffer.post_name}][${conCompanyStaffer.level_name}]</h6>
                         </p>
                         <!--员工两项评分-->
                         <ul class="weui-media-box__info">
-                            <li class="weui-media-box__info__meta">质量：5.00分</li>
-                            <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">效率：4.99分</li>
+                            <li class="weui-media-box__info__meta">质量：${conCompanyStaffer.qualityavg}分</li>
+                            <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">效率：${conCompanyStaffer.efficiencyavg}分</li>
                         </ul>
                         <!--员工两项评分结束-->
                         <!--员工信息详细结束-->
@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="weui-tab">
             <div class="weui-tabbar">
                 <a href="${pageContext.request.contextPath }/staff/oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
-                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;" id="newsCount"></span>
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_dialog.png" alt="">
                     </div>
@@ -147,6 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="${pageContext.request.contextPath }/statics/js/jquery-1.11.3.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/jquery-weui.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/oi_m_sf.js"></script>
+    <script src="${pageContext.request.contextPath }/statics/js/oi_staff_allpage.js"></script>
     <script>
         jQuery(function(){
             /*doSomethings*/

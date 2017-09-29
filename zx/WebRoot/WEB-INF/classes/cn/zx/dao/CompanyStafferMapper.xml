@@ -618,9 +618,9 @@
 	</update>
 
 
-	<select id="selectStaffByDepartAndPost" resultMap="selectStaff">
+	<select id="selectStaffByDepartAndPost" resultType="cn.zx.pojo.CompanyStaffer">
 		SELECT
-		user_id,company_staffer.company_id,post,depart,postlevel,company_post.post_name,company_post_level.level_name,company_depart.dept_name,company_message.company_name,account,sf_password,realname,ext0,nickname,reg_time,in_time,reg_ip,last_time,last_ip,company_staffer.STATUS,email,company_staffer.phone,audit,open_id,token,header,hire_date,next_promotion_time,last_promotion_time
+		company_staffer.user_id,company_staffer.company_id,post,depart,postlevel,company_post.post_name,company_post_level.level_name,company_depart.dept_name,company_message.company_name,account,sf_password,realname,ext0,nickname,reg_time,in_time,reg_ip,last_time,last_ip,company_staffer.STATUS,email,company_staffer.phone,audit,open_id,token,header,hire_date,next_promotion_time,last_promotion_time,company_task.task_quality,TRUNCATE(AVG(task_quality),2)  AS qualityavg,company_task.task_efficiency,TRUNCATE(AVG(task_efficiency),2) AS efficiencyavg
 		FROM company_staffer
 		INNER JOIN company_post ON company_post.post_id=company_staffer.post
 		INNER JOIN company_post_level ON
@@ -628,13 +628,14 @@
 		INNER JOIN company_depart ON company_depart.dept_id=company_staffer.depart
 		INNER JOIN company_message ON
 		company_message.m_id=company_staffer.company_id
+		INNER JOIN company_task ON company_task.to_user=company_staffer.user_id
 		WHERE
-		user_id=#{user_id} AND company_staffer.company_id =#{company_id}
+		company_staffer.user_id=#{user_id} AND company_staffer.company_id =#{company_id}
 		GROUP
 		BY user_id
 	</select>
 
-	<resultMap id="selectStaff" type="cn.zx.pojo.CompanyStaffer">
+ 	<!-- <resultMap id="selectStaff" type="cn.zx.pojo.CompanyStaffer">
 		<id column="user_id" jdbcType="INTEGER" property="user_id" />
 		<result column="company_id" jdbcType="INTEGER" property="company_id" />
 		<result column="account" jdbcType="VARCHAR" property="account" />
@@ -667,5 +668,41 @@
 		<result column="level_name" jdbcType="VARCHAR" property="level_name" />
 		<result column="dept_name" jdbcType="VARCHAR" property="dept_name" />
 		<result column="company_name" jdbcType="VARCHAR" property="company_name" />
-	</resultMap>
+		<result column="task_quality" jdbcType="INT" property="task_quality" />
+		<result column="task_efficiency" jdbcType="INT" property="task_efficiency" />
+		<result column="qualityavg" jdbcType="DOUBLE" property="task_quality" />
+		<result column="efficiencyavg" jdbcType="DOUBLE" property="efficiencyavg" />
+	</resultMap> -->
+	
+	<select id="selectStaffByCompanyId"  resultType="cn.zx.pojo.CompanyStaffer">
+		SELECT
+		company_staffer.user_id,company_staffer.company_id,company_staffer.phone,post,company_task.task_quality,TRUNCATE(AVG(task_quality),2)  AS qualityavg,company_task.task_efficiency,TRUNCATE(AVG(task_efficiency),2) AS efficiencyavg,depart,postlevel,company_post.post_name,company_post_level.level_name,company_depart.dept_name,realname FROM company_staffer
+		INNER JOIN company_post ON company_post.post_id=company_staffer.post
+		INNER JOIN company_post_level ON
+		company_post_level.level=company_staffer.postlevel
+		INNER JOIN company_depart ON company_depart.dept_id=company_staffer.depart
+		INNER JOIN company_message ON
+		company_message.m_id=company_staffer.company_id
+		INNER JOIN company_task ON company_task.to_user=company_staffer.user_id
+		WHERE company_staffer.company_id = #{company_id}
+		GROUP
+		BY user_id
+	</select>
+<!-- 	
+		<resultMap id="selectStaffByCompanyIdAndToUser" type="cn.zx.pojo.CompanyStaffer">
+		<id column="user_id" jdbcType="INTEGER" property="user_id" />
+		<result column="company_id" jdbcType="INTEGER" property="company_id" />
+		<result column="realname" jdbcType="VARCHAR" property="realname" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="post" jdbcType="INTEGER" property="post" />
+		<result column="depart" jdbcType="INTEGER" property="depart" />
+		<result column="post_name" jdbcType="VARCHAR" property="post_name" />
+		<result column="level_name" jdbcType="VARCHAR" property="level_name" />
+		<result column="dept_name" jdbcType="VARCHAR" property="dept_name" />
+		<result column="company_name" jdbcType="VARCHAR" property="company_name" />
+		<result column="task_quality" jdbcType="INT" property="task_quality" />
+		<result column="task_efficiency" jdbcType="INT" property="task_efficiency" />
+		<result column="qualityavg" jdbcType="DOUBLE" property="task_quality" />
+		<result column="efficiencyavg" jdbcType="DOUBLE" property="efficiencyavg" />		</collection>
+	</resultMap> -->
 </mapper>

@@ -48,6 +48,13 @@ public class CompanyStafferServiceImpl implements CompanyStafferService {
 		return companyStafferMapper.selectStaffByDepartAndPost(user_id, company_id);
 	}
 
+	@Override
+	public List<CompanyStaffer> selectStaffByCompanyId(Integer company_id) {
+		return companyStafferMapper.selectStaffByCompanyId(company_id);
+	}
+
+
+
 
 
 

@@ -29,4 +29,6 @@ public interface CompanyStafferMapper {
     int updateByPrimaryKey(CompanyStaffer record);
     
     CompanyStaffer selectStaffByDepartAndPost(@Param("user_id") Integer user_id,@Param("company_id") Integer company_id);
+    
+    List<CompanyStaffer> selectStaffByCompanyId(@Param("company_id") Integer company_id);
 }

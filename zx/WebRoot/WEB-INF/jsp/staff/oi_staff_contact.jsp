@@ -25,91 +25,91 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--个人信息图文组合-->
         <div class="weui-panel weui-panel_access stuff_info_list" id="sf_tsk_backlog_4">
             <!--员工信息-->
-            <div class="weui-panel__bd">
+            <!-- <div class="weui-panel__bd">
                 <div class="weui-media-box weui-media-box_appmsg staff_info_box">
-                    <!--员工头像-->
+                    员工头像
                     <div class="weui-media-box__hd">
                         <img class="weui-media-box__thumb" src="">
                     </div>
-                    <!--员工头像 结束-->
-                    <!--员工信息-->
+                    员工头像 结束
+                    员工信息
                     <div class="weui-media-box__bd">
-                        <!--员工姓名-->
+                        员工姓名
                         <h4 class="weui-media-box__title"><span>员工甲 </span><small>董事会</small></h4>
-                        <!--员工姓名结束-->
-                        <!--员工信息详细-->
+                        员工姓名结束
+                        员工信息详细
                         <p class="weui-media-box__desc">
                             <strong>13000000000</strong>
                         </p>
-                        <!--员工两项评分-->
+                        员工两项评分
                         <ul class="weui-media-box__info">
                             <li class="weui-media-box__info__meta">质量：5.00</li>
                             <li class="weui-media-box__info__meta">效率：4.99</li>
                             <li class="weui-media-box__info__meta font_strong"><a href="oi_staff_publish.html">发任务</a></li>
                         </ul>
-                        <!--员工两项评分结束-->
+                        员工两项评分结束
                     </div>
-                    <!--员工信息 结束-->
+                    员工信息 结束
                 </div>
             </div>
-            <!--员工信息结束-->
-            <!--员工信息-->
+            员工信息结束
+            员工信息
             <div class="weui-panel__bd">
                 <div class="weui-media-box weui-media-box_appmsg staff_info_box">
-                    <!--员工头像-->
+                    员工头像
                     <div class="weui-media-box__hd">
                         <img class="weui-media-box__thumb" src="">
                     </div>
-                    <!--员工头像 结束-->
-                    <!--员工信息-->
+                    员工头像 结束
+                    员工信息
                     <div class="weui-media-box__bd">
-                        <!--员工姓名-->
+                        员工姓名
                         <h4 class="weui-media-box__title"><span>员工甲 </span><small>董事董事会会</small></h4>
-                        <!--员工姓名结束-->
-                        <!--员工信息详细-->
+                        员工姓名结束
+                        员工信息详细
                         <p class="weui-media-box__desc">
                             <strong>13000000000</strong>
                         </p>
-                        <!--员工两项评分-->
+                        员工两项评分
                         <ul class="weui-media-box__info">
                             <li class="weui-media-box__info__meta">质量：5.00</li>
                             <li class="weui-media-box__info__meta">效率：4.99</li>
                             <li class="weui-media-box__info__meta font_strong"><a href="oi_staff_publish.html">发任务</a></li>
                         </ul>
-                        <!--员工两项评分结束-->
+                        员工两项评分结束
                     </div>
-                    <!--员工信息 结束-->
+                    员工信息 结束
                 </div>
             </div>
-            <!--员工信息结束-->
-            <!--员工信息-->
+            员工信息结束
+            员工信息
             <div class="weui-panel__bd">
                 <div class="weui-media-box weui-media-box_appmsg staff_info_box">
-                    <!--员工头像-->
+                    员工头像
                     <div class="weui-media-box__hd">
                         <img class="weui-media-box__thumb" src="">
                     </div>
-                    <!--员工头像 结束-->
-                    <!--员工信息-->
+                    员工头像 结束
+                    员工信息
                     <div class="weui-media-box__bd">
-                        <!--员工姓名-->
+                        员工姓名
                         <h4 class="weui-media-box__title"><span>员工甲 </span><small>张三李四</small></h4>
-                        <!--员工姓名结束-->
-                        <!--员工信息详细-->
+                        员工姓名结束
+                        员工信息详细
                         <p class="weui-media-box__desc">
                             <strong>13000000000</strong>
                         </p>
-                        <!--员工两项评分-->
+                        员工两项评分
                         <ul class="weui-media-box__info">
                             <li class="weui-media-box__info__meta">质量：5.00</li>
                             <li class="weui-media-box__info__meta">效率：4.99</li>
                             <li class="weui-media-box__info__meta font_strong"><a href="oi_staff_publish.html">发任务</a></li>
                         </ul>
-                        <!--员工两项评分结束-->
+                        员工两项评分结束
                     </div>
-                    <!--员工信息 结束-->
+                    员工信息 结束
                 </div>
-            </div>
+            </div> -->
             <!--员工信息结束-->
         </div>
         <!--个人信息图文组合 结束-->
@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="weui-tab">
             <div class="weui-tabbar">
                 <a href="${pageContext.request.contextPath }/staff/oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
-                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;" id="newsCount"></span>
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_dialog.png" alt="">
                     </div>
@@ -156,5 +156,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="${pageContext.request.contextPath }/statics/js/jquery-1.11.3.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/jquery-weui.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/oi_sf_msg.js"></script>
+    <script src="${pageContext.request.contextPath }/statics/js/oi_staff_allpage.js"></script>
+    <script src="${pageContext.request.contextPath }/statics/js/oi_staff_contact.js"></script>
+    
   </body>
 </html>

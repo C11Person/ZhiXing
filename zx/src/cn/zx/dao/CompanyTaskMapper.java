@@ -27,4 +27,6 @@ public interface CompanyTaskMapper {
     int updateByPrimaryKeySelective(CompanyTask record);
 
     int updateByPrimaryKey(CompanyTask record);
+    
+    /*List<CompanyTask> selectTaskByVaguename(@Param("vaguename") String vaguename);*/
 }

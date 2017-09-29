@@ -3,6 +3,8 @@ package cn.zx.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import cn.zx.pojo.CompanyTask;
 import cn.zx.pojo.CompanyTaskExample;
 import cn.zx.pojo.StaffTaskLog;
@@ -59,6 +61,10 @@ public interface CompanyTaskService {
 	 * 职员退回任务
 	 */
 	boolean returnTask(CompanyTask companyTask);
-
+	
+	/**
+	 * 多字段模糊
+	 */
+	/*List<CompanyTask> selectTaskByVaguename(@Param("vaguename") String vaguename);*/
 
 }

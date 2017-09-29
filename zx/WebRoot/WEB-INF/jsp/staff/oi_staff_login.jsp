@@ -53,7 +53,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#sf-login-btn").click(function(){
                 if($("#sf-username").val()!==""&&$("#sf-password").val()!==""){
                     var formData=$("#sf-login-form").serialize();
-                    alert(formData);
                     $.ajax({
                         type:'post',
                         url:"staffLogin/login.json",

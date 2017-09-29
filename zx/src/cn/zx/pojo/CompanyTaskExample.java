@@ -1345,73 +1345,193 @@ public class CompanyTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathIsNull() {
-            addCriterion("task_picpath is null");
+        public Criteria andTask_qualityIsNull() {
+            addCriterion("task_quality is null");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathIsNotNull() {
-            addCriterion("task_picpath is not null");
+        public Criteria andTask_qualityIsNotNull() {
+            addCriterion("task_quality is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathEqualTo(String value) {
-            addCriterion("task_picpath =", value, "task_picpath");
+        public Criteria andTask_qualityEqualTo(Integer value) {
+            addCriterion("task_quality =", value, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathNotEqualTo(String value) {
-            addCriterion("task_picpath <>", value, "task_picpath");
+        public Criteria andTask_qualityNotEqualTo(Integer value) {
+            addCriterion("task_quality <>", value, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathGreaterThan(String value) {
-            addCriterion("task_picpath >", value, "task_picpath");
+        public Criteria andTask_qualityGreaterThan(Integer value) {
+            addCriterion("task_quality >", value, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathGreaterThanOrEqualTo(String value) {
-            addCriterion("task_picpath >=", value, "task_picpath");
+        public Criteria andTask_qualityGreaterThanOrEqualTo(Integer value) {
+            addCriterion("task_quality >=", value, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathLessThan(String value) {
-            addCriterion("task_picpath <", value, "task_picpath");
+        public Criteria andTask_qualityLessThan(Integer value) {
+            addCriterion("task_quality <", value, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathLessThanOrEqualTo(String value) {
-            addCriterion("task_picpath <=", value, "task_picpath");
+        public Criteria andTask_qualityLessThanOrEqualTo(Integer value) {
+            addCriterion("task_quality <=", value, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathLike(String value) {
-            addCriterion("task_picpath like", value, "task_picpath");
+        public Criteria andTask_qualityIn(List<Integer> values) {
+            addCriterion("task_quality in", values, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathNotLike(String value) {
-            addCriterion("task_picpath not like", value, "task_picpath");
+        public Criteria andTask_qualityNotIn(List<Integer> values) {
+            addCriterion("task_quality not in", values, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathIn(List<String> values) {
-            addCriterion("task_picpath in", values, "task_picpath");
+        public Criteria andTask_qualityBetween(Integer value1, Integer value2) {
+            addCriterion("task_quality between", value1, value2, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathNotIn(List<String> values) {
-            addCriterion("task_picpath not in", values, "task_picpath");
+        public Criteria andTask_qualityNotBetween(Integer value1, Integer value2) {
+            addCriterion("task_quality not between", value1, value2, "task_quality");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathBetween(String value1, String value2) {
-            addCriterion("task_picpath between", value1, value2, "task_picpath");
+        public Criteria andTask_efficiencyIsNull() {
+            addCriterion("task_efficiency is null");
             return (Criteria) this;
         }
 
-        public Criteria andTask_picpathNotBetween(String value1, String value2) {
-            addCriterion("task_picpath not between", value1, value2, "task_picpath");
+        public Criteria andTask_efficiencyIsNotNull() {
+            addCriterion("task_efficiency is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyEqualTo(Integer value) {
+            addCriterion("task_efficiency =", value, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyNotEqualTo(Integer value) {
+            addCriterion("task_efficiency <>", value, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyGreaterThan(Integer value) {
+            addCriterion("task_efficiency >", value, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyGreaterThanOrEqualTo(Integer value) {
+            addCriterion("task_efficiency >=", value, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyLessThan(Integer value) {
+            addCriterion("task_efficiency <", value, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyLessThanOrEqualTo(Integer value) {
+            addCriterion("task_efficiency <=", value, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyIn(List<Integer> values) {
+            addCriterion("task_efficiency in", values, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyNotIn(List<Integer> values) {
+            addCriterion("task_efficiency not in", values, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyBetween(Integer value1, Integer value2) {
+            addCriterion("task_efficiency between", value1, value2, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_efficiencyNotBetween(Integer value1, Integer value2) {
+            addCriterion("task_efficiency not between", value1, value2, "task_efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateIsNull() {
+            addCriterion("task_evaluate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateIsNotNull() {
+            addCriterion("task_evaluate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateEqualTo(String value) {
+            addCriterion("task_evaluate =", value, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateNotEqualTo(String value) {
+            addCriterion("task_evaluate <>", value, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateGreaterThan(String value) {
+            addCriterion("task_evaluate >", value, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateGreaterThanOrEqualTo(String value) {
+            addCriterion("task_evaluate >=", value, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateLessThan(String value) {
+            addCriterion("task_evaluate <", value, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateLessThanOrEqualTo(String value) {
+            addCriterion("task_evaluate <=", value, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateLike(String value) {
+            addCriterion("task_evaluate like", value, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateNotLike(String value) {
+            addCriterion("task_evaluate not like", value, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateIn(List<String> values) {
+            addCriterion("task_evaluate in", values, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateNotIn(List<String> values) {
+            addCriterion("task_evaluate not in", values, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateBetween(String value1, String value2) {
+            addCriterion("task_evaluate between", value1, value2, "task_evaluate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTask_evaluateNotBetween(String value1, String value2) {
+            addCriterion("task_evaluate not between", value1, value2, "task_evaluate");
             return (Criteria) this;
         }
     }

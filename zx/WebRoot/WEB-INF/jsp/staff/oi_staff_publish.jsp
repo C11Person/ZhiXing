@@ -157,11 +157,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </form>
     </div>
     <!--页面底部导航-->
-    <div class="staff_bottom_fixed">
+	<div class="staff_bottom_fixed">
         <div class="weui-tab">
             <div class="weui-tabbar">
                 <a href="${pageContext.request.contextPath }/staff/oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
-                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;" id="newsCount"></span>
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_dialog.png" alt="">
                     </div>
@@ -199,6 +199,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="${pageContext.request.contextPath }/statics/js/jquery-weui.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/oi_sf_quest_pub.js"></script>
    <script src="${pageContext.request.contextPath }/statics/js/oi_sf_quest_change.js"></script>
+   <script src="${pageContext.request.contextPath }/statics/js/oi_staff_allpage.js"></script>
     <script>
         jQuery(function(){
             /*doSomethings*/

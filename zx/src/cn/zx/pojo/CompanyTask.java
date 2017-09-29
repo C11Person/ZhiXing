@@ -43,9 +43,44 @@ public class CompanyTask {
 
     private Integer is_cui;
 
-    private String task_picpath;
+    private Integer task_quality;
 
-    public Integer getTask_id() {
+    private Integer task_efficiency;
+
+    private String task_evaluate;
+    
+    private Integer ranking;
+    
+    private String releasename;
+    
+    private String receivename;
+    
+
+    public String getReleasename() {
+		return releasename;
+	}
+
+	public void setReleasename(String releasename) {
+		this.releasename = releasename;
+	}
+
+	public String getReceivename() {
+		return receivename;
+	}
+
+	public void setReceivename(String receivename) {
+		this.receivename = receivename;
+	}
+
+	public Integer getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(Integer ranking) {
+		this.ranking = ranking;
+	}
+
+	public Integer getTask_id() {
         return task_id;
     }
 
@@ -205,11 +240,27 @@ public class CompanyTask {
         this.is_cui = is_cui;
     }
 
-    public String getTask_picpath() {
-        return task_picpath;
+    public Integer getTask_quality() {
+        return task_quality;
     }
 
-    public void setTask_picpath(String task_picpath) {
-        this.task_picpath = task_picpath == null ? null : task_picpath.trim();
+    public void setTask_quality(Integer task_quality) {
+        this.task_quality = task_quality;
+    }
+
+    public Integer getTask_efficiency() {
+        return task_efficiency;
+    }
+
+    public void setTask_efficiency(Integer task_efficiency) {
+        this.task_efficiency = task_efficiency;
+    }
+
+    public String getTask_evaluate() {
+        return task_evaluate;
+    }
+
+    public void setTask_evaluate(String task_evaluate) {
+        this.task_evaluate = task_evaluate == null ? null : task_evaluate.trim();
     }
 }

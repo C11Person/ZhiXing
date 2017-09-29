@@ -59,7 +59,8 @@ jQuery(function() {
         alert( 'Web Uploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器');
         throw new Error( 'WebUploader does not support the browser you are using.' );
     }
-
+    var url=document.getElementById("url").value;
+    alert(url);
     // 实例化
     uploader = WebUploader.create({
         pick: {
@@ -76,13 +77,13 @@ jQuery(function() {
         },
 
         // swf文件路径
-        swf:'/statics/hplus/js/plugins/webuploader/Uploader.swf',
+        swf:'../statics/hplus/js/plugins/webuploader/Uploader.swf',
 
         disableGlobalDnd: true,
 
         chunked: true,
         // server: 'http://webuploader.duapp.com/server/fileupload.php',
-        server: 'tupian/picture',
+        server: url,
         fileNumLimit: 300,
         fileSizeLimit: 5 * 1024 * 1024,    // 200 M
         fileSingleSizeLimit: 1 * 1024 * 1024    // 50 M
@@ -406,7 +407,9 @@ jQuery(function() {
 
         }
     });
-
+	uploader.on('uploadSuccess',function(file,response){
+    	$("#file").val(response.filePath);
+    });
     uploader.onError = function( code ) {
         alert( 'Eroor: ' + code );
     };

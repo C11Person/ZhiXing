@@ -5,6 +5,8 @@ import java.util.Date;
 public class CompanyPropaganda {
     private Integer p_id;
 
+    private Integer company_id;
+
     private String p_title;
 
     private String pic_URL;
@@ -23,6 +25,14 @@ public class CompanyPropaganda {
 
     public void setP_id(Integer p_id) {
         this.p_id = p_id;
+    }
+
+    public Integer getCompany_id() {
+        return company_id;
+    }
+
+    public void setCompany_id(Integer company_id) {
+        this.company_id = company_id;
     }
 
     public String getP_title() {

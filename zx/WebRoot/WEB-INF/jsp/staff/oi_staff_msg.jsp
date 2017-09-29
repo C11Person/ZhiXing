@@ -236,6 +236,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">
                                                 <a href="javascript:;" class="font_strong">投票</a>
                                             </li>
+                                            <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+                                                <a href="javascript:;" class="font_strong">反对</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -285,7 +288,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="weui-tab">
             <div class="weui-tabbar">
                 <a href="${pageContext.request.contextPath }/staff/oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
-                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;" id="newsCount"></span>
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_dialog.png" alt="">
                     </div>
@@ -323,6 +326,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="${pageContext.request.contextPath }/statics/js/jquery-weui.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/oi_sf_msg.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/oi_staff_msg.js"></script>
-    
+    <script src="${pageContext.request.contextPath }/statics/js/oi_staff_allpage.js"></script>
+   
   </body>
 </html>

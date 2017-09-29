@@ -23,6 +23,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
         <div class="stuff_container">
+          <!--搜索栏部分-->
+  <div class="weui-search-bar" id="searchBar">
+    <form class="weui-search-bar__form">
+      <div class="weui-search-bar__box">
+        <i class="weui-icon-search"></i>
+        <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+        <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+      </div>
+      <label class="weui-search-bar__label" id="searchText">
+        <i class="weui-icon-search"></i>
+        <span>搜索</span>
+      </label>
+    </form>
+    <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    <!--分类搜索-->
+    <span class="classify-box weui-tabbar__icon"></span>
+    <!--分类搜索 结束-->
+  </div>
+  <!--搜索栏部分 结束-->
+  <!--搜索分类内容盒子-->
+  <div class="weui-cells page__category-content" style="display:none;">
+    <a class="weui-cell weui-cell_access js_item" data-id="button" href="此处填写对应url">
+      <div class="weui-cell__bd">
+        <p>分类1</p>
+      </div>
+      <div class="weui-cell__ft"></div>
+    </a>
+    <a class="weui-cell weui-cell_access js_item" data-id="input" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>分类1</p>
+      </div>
+      <div class="weui-cell__ft"></div>
+    </a>
+    <a class="weui-cell weui-cell_access js_item" data-id="list" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>分类1</p>
+      </div>
+      <div class="weui-cell__ft"></div>
+    </a>
+    <a class="weui-cell weui-cell_access js_item" data-id="slider" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>分类1</p>
+      </div>
+      <div class="weui-cell__ft"></div>
+    </a>
+    <a class="weui-cell weui-cell_access js_item" data-id="uploader" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>分类1</p>
+      </div>
+      <div class="weui-cell__ft"></div>
+    </a>
+  </div>
+  <!--搜索分类内容盒子 结束-->
         <!--页面顶部导航部分-->
         <div class="weui-tab">
             <div class="weui-navbar">
@@ -392,7 +445,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="weui-tab">
             <div class="weui-tabbar">
                 <a href="${pageContext.request.contextPath }/staff/oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
-                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;" id="newsCount"></span>
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_dialog.png" alt="">
                     </div>
@@ -431,5 +484,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="${pageContext.request.contextPath }/statics/js/oi_sf_msg.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/staff_to_areceive_task.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/staff_release_task.js"></script>
+    <script src="${pageContext.request.contextPath }/statics/js/oi_staff_allpage.js"></script>
   </body>
 </html>

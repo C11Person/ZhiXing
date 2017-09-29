@@ -3,6 +3,7 @@
 <mapper namespace="cn.zx.dao.CompanyPropagandaMapper">
   <resultMap id="BaseResultMap" type="cn.zx.pojo.CompanyPropaganda">
     <id column="p_id" jdbcType="INTEGER" property="p_id" />
+    <result column="company_id" jdbcType="INTEGER" property="company_id" />
     <result column="p_title" jdbcType="VARCHAR" property="p_title" />
     <result column="pic_URL" jdbcType="VARCHAR" property="pic_URL" />
     <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    p_id, p_title, pic_URL, create_time, end_time, status, o
+    p_id, company_id, p_title, pic_URL, create_time, end_time, status, o
   </sql>
   <select id="selectByExample" parameterType="cn.zx.pojo.CompanyPropagandaExample" resultMap="BaseResultMap">
     select
@@ -102,18 +103,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.zx.pojo.CompanyPropaganda">
-    insert into company_propaganda (p_id, p_title, pic_URL, 
-      create_time, end_time, status, 
-      o)
-    values (#{p_id,jdbcType=INTEGER}, #{p_title,jdbcType=VARCHAR}, #{pic_URL,jdbcType=VARCHAR}, 
-      #{create_time,jdbcType=TIMESTAMP}, #{end_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
-      #{o,jdbcType=INTEGER})
+    insert into company_propaganda (p_id, company_id, p_title, 
+      pic_URL, create_time, end_time, 
+      status, o)
+    values (#{p_id,jdbcType=INTEGER}, #{company_id,jdbcType=INTEGER}, #{p_title,jdbcType=VARCHAR}, 
+      #{pic_URL,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{end_time,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{o,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.CompanyPropaganda">
     insert into company_propaganda
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="p_id != null">
         p_id,
+      </if>
+      <if test="company_id != null">
+        company_id,
       </if>
       <if test="p_title != null">
         p_title,
@@ -137,6 +141,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="p_id != null">
         #{p_id,jdbcType=INTEGER},
+      </if>
+      <if test="company_id != null">
+        #{company_id,jdbcType=INTEGER},
       </if>
       <if test="p_title != null">
         #{p_title,jdbcType=VARCHAR},
@@ -170,6 +177,9 @@
       <if test="record.p_id != null">
         p_id = #{record.p_id,jdbcType=INTEGER},
       </if>
+      <if test="record.company_id != null">
+        company_id = #{record.company_id,jdbcType=INTEGER},
+      </if>
       <if test="record.p_title != null">
         p_title = #{record.p_title,jdbcType=VARCHAR},
       </if>
@@ -196,6 +206,7 @@
   <update id="updateByExample" parameterType="map">
     update company_propaganda
     set p_id = #{record.p_id,jdbcType=INTEGER},
+      company_id = #{record.company_id,jdbcType=INTEGER},
       p_title = #{record.p_title,jdbcType=VARCHAR},
       pic_URL = #{record.pic_URL,jdbcType=VARCHAR},
       create_time = #{record.create_time,jdbcType=TIMESTAMP},
@@ -209,6 +220,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.zx.pojo.CompanyPropaganda">
     update company_propaganda
     <set>
+      <if test="company_id != null">
+        company_id = #{company_id,jdbcType=INTEGER},
+      </if>
       <if test="p_title != null">
         p_title = #{p_title,jdbcType=VARCHAR},
       </if>
@@ -232,7 +246,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.zx.pojo.CompanyPropaganda">
     update company_propaganda
-    set p_title = #{p_title,jdbcType=VARCHAR},
+    set company_id = #{company_id,jdbcType=INTEGER},
+      p_title = #{p_title,jdbcType=VARCHAR},
       pic_URL = #{pic_URL,jdbcType=VARCHAR},
       create_time = #{create_time,jdbcType=TIMESTAMP},
       end_time = #{end_time,jdbcType=TIMESTAMP},

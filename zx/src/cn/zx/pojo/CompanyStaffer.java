@@ -59,6 +59,44 @@ public class CompanyStaffer {
     private String level_name;
     private String dept_name;
     private String company_name;
+    private Integer task_quality;
+    private Integer task_efficiency;
+    
+	private double qualityavg;
+    private double efficiencyavg;
+    public Integer getTask_quality() {
+		return task_quality;
+	}
+
+	public void setTask_quality(Integer task_quality) {
+		this.task_quality = task_quality;
+	}
+
+	public Integer getTask_efficiency() {
+		return task_efficiency;
+	}
+
+	public void setTask_efficiency(Integer task_efficiency) {
+		this.task_efficiency = task_efficiency;
+	}
+
+	public double getQualityavg() {
+		return qualityavg;
+	}
+
+	public void setQualityavg(double qualityavg) {
+		this.qualityavg = qualityavg;
+	}
+
+	public double getEfficiencyavg() {
+		return efficiencyavg;
+	}
+
+	public void setEfficiencyavg(double efficiencyavg) {
+		this.efficiencyavg = efficiencyavg;
+	}
+
+
     public String getCompany_name() {
 		return company_name;
 	}

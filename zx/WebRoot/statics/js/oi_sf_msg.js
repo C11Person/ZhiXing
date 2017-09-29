@@ -5,6 +5,26 @@ function shuaxin() {
 		window.location.reload();
 }
 $(function(){
+	  $("#searchBar").on("click",".classify-box",function(){
+		    $(".page__category-content").slideToggle();
+		  });
+		  $(".star_evaluate").on("click","li.star",function(){
+		    var that=$(this);
+		    var cNum=null;
+		    var pId=that.parent().parent().attr('id');
+		    that.addClass('good').prevAll('.star').addClass('good');
+		    that.nextAll('.good').removeClass('good')
+		    if(pId ==="quality_check"){ //质量
+		      cNum=that.parent().children('li.good').size();
+		      console.log(cNum);
+		      $("#star_evaluate_quality").val(cNum);
+		    }
+		    if(pId ==="eta_check"){ //效率
+		      cNum=that.parent().children('li.good').size();
+		      console.log(cNum);
+		      $("#star_evaluate_eta").val(cNum);
+		    }
+		  });
     /*按钮点击事件处理*/
     $("#sf_tsk_backlog,#sf_tsk_backlog_2,#sf_tsk_backlog_3").on("click",".weui-media-box__info__meta a",function(){
         var _self=$(this);

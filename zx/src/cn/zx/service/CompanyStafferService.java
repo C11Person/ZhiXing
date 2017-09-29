@@ -32,4 +32,9 @@ public interface CompanyStafferService {
 	 * 查询职员所属部门职系职级
 	 */
 	CompanyStaffer selectStaffByDepartAndPost(@Param("user_id") Integer user_id,@Param("company_id") Integer company_id);
+	
+	/**
+	 * 根据公司Id查询所有人
+	 */
+	 List<CompanyStaffer> selectStaffByCompanyId(@Param("company_id") Integer company_id);
 }

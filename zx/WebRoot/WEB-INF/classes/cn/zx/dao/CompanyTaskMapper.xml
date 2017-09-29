@@ -22,7 +22,9 @@
     <result column="is_forward" jdbcType="TINYINT" property="is_forward" />
     <result column="is_delay" jdbcType="INTEGER" property="is_delay" />
     <result column="is_cui" jdbcType="INTEGER" property="is_cui" />
-    <result column="task_picpath" jdbcType="VARCHAR" property="task_picpath" />
+    <result column="task_quality" jdbcType="INTEGER" property="task_quality" />
+    <result column="task_efficiency" jdbcType="INTEGER" property="task_efficiency" />
+    <result column="task_evaluate" jdbcType="VARCHAR" property="task_evaluate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -85,7 +87,8 @@
   <sql id="Base_Column_List">
     task_id, company_id, task_title, to_user, user_id, task_obj, task_start_time, task_end_time, 
     task_complete_time, task_progress, task_urgent, task_important, task_content, task_status, 
-    task_del_reasion, task_reback_reasion, is_remark, is_forward, is_delay, is_cui, task_picpath
+    task_del_reasion, task_reback_reasion, is_remark, is_forward, is_delay, is_cui, task_quality, 
+    task_efficiency, task_evaluate
   </sql>
   <select id="selectByExample" parameterType="cn.zx.pojo.CompanyTaskExample" resultMap="BaseResultMap">
     select
@@ -124,16 +127,16 @@
       task_progress, task_urgent, task_important, 
       task_content, task_status, task_del_reasion, 
       task_reback_reasion, is_remark, is_forward, 
-      is_delay, is_cui, task_picpath
-      )
+      is_delay, is_cui, task_quality, 
+      task_efficiency, task_evaluate)
     values (#{task_id,jdbcType=INTEGER}, #{company_id,jdbcType=INTEGER}, #{task_title,jdbcType=VARCHAR}, 
       #{to_user,jdbcType=INTEGER}, #{user_id,jdbcType=INTEGER}, #{task_obj,jdbcType=INTEGER}, 
       #{task_start_time,jdbcType=TIMESTAMP}, #{task_end_time,jdbcType=TIMESTAMP}, #{task_complete_time,jdbcType=TIMESTAMP}, 
       #{task_progress,jdbcType=INTEGER}, #{task_urgent,jdbcType=INTEGER}, #{task_important,jdbcType=INTEGER}, 
       #{task_content,jdbcType=VARCHAR}, #{task_status,jdbcType=INTEGER}, #{task_del_reasion,jdbcType=VARCHAR}, 
       #{task_reback_reasion,jdbcType=VARCHAR}, #{is_remark,jdbcType=TINYINT}, #{is_forward,jdbcType=TINYINT}, 
-      #{is_delay,jdbcType=INTEGER}, #{is_cui,jdbcType=INTEGER}, #{task_picpath,jdbcType=VARCHAR}
-      )
+      #{is_delay,jdbcType=INTEGER}, #{is_cui,jdbcType=INTEGER}, #{task_quality,jdbcType=INTEGER}, 
+      #{task_efficiency,jdbcType=INTEGER}, #{task_evaluate,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.CompanyTask">
     insert into company_task
@@ -198,8 +201,14 @@
       <if test="is_cui != null">
         is_cui,
       </if>
-      <if test="task_picpath != null">
-        task_picpath,
+      <if test="task_quality != null">
+        task_quality,
+      </if>
+      <if test="task_efficiency != null">
+        task_efficiency,
+      </if>
+      <if test="task_evaluate != null">
+        task_evaluate,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -263,8 +272,14 @@
       <if test="is_cui != null">
         #{is_cui,jdbcType=INTEGER},
       </if>
-      <if test="task_picpath != null">
-        #{task_picpath,jdbcType=VARCHAR},
+      <if test="task_quality != null">
+        #{task_quality,jdbcType=INTEGER},
+      </if>
+      <if test="task_efficiency != null">
+        #{task_efficiency,jdbcType=INTEGER},
+      </if>
+      <if test="task_evaluate != null">
+        #{task_evaluate,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -337,8 +352,14 @@
       <if test="record.is_cui != null">
         is_cui = #{record.is_cui,jdbcType=INTEGER},
       </if>
-      <if test="record.task_picpath != null">
-        task_picpath = #{record.task_picpath,jdbcType=VARCHAR},
+      <if test="record.task_quality != null">
+        task_quality = #{record.task_quality,jdbcType=INTEGER},
+      </if>
+      <if test="record.task_efficiency != null">
+        task_efficiency = #{record.task_efficiency,jdbcType=INTEGER},
+      </if>
+      <if test="record.task_evaluate != null">
+        task_evaluate = #{record.task_evaluate,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -367,7 +388,9 @@
       is_forward = #{record.is_forward,jdbcType=TINYINT},
       is_delay = #{record.is_delay,jdbcType=INTEGER},
       is_cui = #{record.is_cui,jdbcType=INTEGER},
-      task_picpath = #{record.task_picpath,jdbcType=VARCHAR}
+      task_quality = #{record.task_quality,jdbcType=INTEGER},
+      task_efficiency = #{record.task_efficiency,jdbcType=INTEGER},
+      task_evaluate = #{record.task_evaluate,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -432,8 +455,14 @@
       <if test="is_cui != null">
         is_cui = #{is_cui,jdbcType=INTEGER},
       </if>
-      <if test="task_picpath != null">
-        task_picpath = #{task_picpath,jdbcType=VARCHAR},
+      <if test="task_quality != null">
+        task_quality = #{task_quality,jdbcType=INTEGER},
+      </if>
+      <if test="task_efficiency != null">
+        task_efficiency = #{task_efficiency,jdbcType=INTEGER},
+      </if>
+      <if test="task_evaluate != null">
+        task_evaluate = #{task_evaluate,jdbcType=VARCHAR},
       </if>
     </set>
     where task_id = #{task_id,jdbcType=INTEGER}
@@ -459,7 +488,15 @@
       is_forward = #{is_forward,jdbcType=TINYINT},
       is_delay = #{is_delay,jdbcType=INTEGER},
       is_cui = #{is_cui,jdbcType=INTEGER},
-      task_picpath = #{task_picpath,jdbcType=VARCHAR}
+      task_quality = #{task_quality,jdbcType=INTEGER},
+      task_efficiency = #{task_efficiency,jdbcType=INTEGER},
+      task_evaluate = #{task_evaluate,jdbcType=VARCHAR}
     where task_id = #{task_id,jdbcType=INTEGER}
   </update>
+  <select id="selectTop10" resultType="cn.zx.pojo.CompanyTask">
+		SELECT 	task_id,to_user,company_staffer.company_id,task_status,company_staffer.realname,COUNT(1) AS ranking FROM company_task
+		INNER JOIN company_staffer ON company_staffer.user_id= company_task.to_user
+		WHERE task_status=2 AND company_staffer.company_id=1
+		GROUP BY to_user
+  </select>
 </mapper>

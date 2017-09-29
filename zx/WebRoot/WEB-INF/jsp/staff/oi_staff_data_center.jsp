@@ -7,7 +7,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html lang="en">
   <head>
-       <meta charset="utf-8"/>
+  
+  	<base href="<%=basePath%>">
+    <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="IE=Edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -17,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/jquery-weui.min.css"/>
   <link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/tsk_mobile.css"/>
     <script src="${pageContext.request.contextPath }/statics/js/echarts.min.js"></script>
+    
   <style>
     .charts_container{
       width:90%;
@@ -56,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="weui-tab">
             <div class="weui-tabbar">
                 <a href="${pageContext.request.contextPath }/staff/oi_staff_msg.html" class="weui-tabbar__item weui-bar__item--on">
-                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;" id="newsCount"></span>
                     <div class="weui-tabbar__icon">
                         <img src="${pageContext.request.contextPath }/statics/images/icons/icon_nav_dialog.png" alt="">
                     </div>
@@ -90,8 +93,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
     <!--页面底部导航结束-->
-    <script src="${pageContext.request.contextPath }/statics/js/jquery-1.11.3.min.js"></script>
+        <script src="${pageContext.request.contextPath }/statics/js/jquery-1.11.3.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/jquery-weui.min.js"></script>
+    <script src="${pageContext.request.contextPath }/statics/js/oi_staff_allpage.js"></script>
+    
     <script>
       $(function(){
         var echart_1=echarts.init(document.getElementById("sf_data_container_echarts_1"));

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -176,7 +177,7 @@ public class OiStaffController {
 		List<StaffTaskLog> staffTaskLogs = staffTaskLogService.selectTaskLogByTaskId(example);
 
 		if (Integer.parseInt(task_status) == 1 || Integer.parseInt(task_status) == 2
-				|| Integer.parseInt(task_status) == 3 || Integer.parseInt(task_status) == 5) {
+				|| Integer.parseInt(task_status) == 3 || Integer.parseInt(task_status) == 5 || Integer.parseInt(task_status) == 6) {
 			// 格式化日期
 			String startTime = sdf.format(companyTask.getTask_start_time());
 			String endTime = sdf.format(companyTask.getTask_end_time());
@@ -311,7 +312,7 @@ public class OiStaffController {
 
 		CompanyTask companyTask = new CompanyTask();
 		if (Integer.parseInt(task_progress) == 100) {
-			companyTask.setTask_status(2);
+			companyTask.setTask_status(6);
 		}
 		companyTask.setTask_id(Integer.parseInt(task_id));
 		companyTask.setTask_progress(Integer.parseInt(task_progress));
@@ -328,6 +329,42 @@ public class OiStaffController {
 		if (flag == true && flag1 == true) {
 			return "staff/oi_staff_task_center";
 		} else {
+			return "";
+		}
+	}
+	
+	//跳转评价任务
+	@RequestMapping(value="/oi_staff_evaluate.html")
+	public String redirectEvaluateTask(String task_id,String to_user,HttpSession session,HttpServletRequest request) throws ParseException{
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
+		CompanyTask companyTask = companyTaskService.selectTaskByTaskId(Integer.parseInt(task_id));
+		CompanyStaffer  companyStaffer1 =companyStafferService.selectStaffByDepartAndPost(Integer.parseInt(to_user),companyStaffer.getCompany_id());
+		System.out.println(companyStaffer1.getCompany_name()+"==========================="+companyStaffer1.getQualityavg());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date currenttime=new Date();
+		Date reg_time= companyStaffer1.getReg_time();
+		
+		long day=0;
+		Date beginDate;
+		Date endDate;
+		beginDate = format.parse(format.format(reg_time));
+		endDate= format.parse(format.format(currenttime));    
+		day=(endDate.getTime()-beginDate.getTime())/(24*60*60*1000); 
+		System.out.println("================================="+day);
+		request.setAttribute("longtime",day);
+		request.setAttribute("companyTask", companyTask);
+		request.setAttribute("companyStaffer1", companyStaffer1);
+		return "staff/oi_staff_evaluate";
+	}
+	
+	//评价任务
+	@RequestMapping(value="evaluateTask.do",method=RequestMethod.POST)
+	public String evaluateTask(CompanyTask companyTask){
+		companyTask.setTask_status(2);
+		boolean flag = companyTaskService.updateTaskStatus(companyTask);
+		if(flag){
+			return "staff/oi_staff_task_center";
+		}else{
 			return "";
 		}
 	}
@@ -381,7 +418,7 @@ public class OiStaffController {
 	// 职员修改邮箱地址
 	@RequestMapping(value = "/staffUpdateEmailOrPhone.json")
 	@ResponseBody
-	public int staffUpdateEmail(@RequestParam(required = false) String email,
+	public boolean staffUpdateEmail(@RequestParam(required = false) String email,
 			@RequestParam(required = false) String phone,HttpSession session) {
 		CompanyStaffer companyStaff= (CompanyStaffer) session.getAttribute("companyStaffer");
 		CompanyStaffer companyStaffer = new CompanyStaffer();
@@ -393,11 +430,7 @@ public class OiStaffController {
 			companyStaffer.setPhone(phone);
 		}
 		boolean flag = companyStafferService.staffUpdateEmailOrTelphone(companyStaffer);
-		if(flag){
-			return 1;
-		}else{
-			return 2;
-		}
+		return flag;
 	}
 
 	// 根据公司Id查询所有职员
@@ -416,10 +449,22 @@ public class OiStaffController {
 
 	// 跳转个人中心
 	@RequestMapping(value = "/oi_staff_info.html")
-	public String redirectStaffInfo(HttpServletRequest request,HttpSession session) {
+	public String redirectStaffInfo(HttpServletRequest request,HttpSession session) throws ParseException {
 		CompanyStaffer companyStaff= (CompanyStaffer) session.getAttribute("companyStaffer");
 		CompanyStaffer conCompanyStaffer = companyStafferService.selectStaffByDepartAndPost(companyStaff.getUser_id(),companyStaff.getCompany_id());
 		System.out.println(conCompanyStaffer.getCompany_name()+"==================="+companyStaff.getDept_name());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date currenttime=new Date();
+		Date reg_time= companyStaff.getReg_time();
+		
+		long day=0;
+		Date beginDate;
+		Date endDate;
+		beginDate = format.parse(format.format(reg_time));
+		endDate= format.parse(format.format(currenttime));    
+		day=(endDate.getTime()-beginDate.getTime())/(24*60*60*1000); 
+		System.out.println("================================="+day);
+		request.setAttribute("longtime",day);
 		request.setAttribute("conCompanyStaffer", conCompanyStaffer);
 		return "staff/oi_staff_info";
 	}
@@ -440,11 +485,55 @@ public class OiStaffController {
 	@RequestMapping(value="/selectCompanyNews")
 	@ResponseBody
 	public String selectCompanyNews(HttpSession session){
-		CompanyStaffer companyStaff= (CompanyStaffer) session.getAttribute("companyStaffer");
+		CompanyStaffer companyStaffer= (CompanyStaffer) session.getAttribute("companyStaffer");
 		cn.zx.pojo.CompanyNewsExample example = new CompanyNewsExample();
 		cn.zx.pojo.CompanyNewsExample.Criteria createCriteria = example.createCriteria();
-		createCriteria.andCompany_idEqualTo(companyStaff.getCompany_id());
+		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());
 		List<CompanyNews> companyNews = companyNewsService.selectAllCompanyNewsByCompanyId(example);
 		return JSONArray.toJSONStringWithDateFormat(companyNews,"yyyy-MM-dd HH:mm");
+	}
+	
+	//查询所有信息条数
+	@RequestMapping(value="selectNewsCount.json",method=RequestMethod.POST)
+	@ResponseBody
+	public int selectNewsCount(HttpSession session){
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
+		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
+		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
+		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());
+		createCriteria.andTo_userEqualTo(companyStaffer.getUser_id());
+		createCriteria.andTask_statusBetween(4, 5);
+		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);
+		
+		
+		cn.zx.pojo.CompanyTaskExample example1 = new CompanyTaskExample();
+		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria1 = example1.createCriteria();
+		createCriteria1.andCompany_idEqualTo(companyStaffer.getCompany_id());
+		createCriteria1.andUser_idEqualTo(companyStaffer.getUser_id());
+		createCriteria1.andTask_statusBetween(3,5);
+
+		List<CompanyTask> companyTasks1 = companyTaskService.selectAllTaskByToUserId(example1);
+		
+		cn.zx.pojo.CompanyNewsExample example2 = new CompanyNewsExample();
+		cn.zx.pojo.CompanyNewsExample.Criteria createCriteria2 = example2.createCriteria();
+		createCriteria2.andCompany_idEqualTo(companyStaffer.getCompany_id());
+		List<CompanyNews> companyNews = companyNewsService.selectAllCompanyNewsByCompanyId(example2);
+		
+		int TaskByToUserIdCount=companyTasks.size();
+		int TaskByToUserId=companyTasks1.size();
+		int CompanyNewsByCompanyIdCount=companyNews.size();
+		
+		int allNewsCount = TaskByToUserIdCount+TaskByToUserId+CompanyNewsByCompanyIdCount;
+		return allNewsCount;
+	}
+	
+	
+	//根据公司Id查询所有人
+	@RequestMapping(value="/selectStaffByCompanyId",method=RequestMethod.POST)
+	@ResponseBody
+	public String selectStaffByCompanyId(HttpSession session){
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
+		List<CompanyStaffer> companyStaffers = companyStafferService.selectStaffByCompanyId(companyStaffer.getCompany_id());
+		return JSONArray.toJSONString(companyStaffers);
 	}
 }

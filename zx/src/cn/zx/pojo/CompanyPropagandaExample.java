@@ -165,6 +165,66 @@ public class CompanyPropagandaExample {
             return (Criteria) this;
         }
 
+        public Criteria andCompany_idIsNull() {
+            addCriterion("company_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idIsNotNull() {
+            addCriterion("company_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idEqualTo(Integer value) {
+            addCriterion("company_id =", value, "company_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idNotEqualTo(Integer value) {
+            addCriterion("company_id <>", value, "company_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idGreaterThan(Integer value) {
+            addCriterion("company_id >", value, "company_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("company_id >=", value, "company_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idLessThan(Integer value) {
+            addCriterion("company_id <", value, "company_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idLessThanOrEqualTo(Integer value) {
+            addCriterion("company_id <=", value, "company_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idIn(List<Integer> values) {
+            addCriterion("company_id in", values, "company_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idNotIn(List<Integer> values) {
+            addCriterion("company_id not in", values, "company_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idBetween(Integer value1, Integer value2) {
+            addCriterion("company_id between", value1, value2, "company_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompany_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("company_id not between", value1, value2, "company_id");
+            return (Criteria) this;
+        }
+
         public Criteria andP_titleIsNull() {
             addCriterion("p_title is null");
             return (Criteria) this;

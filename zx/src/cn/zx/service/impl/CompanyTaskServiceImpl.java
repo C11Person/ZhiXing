@@ -74,5 +74,11 @@ public class CompanyTaskServiceImpl implements CompanyTaskService {
 	public boolean returnTask(CompanyTask companyTask) {
 		return companyTaskMapper.updateByPrimaryKeySelective(companyTask)==1;
 	}
+
+	/*@Override
+	public List<CompanyTask> selectTaskByVaguename(String vaguename) {
+		return companyTaskMapper.selectTaskByVaguename(vaguename);
+	}*/
+
 	
 }

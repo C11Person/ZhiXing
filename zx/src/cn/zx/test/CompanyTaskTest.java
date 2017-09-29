@@ -29,9 +29,17 @@ public class CompanyTaskTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");
 		CompanyTaskService  companyTaskService = (CompanyTaskService) context.getBean("companyTaskService");
 		CompanyStafferService  companyStafferService = (CompanyStafferService) context.getBean("companyStafferService");
-		
-		CompanyStaffer companyStaffer = companyStafferService.selectStaffByDepartAndPost(2,1);
-		System.out.println("============"+companyStaffer.getDept_name()+"========================="+companyStaffer.getLevel_name()+"================="+companyStaffer.getPost_name());
+/*		List<CompanyStaffer> companyStaffers = companyStafferService.selectStaffByCompanyId(1);
+		for (int i = 0; i < companyStaffers.size(); i++) {
+			System.out.println(companyStaffers.get(i).getRealname()+"======="+companyStaffers.get(i).getQualityavg()+"======="+companyStaffers.get(i).getEfficiencyavg());
+		}*/
+		/*List<CompanyTask> companyTasks = companyTaskService.selectTaskByVaguename("杨");
+		for (int i = 0; i < companyTasks.size(); i++) {
+			System.out.println("======================"+companyTasks.size());
+			System.out.println("======================"+companyTasks.get(i).getReceivename()+"===="+companyTasks.get(i).getReleasename());
+		}*/
+		/*CompanyStaffer companyStaffer = companyStafferService.selectStaffByDepartAndPost(2,1);
+		System.out.println("============"+companyStaffer.getDept_name()+"========================="+companyStaffer.getLevel_name()+"================="+companyStaffer.getPost_name());*/
 		/*CompanyStaffer companyStaffer = new CompanyStaffer();
 		companyStaffer.setUser_id(1);
 		companyStaffer.setEmail("123456@qq.com");
