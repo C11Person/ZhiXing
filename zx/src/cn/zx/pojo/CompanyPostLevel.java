@@ -25,7 +25,17 @@ public class CompanyPostLevel {
 
     private Date update_time;
 
-    public Integer getPost_le_id() {
+    private String post_name;
+    
+    public String getPost_name() {
+		return post_name;
+	}
+
+	public void setPost_name(String post_name) {
+		this.post_name = post_name;
+	}
+
+	public Integer getPost_le_id() {
         return post_le_id;
     }
 

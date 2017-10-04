@@ -10,7 +10,7 @@ public interface OiAuthRuleMapper {
 
     int deleteByExample(OiAuthRuleExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer r_id);
 
     int insert(OiAuthRule record);
 
@@ -20,7 +20,7 @@ public interface OiAuthRuleMapper {
 
     List<OiAuthRule> selectByExample(OiAuthRuleExample example);
 
-    OiAuthRule selectByPrimaryKey(Integer id);
+    OiAuthRule selectByPrimaryKey(Integer r_id);
 
     int updateByExampleSelective(@Param("record") OiAuthRule record, @Param("example") OiAuthRuleExample example);
 

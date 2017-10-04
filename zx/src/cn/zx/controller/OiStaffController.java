@@ -37,6 +37,7 @@ import cn.zx.service.CompanyNewsService;
 import cn.zx.service.CompanyStafferService;
 import cn.zx.service.CompanyTaskService;
 import cn.zx.service.StaffTaskLogService;
+import cn.zx.util.MainWechat;
 
 @RequestMapping(value = "/staff")
 @Controller
@@ -86,10 +87,9 @@ public class OiStaffController {
 	@ResponseBody
 	public String selectStaffByCompanyIdAndDepartId(String selData,HttpSession session) {
 		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
-		System.out.println("fsdafsaf" + selData);
 		cn.zx.pojo.CompanyStafferExample example = new CompanyStafferExample();
 		cn.zx.pojo.CompanyStafferExample.Criteria createCriteria = example.createCriteria();
-		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());
+		createCriteria.andCompanyIdEqualTo(companyStaffer.getCompany_id());
 		createCriteria.andDepartEqualTo(Integer.parseInt(selData));
 
 		List<CompanyStaffer> companyStaffers = companyStafferService.selectStaffByCompanyIdAndDepartId(example);
@@ -101,7 +101,6 @@ public class OiStaffController {
 	public String staffAddTask(String task_title, String to_user, String task_end_time, String task_urgent,
 			String task_important, String task_content, HttpServletRequest request,HttpSession session) throws ParseException {
 		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
-		System.out.println(task_end_time + "1111111111111111111111");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");// 设置日期格式
 		Date end_time = sdf.parse(task_end_time);
 		CompanyTask companyTask = new CompanyTask();
@@ -131,16 +130,15 @@ public class OiStaffController {
 	@ResponseBody
 	public String selectAllTaskByToUserId(HttpSession session) {
 		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
-		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
+/*		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
 		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
 		createCriteria.andTo_userEqualTo(companyStaffer.getUser_id());
 		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());// 公司ID
 		example.setOrderByClause("task_start_time");
 
-		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);
-		for (int i = 0; i < companyTasks.size(); i++) {
-			System.out.println(companyTasks.get(i).getTask_start_time());
-		}
+		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);*/
+		
+		List<CompanyTask> companyTasks = companyTaskService.selectTaskByUserId(companyStaffer.getCompany_id(),companyStaffer.getUser_id());
 		return JSONArray.toJSONStringWithDateFormat(companyTasks, "yyyy-MM-dd HH:mm");
 	}
 
@@ -149,16 +147,14 @@ public class OiStaffController {
 	@ResponseBody
 	public String selectAllTaskByUserId(HttpSession session) {
 		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
-		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
+/*		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
 		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
 		createCriteria.andUser_idEqualTo(companyStaffer.getUser_id());
 		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());// 公司ID
 		example.setOrderByClause("task_start_time");
 
-		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByUserId(example);
-		for (int i = 0; i < companyTasks.size(); i++) {
-			System.out.println(companyTasks.get(i).getTask_title());
-		}
+		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByUserId(example);*/
+		List<CompanyTask> companyTasks = companyTaskService.selectTaskByToUser(companyStaffer.getCompany_id(),companyStaffer.getUser_id());
 		return JSONArray.toJSONStringWithDateFormat(companyTasks, "yyyy-MM-dd HH:mm");
 	}
 
@@ -233,7 +229,6 @@ public class OiStaffController {
 	@RequestMapping(value = "/selectTaskLogByTaskId.json", method = RequestMethod.POST)
 	@ResponseBody
 	public String selectTaskLogByTaskId(String task_id) {
-		System.out.println("===================================" + task_id);
 		cn.zx.pojo.StaffTaskLogExample example = new StaffTaskLogExample();
 		cn.zx.pojo.StaffTaskLogExample.Criteria createCriteria = example.createCriteria();
 		createCriteria.andTask_idEqualTo(Integer.parseInt(task_id));
@@ -246,7 +241,6 @@ public class OiStaffController {
 	// 修改任务状态
 	@RequestMapping(value = "/oi_staff_edit.html")
 	public String updateTaskStatus(String task_id, String task_status) {
-		System.out.println(task_id + "fdsfdfs" + task_status);
 		CompanyTask companyTask = new CompanyTask();
 		companyTask.setTask_id(Integer.parseInt(task_id));
 		if (Integer.parseInt(task_status) == 5) {
@@ -265,13 +259,10 @@ public class OiStaffController {
 	@RequestMapping(value = "/oi_staff_cancel.json",method=RequestMethod.POST)
 	@ResponseBody
 	public boolean cancelTask(String task_id) {
-		System.out.println("==================================="+task_id);
 		CompanyTask companyTask = new CompanyTask();
 		companyTask.setTask_id(Integer.parseInt(task_id));
 		companyTask.setTask_status(1);
 		boolean flag = companyTaskService.updateTaskStatus(companyTask);
-		
-		System.out.println("================================================="+flag);
 		return flag;
 
 	}
@@ -281,9 +272,6 @@ public class OiStaffController {
 	public String returnTask(@RequestParam(required = false) String task_id,
 			@RequestParam(required = false) String task_status, @RequestParam(required = false) String task_reasion,
 			@RequestParam(required = false) String task_reback_reasion) throws UnsupportedEncodingException {
-
-		System.out.println(task_id + "==========" + task_status + "====");
-
 		CompanyTask companyTask = new CompanyTask();
 		companyTask.setTask_id(Integer.parseInt(task_id));
 		if (Integer.parseInt(task_status) == 5 || Integer.parseInt(task_status) == 4) {
@@ -339,7 +327,6 @@ public class OiStaffController {
 		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
 		CompanyTask companyTask = companyTaskService.selectTaskByTaskId(Integer.parseInt(task_id));
 		CompanyStaffer  companyStaffer1 =companyStafferService.selectStaffByDepartAndPost(Integer.parseInt(to_user),companyStaffer.getCompany_id());
-		System.out.println(companyStaffer1.getCompany_name()+"==========================="+companyStaffer1.getQualityavg());
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date currenttime=new Date();
 		Date reg_time= companyStaffer1.getReg_time();
@@ -350,7 +337,6 @@ public class OiStaffController {
 		beginDate = format.parse(format.format(reg_time));
 		endDate= format.parse(format.format(currenttime));    
 		day=(endDate.getTime()-beginDate.getTime())/(24*60*60*1000); 
-		System.out.println("================================="+day);
 		request.setAttribute("longtime",day);
 		request.setAttribute("companyTask", companyTask);
 		request.setAttribute("companyStaffer1", companyStaffer1);
@@ -389,12 +375,13 @@ public class OiStaffController {
 	@ResponseBody
 	public String selectAllToDOTaskByToUser(HttpSession session) {
 		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
-		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
+/*		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
 		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
 		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());
 		createCriteria.andTo_userEqualTo(companyStaffer.getUser_id());
 		createCriteria.andTask_statusBetween(4, 5);
-		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);
+		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);*/
+		List<CompanyTask> companyTasks = companyTaskService.selectToDOTaskByToUser(companyStaffer.getCompany_id(),companyStaffer.getUser_id());
 		return JSONArray.toJSONStringWithDateFormat(companyTasks, "yyyy-MM-dd HH:mm");
 	}
 
@@ -403,13 +390,17 @@ public class OiStaffController {
 	@ResponseBody
 	public String selectAllToDOTaskByUserId(HttpSession session) {
 		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
-		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
+/*		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
 		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
 		createCriteria.andCompany_idEqualTo(companyStaffer.getCompany_id());
 		createCriteria.andUser_idEqualTo(companyStaffer.getUser_id());
 		createCriteria.andTask_statusBetween(3,5);
 
-		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);
+		List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByToUserId(example);*/
+		List<CompanyTask> companyTasks = companyTaskService.selectToDOTaskByUserId(companyStaffer.getCompany_id(),companyStaffer.getUser_id());
+		for (int i = 0; i < companyTasks.size(); i++) {
+			System.out.println(companyTasks.get(i).getRealname());
+		}
 		return JSONArray.toJSONStringWithDateFormat(companyTasks, "yyyy-MM-dd HH:mm");
 	}
 
@@ -452,7 +443,6 @@ public class OiStaffController {
 	public String redirectStaffInfo(HttpServletRequest request,HttpSession session) throws ParseException {
 		CompanyStaffer companyStaff= (CompanyStaffer) session.getAttribute("companyStaffer");
 		CompanyStaffer conCompanyStaffer = companyStafferService.selectStaffByDepartAndPost(companyStaff.getUser_id(),companyStaff.getCompany_id());
-		System.out.println(conCompanyStaffer.getCompany_name()+"==================="+companyStaff.getDept_name());
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date currenttime=new Date();
 		Date reg_time= companyStaff.getReg_time();
@@ -463,7 +453,6 @@ public class OiStaffController {
 		beginDate = format.parse(format.format(reg_time));
 		endDate= format.parse(format.format(currenttime));    
 		day=(endDate.getTime()-beginDate.getTime())/(24*60*60*1000); 
-		System.out.println("================================="+day);
 		request.setAttribute("longtime",day);
 		request.setAttribute("conCompanyStaffer", conCompanyStaffer);
 		return "staff/oi_staff_info";
@@ -536,4 +525,43 @@ public class OiStaffController {
 		List<CompanyStaffer> companyStaffers = companyStafferService.selectStaffByCompanyId(companyStaffer.getCompany_id());
 		return JSONArray.toJSONString(companyStaffers);
 	}
+	
+	//根据任务状态查询任务
+	@RequestMapping(value="/selectTaskByTaskStatus.json",method=RequestMethod.POST)
+	@ResponseBody
+	public String selectTaskByTaskStatus(String type,String task_status,HttpSession session){
+		
+		System.out.println(type);
+		System.out.println(task_status);
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
+/*		cn.zx.pojo.CompanyTaskExample example = new CompanyTaskExample();
+		cn.zx.pojo.CompanyTaskExample.Criteria createCriteria = example.createCriteria();
+		if(Integer.parseInt(task_status)!=0){
+			createCriteria.andTask_statusEqualTo(Integer.parseInt(task_status));
+		}*/
+		List<CompanyTask> companyTasks = null;
+		if(Integer.parseInt(type)==1){
+			/*createCriteria.andUser_idEqualTo(companyStaffer.getUser_id());*/
+			 companyTasks = companyTaskService.selectTaskByStatusAndUserId(companyStaffer.getCompany_id(),companyStaffer.getUser_id(),Integer.parseInt(task_status));
+		}else if(Integer.parseInt(type)==2){
+			/*createCriteria.andTo_userEqualTo(companyStaffer.getUser_id());*/
+			 companyTasks = companyTaskService.selectTaskByStatusAndToUserId(companyStaffer.getCompany_id(),companyStaffer.getUser_id(),Integer.parseInt(task_status));
+		}
+		/*List<CompanyTask> companyTasks = companyTaskService.selectAllTaskByTaskStatus(example);*/
+		return JSONArray.toJSONStringWithDateFormat(companyTasks,"yyyy-MM-dd HH:mm");
+		
+	}
+	
+	
+	
+	@RequestMapping(value="/tmpl.html")
+	public String tmpl(String to_user,String tmplId,HttpSession session){
+		System.out.println(to_user+"========"+tmplId+"========");
+		CompanyStaffer companyStaffer = (CompanyStaffer) session.getAttribute("companyStaffer");
+		MainWechat m = new MainWechat();
+		System.out.println();
+		m.task(companyStaffer.getCompany_id(),Integer.parseInt(to_user), Integer.parseInt(tmplId));
+		return "staff/oi_staff_task_center";
+	}
+
 }

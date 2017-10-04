@@ -6,12 +6,15 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="role" jdbcType="INTEGER" property="role" />
+    <result column="company_id" jdbcType="INTEGER" property="company_id" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
     <result column="create_ip" jdbcType="VARCHAR" property="create_ip" />
     <result column="last_time" jdbcType="TIMESTAMP" property="last_time" />
     <result column="last_ip" jdbcType="VARCHAR" property="last_ip" />
+    <result column="random" jdbcType="VARCHAR" property="random" />
+    
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -287,5 +290,68 @@
       last_time = #{last_time,jdbcType=TIMESTAMP},
       last_ip = #{last_ip,jdbcType=VARCHAR}
     where admin_id = #{admin_id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 登录 -->
+  <select id="login" resultType="CompanyAdmin">
+  	select admin_id,company_id,username,PASSWORD,role,email,phone,create_time,create_ip,
+  	last_time,last_ip from company_admin 
+  	<where>
+  		<if test="phone !=null">
+  			and phone=#{phone}
+  		</if>
+  		<if test="password !=null">
+  			and password=#{password}
+  		</if>
+  		and role=1
+  	</where>  	
+  </select>
+  <!-- 查询企业管理员 -->
+  <select id="selectAdmin" resultType="CompanyAdmin">
+  	select admin_id,company_id,username,PASSWORD,role,email,phone,create_time,create_ip,
+  	last_time,last_ip,random from company_admin 
+  	<where>
+  		<if test="phone !=null">
+  			and phone like CONCAT('%',#{phone},'%')
+  		</if>
+  		<if test="password !=null">
+  			and password like CONCAT('%',#{password},'%')
+  		</if>
+  		<if test="username !=null">
+  			and username like CONCAT('%',#{username},'%')
+  		</if>
+  		<if test="company_id !=0">
+  			and company_id=#{company_id} 
+  		</if>
+  		and role=1 
+  	</where>  	
+  </select>
+  
+  <!-- 添加及注册验证 -->
+  <select id="selectAdminByName" resultType="CompanyAdmin">
+  	select admin_id,username,PASSWORD,role,email,phone,create_time,create_ip,
+  	last_time,last_ip,random from company_admin 
+  	<where>
+  		<if test="username !=null">
+  			and username #{username}
+  		</if>
+  		<if test="phone !=null">
+  			and phone =#{phone}
+  		</if>
+  	</where>  	
+  </select>
+	<!--   修改密码及忘记密码 -->
+  <update id="updatePasswordByUsername" parameterType="CompanyAdmin">
+  	 update company_admin
+    set password = #{password}
+    <where>
+    	<if test="username!=null">
+    		username=#{username}
+    	</if>
+    	<if test="admin_id !=0">
+    		admin_id=#{admin_id}
+    	</if>
+    	and role=1
+    </where>
   </update>
 </mapper>

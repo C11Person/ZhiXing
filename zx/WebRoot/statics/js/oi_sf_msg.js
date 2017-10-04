@@ -5,6 +5,9 @@ function shuaxin() {
 		window.location.reload();
 }
 $(function(){
+	$(".weui-navbar").on("click",".weui-navbar__item",function(e){
+		e.preventDefault();
+	})
 	  $("#searchBar").on("click",".classify-box",function(){
 		    $(".page__category-content").slideToggle();
 		  });

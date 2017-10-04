@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.zx.dao.OiDistrictMapper">
   <resultMap id="BaseResultMap" type="cn.zx.pojo.OiDistrict">
-    <id column="district_id" jdbcType="SMALLINT" property="district_id" />
-    <result column="pid" jdbcType="SMALLINT" property="pid" />
+    <id column="district_id" jdbcType="INTEGER" property="district_id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="district" jdbcType="VARCHAR" property="district" />
-    <result column="level" jdbcType="BIT" property="level" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    district_id, pid, district, level
+    district_id, pid, district, level, status
   </sql>
   <select id="selectByExample" parameterType="cn.zx.pojo.OiDistrictExample" resultMap="BaseResultMap">
     select
@@ -82,15 +83,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from oi_district
-    where district_id = #{district_id,jdbcType=SMALLINT}
+    where district_id = #{district_id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from oi_district
-    where district_id = #{district_id,jdbcType=SMALLINT}
+    where district_id = #{district_id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="cn.zx.pojo.OiDistrictExample">
     delete from oi_district
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="cn.zx.pojo.OiDistrict">
     insert into oi_district (district_id, pid, district, 
-      level)
-    values (#{district_id,jdbcType=SMALLINT}, #{pid,jdbcType=SMALLINT}, #{district,jdbcType=VARCHAR}, 
-      #{level,jdbcType=BIT})
+      level, status)
+    values (#{district_id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{district,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.OiDistrict">
     insert into oi_district
@@ -119,19 +120,25 @@
       <if test="level != null">
         level,
       </if>
+      <if test="status != null">
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="district_id != null">
-        #{district_id,jdbcType=SMALLINT},
+        #{district_id,jdbcType=INTEGER},
       </if>
       <if test="pid != null">
-        #{pid,jdbcType=SMALLINT},
+        #{pid,jdbcType=INTEGER},
       </if>
       <if test="district != null">
         #{district,jdbcType=VARCHAR},
       </if>
       <if test="level != null">
-        #{level,jdbcType=BIT},
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -145,16 +152,19 @@
     update oi_district
     <set>
       <if test="record.district_id != null">
-        district_id = #{record.district_id,jdbcType=SMALLINT},
+        district_id = #{record.district_id,jdbcType=INTEGER},
       </if>
       <if test="record.pid != null">
-        pid = #{record.pid,jdbcType=SMALLINT},
+        pid = #{record.pid,jdbcType=INTEGER},
       </if>
       <if test="record.district != null">
         district = #{record.district,jdbcType=VARCHAR},
       </if>
       <if test="record.level != null">
-        level = #{record.level,jdbcType=BIT},
+        level = #{record.level,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -163,10 +173,11 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update oi_district
-    set district_id = #{record.district_id,jdbcType=SMALLINT},
-      pid = #{record.pid,jdbcType=SMALLINT},
+    set district_id = #{record.district_id,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
       district = #{record.district,jdbcType=VARCHAR},
-      level = #{record.level,jdbcType=BIT}
+      level = #{record.level,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,22 +186,26 @@
     update oi_district
     <set>
       <if test="pid != null">
-        pid = #{pid,jdbcType=SMALLINT},
+        pid = #{pid,jdbcType=INTEGER},
       </if>
       <if test="district != null">
         district = #{district,jdbcType=VARCHAR},
       </if>
       <if test="level != null">
-        level = #{level,jdbcType=BIT},
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
       </if>
     </set>
-    where district_id = #{district_id,jdbcType=SMALLINT}
+    where district_id = #{district_id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.zx.pojo.OiDistrict">
     update oi_district
-    set pid = #{pid,jdbcType=SMALLINT},
+    set pid = #{pid,jdbcType=INTEGER},
       district = #{district,jdbcType=VARCHAR},
-      level = #{level,jdbcType=BIT}
-    where district_id = #{district_id,jdbcType=SMALLINT}
+      level = #{level,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where district_id = #{district_id,jdbcType=INTEGER}
   </update>
 </mapper>

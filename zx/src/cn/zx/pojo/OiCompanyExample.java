@@ -345,6 +345,66 @@ public class OiCompanyExample {
             return (Criteria) this;
         }
 
+        public Criteria andArea_idIsNull() {
+            addCriterion("area_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idIsNotNull() {
+            addCriterion("area_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idEqualTo(Integer value) {
+            addCriterion("area_id =", value, "area_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idNotEqualTo(Integer value) {
+            addCriterion("area_id <>", value, "area_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idGreaterThan(Integer value) {
+            addCriterion("area_id >", value, "area_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("area_id >=", value, "area_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idLessThan(Integer value) {
+            addCriterion("area_id <", value, "area_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idLessThanOrEqualTo(Integer value) {
+            addCriterion("area_id <=", value, "area_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idIn(List<Integer> values) {
+            addCriterion("area_id in", values, "area_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idNotIn(List<Integer> values) {
+            addCriterion("area_id not in", values, "area_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idBetween(Integer value1, Integer value2) {
+            addCriterion("area_id between", value1, value2, "area_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andArea_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("area_id not between", value1, value2, "area_id");
+            return (Criteria) this;
+        }
+
         public Criteria andAddrIsNull() {
             addCriterion("addr is null");
             return (Criteria) this;
@@ -412,6 +472,76 @@ public class OiCompanyExample {
 
         public Criteria andAddrNotBetween(String value1, String value2) {
             addCriterion("addr not between", value1, value2, "addr");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressIsNull() {
+            addCriterion("address is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressIsNotNull() {
+            addCriterion("address is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressEqualTo(String value) {
+            addCriterion("address =", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressNotEqualTo(String value) {
+            addCriterion("address <>", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressGreaterThan(String value) {
+            addCriterion("address >", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("address >=", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressLessThan(String value) {
+            addCriterion("address <", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressLessThanOrEqualTo(String value) {
+            addCriterion("address <=", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressLike(String value) {
+            addCriterion("address like", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressNotLike(String value) {
+            addCriterion("address not like", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressIn(List<String> values) {
+            addCriterion("address in", values, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressNotIn(List<String> values) {
+            addCriterion("address not in", values, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressBetween(String value1, String value2) {
+            addCriterion("address between", value1, value2, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressNotBetween(String value1, String value2) {
+            addCriterion("address not between", value1, value2, "address");
             return (Criteria) this;
         }
 
@@ -542,76 +672,6 @@ public class OiCompanyExample {
 
         public Criteria andType_idNotBetween(Integer value1, Integer value2) {
             addCriterion("type_id not between", value1, value2, "type_id");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameIsNull() {
-            addCriterion("type_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameIsNotNull() {
-            addCriterion("type_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameEqualTo(String value) {
-            addCriterion("type_name =", value, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameNotEqualTo(String value) {
-            addCriterion("type_name <>", value, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameGreaterThan(String value) {
-            addCriterion("type_name >", value, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameGreaterThanOrEqualTo(String value) {
-            addCriterion("type_name >=", value, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameLessThan(String value) {
-            addCriterion("type_name <", value, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameLessThanOrEqualTo(String value) {
-            addCriterion("type_name <=", value, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameLike(String value) {
-            addCriterion("type_name like", value, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameNotLike(String value) {
-            addCriterion("type_name not like", value, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameIn(List<String> values) {
-            addCriterion("type_name in", values, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameNotIn(List<String> values) {
-            addCriterion("type_name not in", values, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameBetween(String value1, String value2) {
-            addCriterion("type_name between", value1, value2, "type_name");
-            return (Criteria) this;
-        }
-
-        public Criteria andType_nameNotBetween(String value1, String value2) {
-            addCriterion("type_name not between", value1, value2, "type_name");
             return (Criteria) this;
         }
 
@@ -1155,66 +1215,6 @@ public class OiCompanyExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusIsNull() {
-            addCriterion("status is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusIsNotNull() {
-            addCriterion("status is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusEqualTo(Integer value) {
-            addCriterion("status =", value, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusNotEqualTo(Integer value) {
-            addCriterion("status <>", value, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusGreaterThan(Integer value) {
-            addCriterion("status >", value, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("status >=", value, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusLessThan(Integer value) {
-            addCriterion("status <", value, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("status <=", value, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusIn(List<Integer> values) {
-            addCriterion("status in", values, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusNotIn(List<Integer> values) {
-            addCriterion("status not in", values, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusBetween(Integer value1, Integer value2) {
-            addCriterion("status between", value1, value2, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("status not between", value1, value2, "status");
-            return (Criteria) this;
-        }
-
         public Criteria andAuditIsNull() {
             addCriterion("audit is null");
             return (Criteria) this;
@@ -1452,76 +1452,6 @@ public class OiCompanyExample {
 
         public Criteria andUpdate_timeNotBetween(Date value1, Date value2) {
             addCriterion("update_time not between", value1, value2, "update_time");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeIsNull() {
-            addCriterion("agree is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeIsNotNull() {
-            addCriterion("agree is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeEqualTo(String value) {
-            addCriterion("agree =", value, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeNotEqualTo(String value) {
-            addCriterion("agree <>", value, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeGreaterThan(String value) {
-            addCriterion("agree >", value, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeGreaterThanOrEqualTo(String value) {
-            addCriterion("agree >=", value, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeLessThan(String value) {
-            addCriterion("agree <", value, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeLessThanOrEqualTo(String value) {
-            addCriterion("agree <=", value, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeLike(String value) {
-            addCriterion("agree like", value, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeNotLike(String value) {
-            addCriterion("agree not like", value, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeIn(List<String> values) {
-            addCriterion("agree in", values, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeNotIn(List<String> values) {
-            addCriterion("agree not in", values, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeBetween(String value1, String value2) {
-            addCriterion("agree between", value1, value2, "agree");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgreeNotBetween(String value1, String value2) {
-            addCriterion("agree not between", value1, value2, "agree");
             return (Criteria) this;
         }
     }

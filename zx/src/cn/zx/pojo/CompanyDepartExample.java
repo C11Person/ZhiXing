@@ -414,6 +414,66 @@ public class CompanyDepartExample {
             return (Criteria) this;
         }
 
+        public Criteria andCom_idIsNull() {
+            addCriterion("com_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idIsNotNull() {
+            addCriterion("com_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idEqualTo(Integer value) {
+            addCriterion("com_id =", value, "com_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idNotEqualTo(Integer value) {
+            addCriterion("com_id <>", value, "com_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idGreaterThan(Integer value) {
+            addCriterion("com_id >", value, "com_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("com_id >=", value, "com_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idLessThan(Integer value) {
+            addCriterion("com_id <", value, "com_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idLessThanOrEqualTo(Integer value) {
+            addCriterion("com_id <=", value, "com_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idIn(List<Integer> values) {
+            addCriterion("com_id in", values, "com_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idNotIn(List<Integer> values) {
+            addCriterion("com_id not in", values, "com_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idBetween(Integer value1, Integer value2) {
+            addCriterion("com_id between", value1, value2, "com_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andCom_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("com_id not between", value1, value2, "com_id");
+            return (Criteria) this;
+        }
+
         public Criteria andOIsNull() {
             addCriterion("o is null");
             return (Criteria) this;

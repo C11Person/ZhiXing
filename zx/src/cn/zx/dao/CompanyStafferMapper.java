@@ -31,4 +31,11 @@ public interface CompanyStafferMapper {
     CompanyStaffer selectStaffByDepartAndPost(@Param("user_id") Integer user_id,@Param("company_id") Integer company_id);
     
     List<CompanyStaffer> selectStaffByCompanyId(@Param("company_id") Integer company_id);
+    /**
+     * 查询
+     * @param user_id
+     * @param company_id
+     * @return
+     */
+    public List<CompanyStaffer> selectStaffer(@Param("user_id") Integer user_id,@Param("company_id") Integer company_id);
 }

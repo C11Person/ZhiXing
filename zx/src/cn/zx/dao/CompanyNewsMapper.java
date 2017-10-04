@@ -33,4 +33,6 @@ public interface CompanyNewsMapper {
     int updateByPrimaryKeyWithBLOBs(CompanyNews record);
 
     int updateByPrimaryKey(CompanyNews record);
+    
+    public List<CompanyNews> selectNews(@Param("new_id") Integer new_id,@Param("company_id") Integer company_id);
 }

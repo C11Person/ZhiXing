@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 <input type="hidden" id="file" name="pic_URL">
                         <div class="page-container">
-                            <div><input type="hidden" id="url" value="${pageContext.request.contextPath }/tupian/picture"> </div>
+                            <div><input type="hidden" id="url" value="${pageContext.request.contextPath }/tupian/upload.do"> </div>
                             <div id="uploader" class="wu-example">
                             
                                 <div class="queueList">

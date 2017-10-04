@@ -3,10 +3,8 @@
 <mapper namespace="cn.zx.dao.OiRoleMapper">
   <resultMap id="BaseResultMap" type="cn.zx.pojo.OiRole">
     <id column="o_r_id" jdbcType="INTEGER" property="o_r_id" />
-    <result column="o_r_userid" jdbcType="VARCHAR" property="o_r_userid" />
-    <result column="o_r_password" jdbcType="VARCHAR" property="o_r_password" />
-    <result column="title" jdbcType="CHAR" property="title" />
-    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="rules" jdbcType="VARCHAR" property="rules" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -68,8 +66,13 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    o_r_id, o_r_userid, o_r_password, title, status, rules
+    o_r_id, name, status, rules
   </sql>
+
+ <select id="selectRole" parameterType="cn.zx.pojo.BootstrapTable" resultMap="BaseResultMap">
+	SELECT  o_r_id, name, status, rules	FROM oi_role
+  </select>
+  
   <select id="selectByExample" parameterType="cn.zx.pojo.OiRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -101,10 +104,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.zx.pojo.OiRole">
-    insert into oi_role (o_r_id, o_r_userid, o_r_password, 
-      title, status, rules)
-    values (#{o_r_id,jdbcType=INTEGER}, #{o_r_userid,jdbcType=VARCHAR}, #{o_r_password,jdbcType=VARCHAR}, 
-      #{title,jdbcType=CHAR}, #{status,jdbcType=TINYINT}, #{rules,jdbcType=VARCHAR})
+    insert into oi_role (o_r_id, name, status, 
+      rules)
+    values (#{o_r_id,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, #{status,jdbcType=INTEGER}, 
+      #{rules,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.OiRole">
     insert into oi_role
@@ -112,14 +115,8 @@
       <if test="o_r_id != null">
         o_r_id,
       </if>
-      <if test="o_r_userid != null">
-        o_r_userid,
-      </if>
-      <if test="o_r_password != null">
-        o_r_password,
-      </if>
-      <if test="title != null">
-        title,
+      <if test="name != null">
+        name,
       </if>
       <if test="status != null">
         status,
@@ -132,17 +129,11 @@
       <if test="o_r_id != null">
         #{o_r_id,jdbcType=INTEGER},
       </if>
-      <if test="o_r_userid != null">
-        #{o_r_userid,jdbcType=VARCHAR},
-      </if>
-      <if test="o_r_password != null">
-        #{o_r_password,jdbcType=VARCHAR},
-      </if>
-      <if test="title != null">
-        #{title,jdbcType=CHAR},
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
       </if>
       <if test="status != null">
-        #{status,jdbcType=TINYINT},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="rules != null">
         #{rules,jdbcType=VARCHAR},
@@ -161,17 +152,11 @@
       <if test="record.o_r_id != null">
         o_r_id = #{record.o_r_id,jdbcType=INTEGER},
       </if>
-      <if test="record.o_r_userid != null">
-        o_r_userid = #{record.o_r_userid,jdbcType=VARCHAR},
-      </if>
-      <if test="record.o_r_password != null">
-        o_r_password = #{record.o_r_password,jdbcType=VARCHAR},
-      </if>
-      <if test="record.title != null">
-        title = #{record.title,jdbcType=CHAR},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=CHAR},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=TINYINT},
+        status = #{record.status,jdbcType=INTEGER},
       </if>
       <if test="record.rules != null">
         rules = #{record.rules,jdbcType=VARCHAR},
@@ -184,10 +169,8 @@
   <update id="updateByExample" parameterType="map">
     update oi_role
     set o_r_id = #{record.o_r_id,jdbcType=INTEGER},
-      o_r_userid = #{record.o_r_userid,jdbcType=VARCHAR},
-      o_r_password = #{record.o_r_password,jdbcType=VARCHAR},
-      title = #{record.title,jdbcType=CHAR},
-      status = #{record.status,jdbcType=TINYINT},
+      name = #{record.name,jdbcType=CHAR},
+      status = #{record.status,jdbcType=INTEGER},
       rules = #{record.rules,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -196,17 +179,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.zx.pojo.OiRole">
     update oi_role
     <set>
-      <if test="o_r_userid != null">
-        o_r_userid = #{o_r_userid,jdbcType=VARCHAR},
-      </if>
-      <if test="o_r_password != null">
-        o_r_password = #{o_r_password,jdbcType=VARCHAR},
-      </if>
-      <if test="title != null">
-        title = #{title,jdbcType=CHAR},
+      <if test="name != null">
+        name = #{name,jdbcType=CHAR},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=TINYINT},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="rules != null">
         rules = #{rules,jdbcType=VARCHAR},
@@ -216,10 +193,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.zx.pojo.OiRole">
     update oi_role
-    set o_r_userid = #{o_r_userid,jdbcType=VARCHAR},
-      o_r_password = #{o_r_password,jdbcType=VARCHAR},
-      title = #{title,jdbcType=CHAR},
-      status = #{status,jdbcType=TINYINT},
+    set name = #{name,jdbcType=CHAR},
+      status = #{status,jdbcType=INTEGER},
       rules = #{rules,jdbcType=VARCHAR}
     where o_r_id = #{o_r_id,jdbcType=INTEGER}
   </update>

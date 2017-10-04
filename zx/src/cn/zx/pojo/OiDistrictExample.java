@@ -114,52 +114,52 @@ public class OiDistrictExample {
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idEqualTo(Short value) {
+        public Criteria andDistrict_idEqualTo(Integer value) {
             addCriterion("district_id =", value, "district_id");
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idNotEqualTo(Short value) {
+        public Criteria andDistrict_idNotEqualTo(Integer value) {
             addCriterion("district_id <>", value, "district_id");
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idGreaterThan(Short value) {
+        public Criteria andDistrict_idGreaterThan(Integer value) {
             addCriterion("district_id >", value, "district_id");
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idGreaterThanOrEqualTo(Short value) {
+        public Criteria andDistrict_idGreaterThanOrEqualTo(Integer value) {
             addCriterion("district_id >=", value, "district_id");
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idLessThan(Short value) {
+        public Criteria andDistrict_idLessThan(Integer value) {
             addCriterion("district_id <", value, "district_id");
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idLessThanOrEqualTo(Short value) {
+        public Criteria andDistrict_idLessThanOrEqualTo(Integer value) {
             addCriterion("district_id <=", value, "district_id");
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idIn(List<Short> values) {
+        public Criteria andDistrict_idIn(List<Integer> values) {
             addCriterion("district_id in", values, "district_id");
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idNotIn(List<Short> values) {
+        public Criteria andDistrict_idNotIn(List<Integer> values) {
             addCriterion("district_id not in", values, "district_id");
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idBetween(Short value1, Short value2) {
+        public Criteria andDistrict_idBetween(Integer value1, Integer value2) {
             addCriterion("district_id between", value1, value2, "district_id");
             return (Criteria) this;
         }
 
-        public Criteria andDistrict_idNotBetween(Short value1, Short value2) {
+        public Criteria andDistrict_idNotBetween(Integer value1, Integer value2) {
             addCriterion("district_id not between", value1, value2, "district_id");
             return (Criteria) this;
         }
@@ -174,52 +174,52 @@ public class OiDistrictExample {
             return (Criteria) this;
         }
 
-        public Criteria andPidEqualTo(Short value) {
+        public Criteria andPidEqualTo(Integer value) {
             addCriterion("pid =", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidNotEqualTo(Short value) {
+        public Criteria andPidNotEqualTo(Integer value) {
             addCriterion("pid <>", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidGreaterThan(Short value) {
+        public Criteria andPidGreaterThan(Integer value) {
             addCriterion("pid >", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidGreaterThanOrEqualTo(Short value) {
+        public Criteria andPidGreaterThanOrEqualTo(Integer value) {
             addCriterion("pid >=", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidLessThan(Short value) {
+        public Criteria andPidLessThan(Integer value) {
             addCriterion("pid <", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidLessThanOrEqualTo(Short value) {
+        public Criteria andPidLessThanOrEqualTo(Integer value) {
             addCriterion("pid <=", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidIn(List<Short> values) {
+        public Criteria andPidIn(List<Integer> values) {
             addCriterion("pid in", values, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidNotIn(List<Short> values) {
+        public Criteria andPidNotIn(List<Integer> values) {
             addCriterion("pid not in", values, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidBetween(Short value1, Short value2) {
+        public Criteria andPidBetween(Integer value1, Integer value2) {
             addCriterion("pid between", value1, value2, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidNotBetween(Short value1, Short value2) {
+        public Criteria andPidNotBetween(Integer value1, Integer value2) {
             addCriterion("pid not between", value1, value2, "pid");
             return (Criteria) this;
         }
@@ -304,53 +304,113 @@ public class OiDistrictExample {
             return (Criteria) this;
         }
 
-        public Criteria andLevelEqualTo(Boolean value) {
+        public Criteria andLevelEqualTo(Integer value) {
             addCriterion("level =", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelNotEqualTo(Boolean value) {
+        public Criteria andLevelNotEqualTo(Integer value) {
             addCriterion("level <>", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelGreaterThan(Boolean value) {
+        public Criteria andLevelGreaterThan(Integer value) {
             addCriterion("level >", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andLevelGreaterThanOrEqualTo(Integer value) {
             addCriterion("level >=", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelLessThan(Boolean value) {
+        public Criteria andLevelLessThan(Integer value) {
             addCriterion("level <", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelLessThanOrEqualTo(Boolean value) {
+        public Criteria andLevelLessThanOrEqualTo(Integer value) {
             addCriterion("level <=", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelIn(List<Boolean> values) {
+        public Criteria andLevelIn(List<Integer> values) {
             addCriterion("level in", values, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelNotIn(List<Boolean> values) {
+        public Criteria andLevelNotIn(List<Integer> values) {
             addCriterion("level not in", values, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelBetween(Boolean value1, Boolean value2) {
+        public Criteria andLevelBetween(Integer value1, Integer value2) {
             addCriterion("level between", value1, value2, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andLevelNotBetween(Integer value1, Integer value2) {
             addCriterion("level not between", value1, value2, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusEqualTo(Integer value) {
+            addCriterion("status =", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotEqualTo(Integer value) {
+            addCriterion("status <>", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThan(Integer value) {
+            addCriterion("status >", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("status >=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThan(Integer value) {
+            addCriterion("status <", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("status <=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIn(List<Integer> values) {
+            addCriterion("status in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotIn(List<Integer> values) {
+            addCriterion("status not in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
+            addCriterion("status between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
     }

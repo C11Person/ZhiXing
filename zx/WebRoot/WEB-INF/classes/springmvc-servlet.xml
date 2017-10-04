@@ -4,21 +4,25 @@
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:p="http://www.springframework.org/schema/p"
     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:task="http://www.springframework.org/schema/task"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd"> 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+         http://www.springframework.org/schema/task
+	   http://www.springframework.org/schema/task/spring-task-4.3.xsd "> 
 	
+	<task:annotation-driven /> <!--定时开启 -->
 	<context:component-scan base-package="cn.zx.controller"></context:component-scan>
 	
 	
 	
 	<mvc:resources location="/statics/" mapping="/statics/**"></mvc:resources>
 	<mvc:annotation-driven>
- 		<mvc:message-converters>
+		<mvc:message-converters>
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
 				<property name="supportedMediaTypes">
 					<list>
@@ -58,5 +62,10 @@
    		 <!-- 请求的编码格式 -->
    		 <property name="defaultEncoding" value="UTF-8"/>
     </bean>
+	<context:component-scan base-package="cn.zx" />
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	
+	
 	
 </beans>

@@ -72,8 +72,9 @@
 	<!-- 配置事务切面 -->
 	
 	<aop:config>
-		<aop:pointcut expression="execution(* org.appsys.dao.*.*(..))" id="zx"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="zx"/>
+		<aop:pointcut expression="execution(* cn.zx.dao..*.update*(..))"
+			id="updateMethod" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="updateMethod" />
 	</aop:config>
 	
 

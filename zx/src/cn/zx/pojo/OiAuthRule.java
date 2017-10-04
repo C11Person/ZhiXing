@@ -1,7 +1,10 @@
 package cn.zx.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OiAuthRule {
-    private Integer id;
+    private Integer r_id;
 
     private Integer pid;
 
@@ -11,24 +14,33 @@ public class OiAuthRule {
 
     private String icon;
 
-    private Boolean type;
+    private Integer type;
 
-    private Boolean status;
+    private Integer status;
 
-    private String condition;
-
-    private Boolean islink;
+    private Integer islink;
 
     private Integer o;
 
     private String tips;
+    
+    private List<OiAuthRule> nodes = new ArrayList<OiAuthRule>();
+    
 
-    public Integer getId() {
-        return id;
+    public List<OiAuthRule> getNodes() {
+		return nodes;
+	}
+
+	public void setNodes(List<OiAuthRule> nodes) {
+		this.nodes = nodes;
+	}
+
+	public Integer getR_id() {
+        return r_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setR_id(Integer r_id) {
+        this.r_id = r_id;
     }
 
     public Integer getPid() {
@@ -63,35 +75,27 @@ public class OiAuthRule {
         this.icon = icon == null ? null : icon.trim();
     }
 
-    public Boolean getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(Boolean type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public String getCondition() {
-        return condition;
-    }
-
-    public void setCondition(String condition) {
-        this.condition = condition == null ? null : condition.trim();
-    }
-
-    public Boolean getIslink() {
+    public Integer getIslink() {
         return islink;
     }
 
-    public void setIslink(Boolean islink) {
+    public void setIslink(Integer islink) {
         this.islink = islink;
     }
 

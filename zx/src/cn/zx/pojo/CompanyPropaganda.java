@@ -2,37 +2,40 @@ package cn.zx.pojo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class CompanyPropaganda {
     private Integer p_id;
-
-    private Integer company_id;
 
     private String p_title;
 
     private String pic_URL;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date create_time;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date end_time;
 
     private Integer status;
 
     private Integer o;
+    private Integer company_id;
 
-    public Integer getP_id() {
+    public Integer getCompany_id() {
+		return company_id;
+	}
+
+	public void setCompany_id(Integer company_id) {
+		this.company_id = company_id;
+	}
+
+	public Integer getP_id() {
         return p_id;
     }
 
     public void setP_id(Integer p_id) {
         this.p_id = p_id;
-    }
-
-    public Integer getCompany_id() {
-        return company_id;
-    }
-
-    public void setCompany_id(Integer company_id) {
-        this.company_id = company_id;
     }
 
     public String getP_title() {

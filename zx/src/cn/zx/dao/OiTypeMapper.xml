@@ -5,10 +5,10 @@
     <id column="type_id" jdbcType="INTEGER" property="type_id" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="type_name" jdbcType="VARCHAR" property="type_name" />
-    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="o" jdbcType="INTEGER" property="o" />
-    <result column="level" jdbcType="TINYINT" property="level" />
-    <result column="isdelete" jdbcType="TINYINT" property="isdelete" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -106,7 +106,7 @@
       status, o, level, isdelete
       )
     values (#{type_id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{type_name,jdbcType=VARCHAR}, 
-      #{status,jdbcType=TINYINT}, #{o,jdbcType=INTEGER}, #{level,jdbcType=TINYINT}, #{isdelete,jdbcType=TINYINT}
+      #{status,jdbcType=INTEGER}, #{o,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.OiType">
@@ -145,16 +145,16 @@
         #{type_name,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
-        #{status,jdbcType=TINYINT},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="o != null">
         #{o,jdbcType=INTEGER},
       </if>
       <if test="level != null">
-        #{level,jdbcType=TINYINT},
+        #{level,jdbcType=INTEGER},
       </if>
       <if test="isdelete != null">
-        #{isdelete,jdbcType=TINYINT},
+        #{isdelete,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -177,16 +177,16 @@
         type_name = #{record.type_name,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=TINYINT},
+        status = #{record.status,jdbcType=INTEGER},
       </if>
       <if test="record.o != null">
         o = #{record.o,jdbcType=INTEGER},
       </if>
       <if test="record.level != null">
-        level = #{record.level,jdbcType=TINYINT},
+        level = #{record.level,jdbcType=INTEGER},
       </if>
       <if test="record.isdelete != null">
-        isdelete = #{record.isdelete,jdbcType=TINYINT},
+        isdelete = #{record.isdelete,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -198,10 +198,10 @@
     set type_id = #{record.type_id,jdbcType=INTEGER},
       pid = #{record.pid,jdbcType=INTEGER},
       type_name = #{record.type_name,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=TINYINT},
+      status = #{record.status,jdbcType=INTEGER},
       o = #{record.o,jdbcType=INTEGER},
-      level = #{record.level,jdbcType=TINYINT},
-      isdelete = #{record.isdelete,jdbcType=TINYINT}
+      level = #{record.level,jdbcType=INTEGER},
+      isdelete = #{record.isdelete,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -216,16 +216,16 @@
         type_name = #{type_name,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=TINYINT},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="o != null">
         o = #{o,jdbcType=INTEGER},
       </if>
       <if test="level != null">
-        level = #{level,jdbcType=TINYINT},
+        level = #{level,jdbcType=INTEGER},
       </if>
       <if test="isdelete != null">
-        isdelete = #{isdelete,jdbcType=TINYINT},
+        isdelete = #{isdelete,jdbcType=INTEGER},
       </if>
     </set>
     where type_id = #{type_id,jdbcType=INTEGER}
@@ -234,10 +234,10 @@
     update oi_type
     set pid = #{pid,jdbcType=INTEGER},
       type_name = #{type_name,jdbcType=VARCHAR},
-      status = #{status,jdbcType=TINYINT},
+      status = #{status,jdbcType=INTEGER},
       o = #{o,jdbcType=INTEGER},
-      level = #{level,jdbcType=TINYINT},
-      isdelete = #{isdelete,jdbcType=TINYINT}
+      level = #{level,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER}
     where type_id = #{type_id,jdbcType=INTEGER}
   </update>
 </mapper>

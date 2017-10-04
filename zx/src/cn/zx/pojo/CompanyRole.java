@@ -3,17 +3,26 @@ package cn.zx.pojo;
 public class CompanyRole {
     private Integer user_id;
 
-    private String c_r_userid;
-
-    private String c_r_password;
+    private Integer admin_id;
 
     private String title;
 
     private Integer status;
 
     private String rules;
+    
+    private Integer company_id;
 
-    public Integer getUser_id() {
+    
+    public Integer getCompany_id() {
+		return company_id;
+	}
+
+	public void setCompany_id(Integer company_id) {
+		this.company_id = company_id;
+	}
+
+	public Integer getUser_id() {
         return user_id;
     }
 
@@ -21,21 +30,6 @@ public class CompanyRole {
         this.user_id = user_id;
     }
 
-    public String getC_r_userid() {
-        return c_r_userid;
-    }
-
-    public void setC_r_userid(String c_r_userid) {
-        this.c_r_userid = c_r_userid == null ? null : c_r_userid.trim();
-    }
-
-    public String getC_r_password() {
-        return c_r_password;
-    }
-
-    public void setC_r_password(String c_r_password) {
-        this.c_r_password = c_r_password == null ? null : c_r_password.trim();
-    }
 
     public String getTitle() {
         return title;
@@ -60,4 +54,13 @@ public class CompanyRole {
     public void setRules(String rules) {
         this.rules = rules == null ? null : rules.trim();
     }
+
+	public Integer getAdmin_id() {
+		return admin_id;
+	}
+
+	public void setAdmin_id(Integer admin_id) {
+		this.admin_id = admin_id;
+	}
+    
 }

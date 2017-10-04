@@ -17,7 +17,7 @@ public class CompanyNews {
 
     private Date create_time;
 
-    private Boolean status;
+    private Integer status;
 
     private String views;
 
@@ -77,11 +77,11 @@ public class CompanyNews {
         this.create_time = create_time;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

@@ -1,9 +1,12 @@
 package cn.zx.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.zx.pojo.BootstrapTable;
 import cn.zx.pojo.OiRole;
 import cn.zx.pojo.OiRoleExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OiRoleMapper {
     long countByExample(OiRoleExample example);
@@ -27,4 +30,6 @@ public interface OiRoleMapper {
     int updateByPrimaryKeySelective(OiRole record);
 
     int updateByPrimaryKey(OiRole record);
+    
+    List<OiRole> selectRole(BootstrapTable bootstrapTable);
 }

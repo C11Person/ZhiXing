@@ -2,15 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.zx.dao.OiAuthRuleMapper">
   <resultMap id="BaseResultMap" type="cn.zx.pojo.OiAuthRule">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="r_id" jdbcType="INTEGER" property="r_id" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="name" jdbcType="CHAR" property="name" />
     <result column="title" jdbcType="CHAR" property="title" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
-    <result column="type" jdbcType="BIT" property="type" />
-    <result column="status" jdbcType="BIT" property="status" />
-    <result column="condition" jdbcType="CHAR" property="condition" />
-    <result column="islink" jdbcType="BIT" property="islink" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="islink" jdbcType="INTEGER" property="islink" />
     <result column="o" jdbcType="INTEGER" property="o" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.zx.pojo.OiAuthRule">
@@ -75,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, pid, name, title, icon, type, status, condition, islink, o
+    r_id, pid, name, title, icon, type, status, islink, o
   </sql>
   <sql id="Blob_Column_List">
     tips
@@ -116,11 +115,11 @@
     ,
     <include refid="Blob_Column_List" />
     from oi_auth_rule
-    where id = #{id,jdbcType=INTEGER}
+    where r_id = #{r_id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from oi_auth_rule
-    where id = #{id,jdbcType=INTEGER}
+    where r_id = #{r_id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="cn.zx.pojo.OiAuthRuleExample">
     delete from oi_auth_rule
@@ -129,18 +128,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.zx.pojo.OiAuthRule">
-    insert into oi_auth_rule (id, pid, name, title, 
-      icon, type, status, condition, 
-      islink, o, tips)
-    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, #{title,jdbcType=CHAR}, 
-      #{icon,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{status,jdbcType=BIT}, #{condition,jdbcType=CHAR}, 
-      #{islink,jdbcType=BIT}, #{o,jdbcType=INTEGER}, #{tips,jdbcType=LONGVARCHAR})
+    insert into oi_auth_rule (r_id, pid, name, 
+      title, icon, type, status, 
+      islink, o, tips
+      )
+    values (#{r_id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, 
+      #{title,jdbcType=CHAR}, #{icon,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{islink,jdbcType=INTEGER}, #{o,jdbcType=INTEGER}, #{tips,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.OiAuthRule">
     insert into oi_auth_rule
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="r_id != null">
+        r_id,
       </if>
       <if test="pid != null">
         pid,
@@ -160,9 +161,6 @@
       <if test="status != null">
         status,
       </if>
-      <if test="condition != null">
-        condition,
-      </if>
       <if test="islink != null">
         islink,
       </if>
@@ -174,8 +172,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="r_id != null">
+        #{r_id,jdbcType=INTEGER},
       </if>
       <if test="pid != null">
         #{pid,jdbcType=INTEGER},
@@ -190,16 +188,13 @@
         #{icon,jdbcType=VARCHAR},
       </if>
       <if test="type != null">
-        #{type,jdbcType=BIT},
+        #{type,jdbcType=INTEGER},
       </if>
       <if test="status != null">
-        #{status,jdbcType=BIT},
-      </if>
-      <if test="condition != null">
-        #{condition,jdbcType=CHAR},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="islink != null">
-        #{islink,jdbcType=BIT},
+        #{islink,jdbcType=INTEGER},
       </if>
       <if test="o != null">
         #{o,jdbcType=INTEGER},
@@ -218,8 +213,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update oi_auth_rule
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.r_id != null">
+        r_id = #{record.r_id,jdbcType=INTEGER},
       </if>
       <if test="record.pid != null">
         pid = #{record.pid,jdbcType=INTEGER},
@@ -234,16 +229,13 @@
         icon = #{record.icon,jdbcType=VARCHAR},
       </if>
       <if test="record.type != null">
-        type = #{record.type,jdbcType=BIT},
+        type = #{record.type,jdbcType=INTEGER},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=BIT},
-      </if>
-      <if test="record.condition != null">
-        condition = #{record.condition,jdbcType=CHAR},
+        status = #{record.status,jdbcType=INTEGER},
       </if>
       <if test="record.islink != null">
-        islink = #{record.islink,jdbcType=BIT},
+        islink = #{record.islink,jdbcType=INTEGER},
       </if>
       <if test="record.o != null">
         o = #{record.o,jdbcType=INTEGER},
@@ -258,15 +250,14 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update oi_auth_rule
-    set id = #{record.id,jdbcType=INTEGER},
+    set r_id = #{record.r_id,jdbcType=INTEGER},
       pid = #{record.pid,jdbcType=INTEGER},
       name = #{record.name,jdbcType=CHAR},
       title = #{record.title,jdbcType=CHAR},
       icon = #{record.icon,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=BIT},
-      status = #{record.status,jdbcType=BIT},
-      condition = #{record.condition,jdbcType=CHAR},
-      islink = #{record.islink,jdbcType=BIT},
+      type = #{record.type,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      islink = #{record.islink,jdbcType=INTEGER},
       o = #{record.o,jdbcType=INTEGER},
       tips = #{record.tips,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -275,15 +266,14 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update oi_auth_rule
-    set id = #{record.id,jdbcType=INTEGER},
+    set r_id = #{record.r_id,jdbcType=INTEGER},
       pid = #{record.pid,jdbcType=INTEGER},
       name = #{record.name,jdbcType=CHAR},
       title = #{record.title,jdbcType=CHAR},
       icon = #{record.icon,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=BIT},
-      status = #{record.status,jdbcType=BIT},
-      condition = #{record.condition,jdbcType=CHAR},
-      islink = #{record.islink,jdbcType=BIT},
+      type = #{record.type,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      islink = #{record.islink,jdbcType=INTEGER},
       o = #{record.o,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -305,16 +295,13 @@
         icon = #{icon,jdbcType=VARCHAR},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=BIT},
+        type = #{type,jdbcType=INTEGER},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=BIT},
-      </if>
-      <if test="condition != null">
-        condition = #{condition,jdbcType=CHAR},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="islink != null">
-        islink = #{islink,jdbcType=BIT},
+        islink = #{islink,jdbcType=INTEGER},
       </if>
       <if test="o != null">
         o = #{o,jdbcType=INTEGER},
@@ -323,7 +310,7 @@
         tips = #{tips,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where r_id = #{r_id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.zx.pojo.OiAuthRule">
     update oi_auth_rule
@@ -331,13 +318,12 @@
       name = #{name,jdbcType=CHAR},
       title = #{title,jdbcType=CHAR},
       icon = #{icon,jdbcType=VARCHAR},
-      type = #{type,jdbcType=BIT},
-      status = #{status,jdbcType=BIT},
-      condition = #{condition,jdbcType=CHAR},
-      islink = #{islink,jdbcType=BIT},
+      type = #{type,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      islink = #{islink,jdbcType=INTEGER},
       o = #{o,jdbcType=INTEGER},
       tips = #{tips,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where r_id = #{r_id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.zx.pojo.OiAuthRule">
     update oi_auth_rule
@@ -345,11 +331,10 @@
       name = #{name,jdbcType=CHAR},
       title = #{title,jdbcType=CHAR},
       icon = #{icon,jdbcType=VARCHAR},
-      type = #{type,jdbcType=BIT},
-      status = #{status,jdbcType=BIT},
-      condition = #{condition,jdbcType=CHAR},
-      islink = #{islink,jdbcType=BIT},
+      type = #{type,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      islink = #{islink,jdbcType=INTEGER},
       o = #{o,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    where r_id = #{r_id,jdbcType=INTEGER}
   </update>
 </mapper>

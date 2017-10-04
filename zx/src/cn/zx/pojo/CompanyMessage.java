@@ -17,7 +17,7 @@ public class CompanyMessage {
 
     private String contacts;
 
-    private Integer phone;
+    private String phone;
 
     private String license_id;
 
@@ -87,11 +87,11 @@ public class CompanyMessage {
         this.contacts = contacts == null ? null : contacts.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -104,63 +104,63 @@ public class OiAuthRuleExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andR_idIsNull() {
+            addCriterion("r_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andR_idIsNotNull() {
+            addCriterion("r_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
-            addCriterion("id =", value, "id");
+        public Criteria andR_idEqualTo(Integer value) {
+            addCriterion("r_id =", value, "r_id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
-            addCriterion("id <>", value, "id");
+        public Criteria andR_idNotEqualTo(Integer value) {
+            addCriterion("r_id <>", value, "r_id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
-            addCriterion("id >", value, "id");
+        public Criteria andR_idGreaterThan(Integer value) {
+            addCriterion("r_id >", value, "r_id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("id >=", value, "id");
+        public Criteria andR_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("r_id >=", value, "r_id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
-            addCriterion("id <", value, "id");
+        public Criteria andR_idLessThan(Integer value) {
+            addCriterion("r_id <", value, "r_id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
-            addCriterion("id <=", value, "id");
+        public Criteria andR_idLessThanOrEqualTo(Integer value) {
+            addCriterion("r_id <=", value, "r_id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
-            addCriterion("id in", values, "id");
+        public Criteria andR_idIn(List<Integer> values) {
+            addCriterion("r_id in", values, "r_id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
-            addCriterion("id not in", values, "id");
+        public Criteria andR_idNotIn(List<Integer> values) {
+            addCriterion("r_id not in", values, "r_id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
-            addCriterion("id between", value1, value2, "id");
+        public Criteria andR_idBetween(Integer value1, Integer value2) {
+            addCriterion("r_id between", value1, value2, "r_id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("id not between", value1, value2, "id");
+        public Criteria andR_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("r_id not between", value1, value2, "r_id");
             return (Criteria) this;
         }
 
@@ -444,52 +444,52 @@ public class OiAuthRuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(Boolean value) {
+        public Criteria andTypeEqualTo(Integer value) {
             addCriterion("type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(Boolean value) {
+        public Criteria andTypeNotEqualTo(Integer value) {
             addCriterion("type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(Boolean value) {
+        public Criteria andTypeGreaterThan(Integer value) {
             addCriterion("type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(Boolean value) {
+        public Criteria andTypeLessThan(Integer value) {
             addCriterion("type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(Boolean value) {
+        public Criteria andTypeLessThanOrEqualTo(Integer value) {
             addCriterion("type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIn(List<Boolean> values) {
+        public Criteria andTypeIn(List<Integer> values) {
             addCriterion("type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<Boolean> values) {
+        public Criteria andTypeNotIn(List<Integer> values) {
             addCriterion("type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(Boolean value1, Boolean value2) {
+        public Criteria andTypeBetween(Integer value1, Integer value2) {
             addCriterion("type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
@@ -504,123 +504,53 @@ public class OiAuthRuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Boolean value) {
+        public Criteria andStatusEqualTo(Integer value) {
             addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Boolean value) {
+        public Criteria andStatusNotEqualTo(Integer value) {
             addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Boolean value) {
+        public Criteria andStatusGreaterThan(Integer value) {
             addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Boolean value) {
+        public Criteria andStatusLessThan(Integer value) {
             addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
             addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Boolean> values) {
+        public Criteria andStatusIn(List<Integer> values) {
             addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Boolean> values) {
+        public Criteria andStatusNotIn(List<Integer> values) {
             addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
             addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionIsNull() {
-            addCriterion("condition is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionIsNotNull() {
-            addCriterion("condition is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionEqualTo(String value) {
-            addCriterion("condition =", value, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionNotEqualTo(String value) {
-            addCriterion("condition <>", value, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionGreaterThan(String value) {
-            addCriterion("condition >", value, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionGreaterThanOrEqualTo(String value) {
-            addCriterion("condition >=", value, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionLessThan(String value) {
-            addCriterion("condition <", value, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionLessThanOrEqualTo(String value) {
-            addCriterion("condition <=", value, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionLike(String value) {
-            addCriterion("condition like", value, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionNotLike(String value) {
-            addCriterion("condition not like", value, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionIn(List<String> values) {
-            addCriterion("condition in", values, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionNotIn(List<String> values) {
-            addCriterion("condition not in", values, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionBetween(String value1, String value2) {
-            addCriterion("condition between", value1, value2, "condition");
-            return (Criteria) this;
-        }
-
-        public Criteria andConditionNotBetween(String value1, String value2) {
-            addCriterion("condition not between", value1, value2, "condition");
             return (Criteria) this;
         }
 
@@ -634,52 +564,52 @@ public class OiAuthRuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andIslinkEqualTo(Boolean value) {
+        public Criteria andIslinkEqualTo(Integer value) {
             addCriterion("islink =", value, "islink");
             return (Criteria) this;
         }
 
-        public Criteria andIslinkNotEqualTo(Boolean value) {
+        public Criteria andIslinkNotEqualTo(Integer value) {
             addCriterion("islink <>", value, "islink");
             return (Criteria) this;
         }
 
-        public Criteria andIslinkGreaterThan(Boolean value) {
+        public Criteria andIslinkGreaterThan(Integer value) {
             addCriterion("islink >", value, "islink");
             return (Criteria) this;
         }
 
-        public Criteria andIslinkGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andIslinkGreaterThanOrEqualTo(Integer value) {
             addCriterion("islink >=", value, "islink");
             return (Criteria) this;
         }
 
-        public Criteria andIslinkLessThan(Boolean value) {
+        public Criteria andIslinkLessThan(Integer value) {
             addCriterion("islink <", value, "islink");
             return (Criteria) this;
         }
 
-        public Criteria andIslinkLessThanOrEqualTo(Boolean value) {
+        public Criteria andIslinkLessThanOrEqualTo(Integer value) {
             addCriterion("islink <=", value, "islink");
             return (Criteria) this;
         }
 
-        public Criteria andIslinkIn(List<Boolean> values) {
+        public Criteria andIslinkIn(List<Integer> values) {
             addCriterion("islink in", values, "islink");
             return (Criteria) this;
         }
 
-        public Criteria andIslinkNotIn(List<Boolean> values) {
+        public Criteria andIslinkNotIn(List<Integer> values) {
             addCriterion("islink not in", values, "islink");
             return (Criteria) this;
         }
 
-        public Criteria andIslinkBetween(Boolean value1, Boolean value2) {
+        public Criteria andIslinkBetween(Integer value1, Integer value2) {
             addCriterion("islink between", value1, value2, "islink");
             return (Criteria) this;
         }
 
-        public Criteria andIslinkNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andIslinkNotBetween(Integer value1, Integer value2) {
             addCriterion("islink not between", value1, value2, "islink");
             return (Criteria) this;
         }

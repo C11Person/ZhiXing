@@ -303,4 +303,23 @@
       update_time = #{update_time,jdbcType=TIMESTAMP}
     where post_le_id = #{post_le_id,jdbcType=INTEGER}
   </update>
+  <select id="selectPostlevel" resultType="CompanyPostLevel">
+  	select
+	post_le_id,pl.post_id as post_id,post_name,pl.company_id as company_id,level,level_name,pl.o as o,status,remark,
+	pl.isdelete as isdelete
+	from
+	company_post_level as pl
+	left join company_post as p
+	on p.post_id=pl.post_id
+  	<where>
+  		status=1 and pl.isdelete=1
+  		<if test="company_id !=null">
+  			and pl.company_id=#{company_id}
+  		</if>
+  		<if test="post_le_id !=null">
+  			and post_le_id=#{post_le_id}
+  		</if>
+  	</where>
+  	order by pl.o desc
+  </select>
 </mapper>

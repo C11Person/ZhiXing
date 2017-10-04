@@ -285,6 +285,9 @@ a {
 .weui-navbar+.weui-tab__bd {
     padding-top: 94px;
 }
+#oi_sf_msg_container .weui-navbar+.weui-tab__bd {
+    padding-top: 50px;
+}
 /*任务状态 结束*/
 @media (min-width: 768px) {
   body {

@@ -6,13 +6,14 @@
     <result column="user_name" jdbcType="VARCHAR" property="user_name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="head" jdbcType="VARCHAR" property="head" />
-    <result column="role" jdbcType="SMALLINT" property="role" />
+    <result column="role" jdbcType="INTEGER" property="role" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
     <result column="create_ip" jdbcType="VARCHAR" property="create_ip" />
     <result column="last_time" jdbcType="TIMESTAMP" property="last_time" />
     <result column="last_ip" jdbcType="VARCHAR" property="last_ip" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,8 +75,23 @@
   </sql>
   <sql id="Base_Column_List">
     admin_id, user_name, password, head, role, email, phone, create_time, create_ip, 
-    last_time, last_ip
+    last_time, last_ip, status
   </sql>
+ <select id="selectAdmin" parameterType="cn.zx.pojo.BootstrapTable" resultMap="BaseResultMap">
+	SELECT admin_id, user_name, password, head, role, email, phone, create_time, create_ip, 
+    last_time, last_ip, status FROM oi_admin
+    where status=1
+	<if test="search != null">
+     where CONCAT(user_name, role, email, phone, create_time, create_ip, 
+    last_time, last_ip) LIKE '% #{search,jdbcType=VARCHAR},%'  
+    </if>
+    <if test="sort != null">
+    ORDER BY #{sort,jdbcType=VARCHAR} #{order,jdbcType=VARCHAR}
+    </if>
+      <if test="offset != null">
+     limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+     </if>
+  </select>
   <select id="selectByExample" parameterType="cn.zx.pojo.OiAdminExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -110,11 +126,13 @@
     insert into oi_admin (admin_id, user_name, password, 
       head, role, email, 
       phone, create_time, create_ip, 
-      last_time, last_ip)
+      last_time, last_ip, status
+      )
     values (#{admin_id,jdbcType=INTEGER}, #{user_name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{head,jdbcType=VARCHAR}, #{role,jdbcType=SMALLINT}, #{email,jdbcType=VARCHAR}, 
+      #{head,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{create_ip,jdbcType=VARCHAR}, 
-      #{last_time,jdbcType=TIMESTAMP}, #{last_ip,jdbcType=VARCHAR})
+      #{last_time,jdbcType=TIMESTAMP}, #{last_ip,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.OiAdmin">
     insert into oi_admin
@@ -152,6 +170,9 @@
       <if test="last_ip != null">
         last_ip,
       </if>
+      <if test="status != null">
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="admin_id != null">
@@ -167,7 +188,7 @@
         #{head,jdbcType=VARCHAR},
       </if>
       <if test="role != null">
-        #{role,jdbcType=SMALLINT},
+        #{role,jdbcType=INTEGER},
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
@@ -186,6 +207,9 @@
       </if>
       <if test="last_ip != null">
         #{last_ip,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -211,7 +235,7 @@
         head = #{record.head,jdbcType=VARCHAR},
       </if>
       <if test="record.role != null">
-        role = #{record.role,jdbcType=SMALLINT},
+        role = #{record.role,jdbcType=INTEGER},
       </if>
       <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
@@ -231,6 +255,9 @@
       <if test="record.last_ip != null">
         last_ip = #{record.last_ip,jdbcType=VARCHAR},
       </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -242,13 +269,14 @@
       user_name = #{record.user_name,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       head = #{record.head,jdbcType=VARCHAR},
-      role = #{record.role,jdbcType=SMALLINT},
+      role = #{record.role,jdbcType=INTEGER},
       email = #{record.email,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       create_time = #{record.create_time,jdbcType=TIMESTAMP},
       create_ip = #{record.create_ip,jdbcType=VARCHAR},
       last_time = #{record.last_time,jdbcType=TIMESTAMP},
-      last_ip = #{record.last_ip,jdbcType=VARCHAR}
+      last_ip = #{record.last_ip,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -266,7 +294,7 @@
         head = #{head,jdbcType=VARCHAR},
       </if>
       <if test="role != null">
-        role = #{role,jdbcType=SMALLINT},
+        role = #{role,jdbcType=INTEGER},
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
@@ -286,6 +314,9 @@
       <if test="last_ip != null">
         last_ip = #{last_ip,jdbcType=VARCHAR},
       </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
     </set>
     where admin_id = #{admin_id,jdbcType=INTEGER}
   </update>
@@ -294,13 +325,14 @@
     set user_name = #{user_name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       head = #{head,jdbcType=VARCHAR},
-      role = #{role,jdbcType=SMALLINT},
+      role = #{role,jdbcType=INTEGER},
       email = #{email,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       create_time = #{create_time,jdbcType=TIMESTAMP},
       create_ip = #{create_ip,jdbcType=VARCHAR},
       last_time = #{last_time,jdbcType=TIMESTAMP},
-      last_ip = #{last_ip,jdbcType=VARCHAR}
+      last_ip = #{last_ip,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
     where admin_id = #{admin_id,jdbcType=INTEGER}
   </update>
 </mapper>

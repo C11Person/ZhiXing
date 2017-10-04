@@ -129,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <!--任务描述部分结束-->
             <!--上传任务图片部分-->
-            <div class="weui-cells weui-cells_form">
+            <!-- <div class="weui-cells weui-cells_form">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
                         <div class="weui-uploader">
@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!--上传人物图片部分结束-->
             <!--提交按钮-->
             <div class="form_submit_button">

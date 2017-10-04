@@ -21,8 +21,8 @@ $(function () {
 	  			$("#weui-panel__bd2").html("");
 	  			var table = "";
 	  			for (var i = 0; i < data.length; i++) {
-	  				table += "<a href='staff/oi_staff_tsk_detailToUser.html?task_id="+data[i].task_id+"&task_status="+data[i].task_status+"'><div task-status='" + data[i].task_status + "' class='weui-media-box weui-media-box_appmsg'><div class='weui-media-box__hd'><img class='weui-media-box__thumb' src=''></div><div class='weui-media-box__bd'><h4 class='weui-media-box__title'>"
-	  					+ data[i].to_user
+	  				table += "<a href='staff/oi_staff_tsk_detailToUser.html?task_id="+data[i].task_id+"&task_status="+data[i].task_status+"'><div task-status='" + data[i].task_status + "' class='weui-media-box weui-media-box_appmsg'><div class='weui-media-box__hd'><img class='weui-media-box__thumb' src=''></div><div class='weui-media-box__bd'><h4 class='weui-media-box__title'>发布人："
+	  					+ data[i].realname
 	  					+ "</h4><p class='weui-media-box__desc'>"
 	  					+ "<h6>时间：" + data[i].task_start_time + "到 " + data[i].task_end_time + "</h6>"
 	  					+ "<h6 class='task_content_ellipse'>"+data[i].task_title+"</h6></p>";
@@ -59,8 +59,8 @@ function selectAllTaskByToUserId() {
 			$("#weui-panel__bd2").html("");
 			var table = "";
 			for (var i = 0; i < data.length; i++) {
-				table += "<a href='staff/oi_staff_tsk_detailToUser.html?task_id="+data[i].task_id+"&task_status="+data[i].task_status+"'><div task-status='" + data[i].task_status + "' class='weui-media-box weui-media-box_appmsg'><div class='weui-media-box__hd'><img class='weui-media-box__thumb' src=''></div><div class='weui-media-box__bd'><h4 class='weui-media-box__title'>"
-					+ data[i].to_user
+				table += "<a href='staff/oi_staff_tsk_detailToUser.html?task_id="+data[i].task_id+"&task_status="+data[i].task_status+"'><div task-status='" + data[i].task_status + "' class='weui-media-box weui-media-box_appmsg'><div class='weui-media-box__hd'><img class='weui-media-box__thumb' src=''></div><div class='weui-media-box__bd'><h4 class='weui-media-box__title'>发布人："
+					+ data[i].realname
 					+ "</h4><p class='weui-media-box__desc'>"
 					+ "<h6>时间：" + data[i].task_start_time + "到 " + data[i].task_end_time + "</h6>"
 					+ "<h6 class='task_content_ellipse'>"+data[i].task_title+"</h6></p>";

@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <!--头像名称以及其他-->
             <div class="stuff_title_01">
                 <!--头像-->
-                <div class="sf_head_icon" style="background-image:url(images/logo.png);"></div>
+                <div class="sf_head_icon" style="background-image:url(${pageContext.request.contextPath }/statics/images/1.jpg);"></div>
                 <!--名称相关-->
                 <div class="sf_head_title">
                     <h4>jQuery</h4>
@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <!--个人二维码-->
             </div>
-            <div class="sf_arCodeIcon" style="background-image:url(images/arCode.png);"></div>
+            <div class="sf_arCodeIcon" style="background-image:url(${pageContext.request.contextPath }/statics/images/arCode.png);"></div>
             <div class="weui-footer">
                 <p class="weui-footer__links">
                     <a href="javascript:void(0);" class="weui-footer__link">知行管理</a>

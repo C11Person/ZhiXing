@@ -55,8 +55,65 @@ public class CompanyTask {
     
     private String receivename;
     
+    private String realname;
+    
+    private String toName;//接收人
+    private String userName;//发送人
 
-    public String getReleasename() {
+    private Integer count;//数量
+    private String month;//月份
+    private String name;//员工姓名
+    
+
+    public String getToName() {
+		return toName;
+	}
+
+	public void setToName(String toName) {
+		this.toName = toName;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getRealname() {
+		return realname;
+	}
+
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+
+	public String getReleasename() {
 		return releasename;
 	}
 

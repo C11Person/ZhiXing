@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
                     <!--员工头像-->
                     <div class="weui-media-box__hd">
-                        <img class="weui-media-box__thumb" src="">
+                        <img class="weui-media-box__thumb" src="${pageContext.request.contextPath }/statics/images/1.jpg">
                     </div>
                     <!--员工头像 结束-->
                     <!--员工信息-->

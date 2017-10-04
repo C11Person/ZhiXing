@@ -7,6 +7,8 @@ public class StaffMsg {
 
     private Integer use_msg;
 
+    private Integer company_id;
+
     public Integer getS_m_id() {
         return s_m_id;
     }
@@ -29,5 +31,13 @@ public class StaffMsg {
 
     public void setUse_msg(Integer use_msg) {
         this.use_msg = use_msg;
+    }
+
+    public Integer getCompany_id() {
+        return company_id;
+    }
+
+    public void setCompany_id(Integer company_id) {
+        this.company_id = company_id;
     }
 }

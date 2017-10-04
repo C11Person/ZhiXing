@@ -320,4 +320,18 @@
       status = #{status,jdbcType=BIT}
     where new_id = #{new_id,jdbcType=INTEGER}
   </update>
+   <select id="selectNews" resultType="CompanyNews">
+  	SELECT 
+	new_id,company_id,TYPE,author,title,content,create_time,STATUS
+	FROM company_news
+	<where>
+		status=1
+		<if test="new_id !=null">
+			and new_id=#{new_id}
+		</if>
+		<if test="company_id !=null">
+			and company_id=#{company_id}
+		</if>
+	</where>
+  </select>
 </mapper>

@@ -27,4 +27,7 @@ public interface CompanyRoleMapper {
     int updateByPrimaryKeySelective(CompanyRole record);
 
     int updateByPrimaryKey(CompanyRole record);
+    
+    public List<CompanyRole> selectRole(@Param("user_id") Integer user_id,@Param("company_id") Integer company_id);
+    
 }

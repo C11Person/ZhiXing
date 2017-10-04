@@ -11,6 +11,8 @@ public class CompanyDepart {
 
     private Integer status;
 
+    private Integer com_id;
+
     private Integer o;
 
     private String pingyin;
@@ -57,6 +59,14 @@ public class CompanyDepart {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getCom_id() {
+        return com_id;
+    }
+
+    public void setCom_id(Integer com_id) {
+        this.com_id = com_id;
     }
 
     public Integer getO() {

@@ -1,30 +1,26 @@
-/**
- * 
- */
 package cn.zx.service.impl;
-
-
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.zx.dao.CompanyTaskMapper;
 import cn.zx.pojo.CompanyTask;
 import cn.zx.pojo.CompanyTaskExample;
-import cn.zx.pojo.StaffTaskLog;
 import cn.zx.service.CompanyTaskService;
 
-/**
- * @author AYao
- *
- */
 @Service("companyTaskService")
 public class CompanyTaskServiceImpl implements CompanyTaskService {
 	@Autowired
-	private CompanyTaskMapper companyTaskMapper;
-
+	CompanyTaskMapper companyTaskMapper;
+	
+	@Override
+	public List<CompanyTask> selectTask(@Param("company_id") Integer company_id) {
+		// TODO Auto-generated method stub
+		return companyTaskMapper.selectTask(company_id);
+	}
 	@Override
 	public boolean staffAddTask(CompanyTask companyTask) {
 		return companyTaskMapper.insertSelective(companyTask)==1;
@@ -75,10 +71,38 @@ public class CompanyTaskServiceImpl implements CompanyTaskService {
 		return companyTaskMapper.updateByPrimaryKeySelective(companyTask)==1;
 	}
 
-	/*@Override
-	public List<CompanyTask> selectTaskByVaguename(String vaguename) {
-		return companyTaskMapper.selectTaskByVaguename(vaguename);
-	}*/
+	@Override
+	public List<CompanyTask> selectAllTaskByTaskStatus(CompanyTaskExample companyTaskExample) {
+		return companyTaskMapper.selectByExample(companyTaskExample);
+	}
 
-	
+	@Override
+	public List<CompanyTask> selectTaskByUserId(Integer company_id, Integer to_user) {
+		return companyTaskMapper.selectTaskByUserId(company_id, to_user);
+	}
+
+	@Override
+	public List<CompanyTask> selectTaskByToUser(Integer company_id, Integer user_id) {
+		return companyTaskMapper.selectTaskByToUser(company_id, user_id);
+	}
+
+	@Override
+	public List<CompanyTask> selectToDOTaskByUserId(Integer company_id, Integer user_id) {
+		return companyTaskMapper.selectToDOTaskByUserId(company_id, user_id);
+	}
+
+	@Override
+	public List<CompanyTask> selectToDOTaskByToUser(Integer company_id, Integer uesr_id) {
+		return companyTaskMapper.selectToDOTaskByToUser(company_id, uesr_id);
+	}
+
+	@Override
+	public List<CompanyTask> selectTaskByStatusAndUserId(Integer company_id, Integer user_id, Integer task_status) {	
+		return companyTaskMapper.selectTaskByStatusAndUserId(company_id, user_id, task_status);
+	}
+
+	@Override
+	public List<CompanyTask> selectTaskByStatusAndToUserId(Integer company_id, Integer to_user, Integer task_status) {
+		return companyTaskMapper.selectTaskByStatusAndToUserId(company_id, to_user, task_status);
+	}
 }

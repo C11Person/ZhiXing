@@ -5,26 +5,23 @@ import cn.zx.pojo.CompanyBasicExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 公司基础信息Dao层接口
+ * @author admin
+ *
+ */
 public interface CompanyBasicMapper {
-    long countByExample(CompanyBasicExample example);
-
-    int deleteByExample(CompanyBasicExample example);
-
-    int deleteByPrimaryKey(Integer b_id);
-
-    int insert(CompanyBasic record);
-
-    int insertSelective(CompanyBasic record);
-
-    List<CompanyBasic> selectByExample(CompanyBasicExample example);
-
-    CompanyBasic selectByPrimaryKey(Integer b_id);
-
-    int updateByExampleSelective(@Param("record") CompanyBasic record, @Param("example") CompanyBasicExample example);
-
-    int updateByExample(@Param("record") CompanyBasic record, @Param("example") CompanyBasicExample example);
-
-    int updateByPrimaryKeySelective(CompanyBasic record);
-
-    int updateByPrimaryKey(CompanyBasic record);
+	/**
+	 * 查询公司基础信息
+	 * @param company_id
+	 * @return
+	 */
+    public CompanyBasic selectBasic(@Param("company_id") Integer company_id);
+    
+    /**
+     * 修改企业信息根据ID
+     * @param companyBasic
+     * @return
+     */
+    public int updateBasicByID(CompanyBasic companyBasic);
 }

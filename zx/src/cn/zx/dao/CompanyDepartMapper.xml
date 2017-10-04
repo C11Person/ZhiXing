@@ -272,4 +272,34 @@
       isdelete = #{isdelete,jdbcType=INTEGER}
     where dept_id = #{dept_id,jdbcType=INTEGER}
   </update>
+  <select id="list" parameterType="map" resultType="CompanyDepart">
+  	select dept_id,company_id,pid,dept_name,status,o,pingyin,level,isdelete
+  	from company_depart
+  	<where>
+  		status=1
+  		<if test="company_id !=null">
+  			and company_id=#{company_id}
+  		</if>
+	  	<if test="dept_id !=null">
+	  		and dept_id=#{dept_id}
+	  	</if>
+	  	<if test="pid !=null">
+	  		and pid=#{pid}
+	  	</if>
+  	</where>
+  </select>
+  
+  <select id="selectDeptName" resultType="CompanyDepart">
+  	select dept_id,dept_name
+	from company_depart 
+<where>
+	status=1
+	<if test="dept_id !=null">
+		and dept_id=#{dept_id}
+	</if>
+	<if test="company_id != null">
+		and company_id=#{company_id}
+	</if>
+</where>
+  </select>
 </mapper>

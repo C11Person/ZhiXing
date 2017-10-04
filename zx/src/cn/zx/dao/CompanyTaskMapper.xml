@@ -499,4 +499,101 @@
 		WHERE task_status=2 AND company_staffer.company_id=1
 		GROUP BY to_user
   </select>
+  <select id="selectTaskByUserId" resultType="cn.zx.pojo.CompanyTask">
+  		SELECT task_id,company_task.company_id,task_title,to_user,company_task.user_id,task_obj,task_start_time,task_end_time,task_complete_time,task_progress,task_urgent,task_important,task_content,task_status,task_del_reasion,task_reback_reasion,is_remark,is_forward,is_delay,is_cui,task_quality,task_efficiency,task_evaluate,company_staffer.realname FROM company_task
+		INNER JOIN company_staffer ON company_staffer.user_id = company_task.user_id
+		WHERE company_task.company_id = #{company_id} AND company_task.to_user=#{to_user}
+		ORDER BY task_start_time DESC
+  </select>
+    <select id="selectTaskByToUser" resultType="cn.zx.pojo.CompanyTask">
+  		SELECT 	task_id,company_task.company_id,task_title,to_user,company_task.user_id,task_obj,task_start_time,task_end_time,task_complete_time,task_progress,task_urgent,task_important,task_content,task_status,task_del_reasion,task_reback_reasion,is_remark,is_forward,is_delay,is_cui,task_quality,task_efficiency,task_evaluate,company_staffer.realname FROM company_task
+		INNER JOIN company_staffer ON company_staffer.user_id = company_task.to_user
+		WHERE company_task.company_id = #{company_id} AND company_task.user_id=#{user_id}
+		ORDER BY task_start_time DESC
+  </select>
+  
+    <select id="selectToDOTaskByUserId" resultType="cn.zx.pojo.CompanyTask">
+  		SELECT 	task_id,company_task.company_id,task_title,to_user,company_task.user_id,task_obj,task_start_time,task_end_time,task_complete_time,task_progress,task_urgent,task_important,task_content,task_status,task_del_reasion,task_reback_reasion,is_remark,is_forward,is_delay,is_cui,task_quality,task_efficiency,task_evaluate,company_staffer.realname FROM company_task
+		INNER JOIN company_staffer ON company_staffer.user_id = company_task.user_id
+		WHERE company_task.company_id=#{company_id} AND company_task.to_user=#{user_id} AND task_status BETWEEN 4 AND 5
+		ORDER BY task_start_time DESC 
+  </select>
+  
+  <select id="selectToDOTaskByToUser" resultType="cn.zx.pojo.CompanyTask">
+  		SELECT 	task_id,company_task.company_id,task_title,to_user,company_task.user_id,task_obj,task_start_time,task_end_time,task_complete_time,task_progress,task_urgent,task_important,task_content,task_status,task_del_reasion,task_reback_reasion,is_remark,is_forward,is_delay,is_cui,task_quality,task_efficiency,task_evaluate,company_staffer.realname FROM company_task
+		INNER JOIN company_staffer ON company_staffer.user_id = company_task.to_user
+		WHERE company_task.company_id=#{company_id} AND company_task.user_id=#{user_id} AND task_status BETWEEN 3 AND 6
+		ORDER BY task_start_time DESC 
+  </select>
+  
+  <select id="selectTaskByStatusAndUserId" resultType="cn.zx.pojo.CompanyTask">
+  	  	SELECT 	task_id,company_task.company_id,task_title,to_user,company_task.user_id,task_obj,task_start_time,task_end_time,task_complete_time,task_progress,task_urgent,task_important,task_content,task_status,task_del_reasion,task_reback_reasion,is_remark,is_forward,is_delay,is_cui,task_quality,task_efficiency,task_evaluate,company_staffer.realname FROM company_task
+		INNER JOIN company_staffer ON company_staffer.user_id = company_task.to_user
+		WHERE company_task.company_id = #{company_id} AND company_task.user_id=#{user_id} AND task_status=#{task_status}
+		ORDER BY task_start_time DESC
+  </select>
+  
+    <select id="selectTaskByStatusAndToUserId" resultType="cn.zx.pojo.CompanyTask">
+  	  	SELECT 	task_id,company_task.company_id,task_title,to_user,company_task.user_id,task_obj,task_start_time,task_end_time,task_complete_time,task_progress,task_urgent,task_important,task_content,task_status,task_del_reasion,task_reback_reasion,is_remark,is_forward,is_delay,is_cui,task_quality,task_efficiency,task_evaluate,company_staffer.realname FROM company_task
+		INNER JOIN company_staffer ON company_staffer.user_id = company_task.user_id
+		WHERE company_task.company_id = #{company_id} AND company_task.to_user=#{to_user} AND task_status=#{task_status}
+		ORDER BY task_start_time DESC
+  </select>
+  
+  
+  <!-- 企业 -->
+  <select id="selectTask" resultType="CompanyTask">
+		select task_id,t.company_id as company_id ,task_title,to_user,
+		s1.realname as toName,t.user_id as user_id,
+		s2.realname as userName,task_obj,
+		task_start_time,task_end_time,task_complete_time,
+		task_progress,task_content,task_status,
+		task_quality,task_efficiency,task_evaluate
+		from company_task as t
+		inner join company_staffer as s1
+		on s1.user_id=to_user
+		inner join company_staffer as s2
+		on s2.user_id=t.user_id
+		<where>
+			task_status !=1
+			<if test="company_id !=null">
+				and t.company_id=#{company_id}
+			</if>
+		</where>
+	</select>
+	<!-- 按月查询总数 -->
+	<select id="selectCountMonth" resultType="CompanyTask">
+		select month(task_start_time) as month,count(task_id) from company_task
+		<where>
+			<if test="company_id !=null">
+				and company_id =#{company_id}
+			</if>
+		</where>
+		group by company_id,MONTH(task_start_time)
+	</select>
+	<!-- 完成按月查询 -->
+	<select id="selectAccomplishMonth" resultType="CompanyTask">
+		select month(task_start_time) as month,count(task_id) from company_task
+		<where>
+			task_status=2
+			<if test="company_id !=null">
+				and company_id =#{company_id}
+			</if>
+		</where>
+		group by company_id,MONTH(task_start_time)
+	</select>
+	<!-- 进行按月查询 -->
+	<select id="selectCarryMonth" resultType="CompanyTask">
+		select month(task_start_time) as month,count(task_id) from company_task
+		<where>
+			task_status=4
+			<if test="company_id !=null">
+				and company_id =#{company_id}
+			</if>
+		</where>
+		group by company_id,MONTH(task_start_time)
+	</select>
+  
+  
+  
 </mapper>

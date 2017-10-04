@@ -29,4 +29,45 @@ public interface CompanyTaskMapper {
     int updateByPrimaryKey(CompanyTask record);
     
     /*List<CompanyTask> selectTaskByVaguename(@Param("vaguename") String vaguename);*/
+    
+    List<CompanyTask> selectTaskByUserId(@Param("company_id") Integer company_id,@Param("to_user") Integer to_user);
+    
+    List<CompanyTask> selectTaskByToUser(@Param("company_id") Integer company_id,@Param("user_id") Integer user_id);
+    
+    List<CompanyTask> selectToDOTaskByUserId(@Param("company_id") Integer company_id,@Param("user_id") Integer user_id);
+    
+    List<CompanyTask> selectToDOTaskByToUser(@Param("company_id") Integer company_id,@Param("user_id") Integer user_id);
+    
+    List<CompanyTask> selectTaskByStatusAndUserId(@Param("company_id") Integer company_id,@Param("user_id") Integer user_id,@Param("task_status") Integer task_status);
+    
+    List<CompanyTask> selectTaskByStatusAndToUserId(@Param("company_id") Integer company_id,@Param("to_user") Integer to_user,@Param("task_status") Integer task_status);
+
+    /*企业*/
+    /**
+     * 查询信息
+     * @param company_id
+     * @return
+     */
+    List<CompanyTask> selectTask(@Param("company_id") Integer company_id);
+    
+    /**
+     * 按月查询总数 
+     * @param company_id
+     * @return
+     */
+    List<CompanyTask> selectCountMonth(@Param("company_id") Integer company_id);
+    
+    /**
+     * 完成按月查询
+     * @param company_id
+     * @return
+     */
+    List<CompanyTask> selectAccomplishMonth(@Param("company_id") Integer company_id);
+    /**
+     * 进行按月查询
+     * @param company_id
+     * @return
+     */
+    List<CompanyTask> selectCarryMonth(@Param("company_id") Integer company_id);
+    
 }

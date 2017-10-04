@@ -164,143 +164,63 @@ public class CompanyRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridIsNull() {
-            addCriterion("c_r_userid is null");
+        public Criteria andAdmin_idIsNull() {
+            addCriterion("admin_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridIsNotNull() {
-            addCriterion("c_r_userid is not null");
+        public Criteria andAdmin_idIsNotNull() {
+            addCriterion("admin_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridEqualTo(String value) {
-            addCriterion("c_r_userid =", value, "c_r_userid");
+        public Criteria andAdmin_idEqualTo(Integer value) {
+            addCriterion("admin_id =", value, "admin_id");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridNotEqualTo(String value) {
-            addCriterion("c_r_userid <>", value, "c_r_userid");
+        public Criteria andAdmin_idNotEqualTo(Integer value) {
+            addCriterion("admin_id <>", value, "admin_id");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridGreaterThan(String value) {
-            addCriterion("c_r_userid >", value, "c_r_userid");
+        public Criteria andAdmin_idGreaterThan(Integer value) {
+            addCriterion("admin_id >", value, "admin_id");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridGreaterThanOrEqualTo(String value) {
-            addCriterion("c_r_userid >=", value, "c_r_userid");
+        public Criteria andAdmin_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("admin_id >=", value, "admin_id");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridLessThan(String value) {
-            addCriterion("c_r_userid <", value, "c_r_userid");
+        public Criteria andAdmin_idLessThan(Integer value) {
+            addCriterion("admin_id <", value, "admin_id");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridLessThanOrEqualTo(String value) {
-            addCriterion("c_r_userid <=", value, "c_r_userid");
+        public Criteria andAdmin_idLessThanOrEqualTo(Integer value) {
+            addCriterion("admin_id <=", value, "admin_id");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridLike(String value) {
-            addCriterion("c_r_userid like", value, "c_r_userid");
+        public Criteria andAdmin_idIn(List<Integer> values) {
+            addCriterion("admin_id in", values, "admin_id");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridNotLike(String value) {
-            addCriterion("c_r_userid not like", value, "c_r_userid");
+        public Criteria andAdmin_idNotIn(List<Integer> values) {
+            addCriterion("admin_id not in", values, "admin_id");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridIn(List<String> values) {
-            addCriterion("c_r_userid in", values, "c_r_userid");
+        public Criteria andAdmin_idBetween(Integer value1, Integer value2) {
+            addCriterion("admin_id between", value1, value2, "admin_id");
             return (Criteria) this;
         }
 
-        public Criteria andC_r_useridNotIn(List<String> values) {
-            addCriterion("c_r_userid not in", values, "c_r_userid");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_useridBetween(String value1, String value2) {
-            addCriterion("c_r_userid between", value1, value2, "c_r_userid");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_useridNotBetween(String value1, String value2) {
-            addCriterion("c_r_userid not between", value1, value2, "c_r_userid");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordIsNull() {
-            addCriterion("c_r_password is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordIsNotNull() {
-            addCriterion("c_r_password is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordEqualTo(String value) {
-            addCriterion("c_r_password =", value, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordNotEqualTo(String value) {
-            addCriterion("c_r_password <>", value, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordGreaterThan(String value) {
-            addCriterion("c_r_password >", value, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordGreaterThanOrEqualTo(String value) {
-            addCriterion("c_r_password >=", value, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordLessThan(String value) {
-            addCriterion("c_r_password <", value, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordLessThanOrEqualTo(String value) {
-            addCriterion("c_r_password <=", value, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordLike(String value) {
-            addCriterion("c_r_password like", value, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordNotLike(String value) {
-            addCriterion("c_r_password not like", value, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordIn(List<String> values) {
-            addCriterion("c_r_password in", values, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordNotIn(List<String> values) {
-            addCriterion("c_r_password not in", values, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordBetween(String value1, String value2) {
-            addCriterion("c_r_password between", value1, value2, "c_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andC_r_passwordNotBetween(String value1, String value2) {
-            addCriterion("c_r_password not between", value1, value2, "c_r_password");
+        public Criteria andAdmin_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("admin_id not between", value1, value2, "admin_id");
             return (Criteria) this;
         }
 

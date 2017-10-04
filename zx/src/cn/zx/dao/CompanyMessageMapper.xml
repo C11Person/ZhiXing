@@ -303,4 +303,55 @@
       license_img = #{license_img,jdbcType=VARCHAR}
     where m_id = #{m_id,jdbcType=INTEGER}
   </update>
+  <select id="selectMessage" resultType="CompanyMessage">
+  	select m_id,company_name,type_id,type_name,company_num,city,addr,contacts,phone,
+  	license_id,license_img from company_message
+  	<where>
+  		<if test="m_id !=null">
+  			and m_id=#{m_id}
+  		</if>
+  		<if test="company_name !=null">
+  			and company_name=#{company_name}
+  		</if>
+  		and m_id=#{m_id}
+  	</where>
+  </select>
+  <update id="updateMessageByID" parameterType="CompanyMessage">
+  	update company_message 
+  	<set>
+  		<if test="company_name !=null">
+  			company_name=#{company_name},
+  		</if>
+  		<if test="type_id !=0">
+  			type_id=#{type_id},
+  		</if>
+  		<if test="company_num !=0">
+  			company_num=#{company_num},
+  		</if>
+  		<if test="type_name !=null">
+  			type_name=#{type_name},
+  		</if>
+  		<if test="city !=null">
+  			city=#{city},
+  		</if>
+  		<if test="addr !=null">
+  			addr=#{addr},
+  		</if>
+  		<if test="contacts !=null">
+  			contacts=#{contacts},
+  		</if>
+  		
+  		<if test="phone !=0">
+  			phone=#{phone},
+  		</if>
+  		<if test="license_id !=null">
+  			license_id=#{license_id},
+  		</if>
+  		<if test="license_img !=null">
+  			license_img=#{license_img},
+  		</if>
+  		
+  	</set>
+  		where m_id=#{m_id}
+  </update>
 </mapper>

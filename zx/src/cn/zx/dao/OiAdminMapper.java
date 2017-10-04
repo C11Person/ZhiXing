@@ -1,7 +1,9 @@
 package cn.zx.dao;
 
+import cn.zx.pojo.BootstrapTable;
 import cn.zx.pojo.OiAdmin;
 import cn.zx.pojo.OiAdminExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,6 @@ public interface OiAdminMapper {
     int updateByPrimaryKeySelective(OiAdmin record);
 
     int updateByPrimaryKey(OiAdmin record);
+
+    List<OiAdmin> selectAdmin(BootstrapTable bootstrapTable);
 }

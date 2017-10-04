@@ -2,11 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.zx.dao.OiCompanyMapper">
   <resultMap id="BaseResultMap" type="cn.zx.pojo.OiCompany">
-    <id column="company_id" jdbcType="INTEGER" property="company_id" />
+ 	<id column="company_id" jdbcType="INTEGER" property="company_id" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="user_name" jdbcType="VARCHAR" property="user_name" />
     <result column="pro_id" jdbcType="INTEGER" property="pro_id" />
     <result column="city_id" jdbcType="INTEGER" property="city_id" />
+    <result column="area_id" jdbcType="INTEGER" property="area_id" />
+     <result column="pro_name" jdbcType="VARCHAR" property="pro_name" />
+    <result column="city_name" jdbcType="VARCHAR" property="city_name" />
+    <result column="area_name" jdbcType="VARCHAR" property="area_name" />
     <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="company_name" jdbcType="VARCHAR" property="company_name" />
     <result column="type_id" jdbcType="INTEGER" property="type_id" />
     <result column="type_name" jdbcType="VARCHAR" property="type_name" />
@@ -18,12 +24,10 @@
     <result column="license_img" jdbcType="VARCHAR" property="license_img" />
     <result column="logo" jdbcType="VARCHAR" property="logo" />
     <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
-    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="audit" jdbcType="INTEGER" property="audit" />
     <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
     <result column="audit_time" jdbcType="TIMESTAMP" property="audit_time" />
     <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
-    <result column="agree" jdbcType="VARCHAR" property="agree" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -84,10 +88,54 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    company_id, user_id, pro_id, city_id, addr, company_name, type_id, type_name, company_num, 
-    corporate_rep, contact, phone, license_id, license_img, logo, isdelete, status, audit, 
-    create_time, audit_time, update_time, agree
+    company_id, user_id, pro_id, city_id, area_id, addr, address, company_name, type_id, 
+    company_num, corporate_rep, contact, phone, license_id, license_img, logo, isdelete, 
+    audit, create_time, audit_time, update_time
   </sql>
+   <select id="selectCompanyProvinceAndCount" resultMap="BaseResultMap">
+SELECT d.district_id,d.district,COUNT(c.`pro_id`) FROM oi_district AS d
+LEFT JOIN oi_company AS c ON c.pro_id=d.district_id
+WHERE d.level=1
+GROUP BY d.district_id
+  </select>
+  <select id="selectCompanyTypeAndCount" resultMap="BaseResultMap">
+SELECT t.type_id,t.type_name,COUNT(c.type_id) FROM oi_type AS  t
+LEFT JOIN oi_company AS c ON c.`type_id`=t.`type_id`
+GROUP BY t.type_id
+  </select>
+  
+   <select id="getCheckCompanyWithType" parameterType="cn.zx.pojo.BootstrapTable" resultMap="BaseResultMap">
+SELECT 
+	c.company_id,user_id,username as user_name,pro_id,p.district AS pro_name,
+	city_id,ci.district AS city_name,area_id,
+	a.district AS area_name,addr,address,company_name,
+	c.type_id,t.type_name,company_num,corporate_rep,contact,c.phone,license_id,
+	license_img,logo,audit,c.create_time,c.audit_time,update_time
+	FROM oi_company AS c
+	INNER JOIN oi_type AS t ON t.type_id=c.type_id
+	INNER JOIN oi_district AS p ON p.`district_id`=c.`pro_id`
+	INNER JOIN oi_district AS ci ON ci.`district_id`=c.`city_id`
+	INNER JOIN oi_district AS a ON a.`district_id`=c.`area_id`
+	INNER JOIN company_admin AS ca ON ca.admin_id=c.`user_id`
+	 where audit=0
+  </select>
+  
+
+      <select id="selectCompanyWithType" parameterType="cn.zx.pojo.BootstrapTable" resultMap="BaseResultMap">
+SELECT 
+	c.company_id,user_id,username as user_name,pro_id,p.district AS pro_name,
+	city_id,ci.district AS city_name,area_id,
+	a.district AS area_name,addr,address,company_name,
+	c.type_id,t.type_name,company_num,corporate_rep,contact,c.phone,license_id,
+	license_img,logo,audit,c.create_time,c.audit_time,c.update_time
+	FROM oi_company AS c
+	INNER JOIN oi_type AS t ON t.type_id=c.type_id
+	INNER JOIN oi_district AS p ON p.`district_id`=c.`pro_id`
+	INNER JOIN oi_district AS ci ON ci.`district_id`=c.`city_id`
+	INNER JOIN oi_district AS a ON a.`district_id`=c.`area_id`
+	INNER JOIN company_admin AS ca ON ca.`admin_id`=c.`user_id`
+	 where c.isdelete=0
+  </select>
   <select id="selectByExample" parameterType="cn.zx.pojo.OiCompanyExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -120,21 +168,21 @@
   </delete>
   <insert id="insert" parameterType="cn.zx.pojo.OiCompany">
     insert into oi_company (company_id, user_id, pro_id, 
-      city_id, addr, company_name, 
-      type_id, type_name, company_num, 
-      corporate_rep, contact, phone, 
-      license_id, license_img, logo, 
-      isdelete, status, audit, 
-      create_time, audit_time, update_time, 
-      agree)
+      city_id, area_id, addr, 
+      address, company_name, type_id, 
+      company_num, corporate_rep, contact, 
+      phone, license_id, license_img, 
+      logo, isdelete, audit, 
+      create_time, audit_time, update_time
+      )
     values (#{company_id,jdbcType=INTEGER}, #{user_id,jdbcType=INTEGER}, #{pro_id,jdbcType=INTEGER}, 
-      #{city_id,jdbcType=INTEGER}, #{addr,jdbcType=VARCHAR}, #{company_name,jdbcType=VARCHAR}, 
-      #{type_id,jdbcType=INTEGER}, #{type_name,jdbcType=VARCHAR}, #{company_num,jdbcType=INTEGER}, 
-      #{corporate_rep,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{license_id,jdbcType=VARCHAR}, #{license_img,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
-      #{isdelete,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}, 
-      #{create_time,jdbcType=TIMESTAMP}, #{audit_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
-      #{agree,jdbcType=VARCHAR})
+      #{city_id,jdbcType=INTEGER}, #{area_id,jdbcType=INTEGER}, #{addr,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{company_name,jdbcType=VARCHAR}, #{type_id,jdbcType=INTEGER}, 
+      #{company_num,jdbcType=INTEGER}, #{corporate_rep,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{license_id,jdbcType=VARCHAR}, #{license_img,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{audit_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.OiCompany">
     insert into oi_company
@@ -151,17 +199,20 @@
       <if test="city_id != null">
         city_id,
       </if>
+      <if test="area_id != null">
+        area_id,
+      </if>
       <if test="addr != null">
         addr,
+      </if>
+      <if test="address != null">
+        address,
       </if>
       <if test="company_name != null">
         company_name,
       </if>
       <if test="type_id != null">
         type_id,
-      </if>
-      <if test="type_name != null">
-        type_name,
       </if>
       <if test="company_num != null">
         company_num,
@@ -187,9 +238,6 @@
       <if test="isdelete != null">
         isdelete,
       </if>
-      <if test="status != null">
-        status,
-      </if>
       <if test="audit != null">
         audit,
       </if>
@@ -201,9 +249,6 @@
       </if>
       <if test="update_time != null">
         update_time,
-      </if>
-      <if test="agree != null">
-        agree,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -219,17 +264,20 @@
       <if test="city_id != null">
         #{city_id,jdbcType=INTEGER},
       </if>
+      <if test="area_id != null">
+        #{area_id,jdbcType=INTEGER},
+      </if>
       <if test="addr != null">
         #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
       </if>
       <if test="company_name != null">
         #{company_name,jdbcType=VARCHAR},
       </if>
       <if test="type_id != null">
         #{type_id,jdbcType=INTEGER},
-      </if>
-      <if test="type_name != null">
-        #{type_name,jdbcType=VARCHAR},
       </if>
       <if test="company_num != null">
         #{company_num,jdbcType=INTEGER},
@@ -255,9 +303,6 @@
       <if test="isdelete != null">
         #{isdelete,jdbcType=INTEGER},
       </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
       <if test="audit != null">
         #{audit,jdbcType=INTEGER},
       </if>
@@ -269,9 +314,6 @@
       </if>
       <if test="update_time != null">
         #{update_time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="agree != null">
-        #{agree,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -296,17 +338,20 @@
       <if test="record.city_id != null">
         city_id = #{record.city_id,jdbcType=INTEGER},
       </if>
+      <if test="record.area_id != null">
+        area_id = #{record.area_id,jdbcType=INTEGER},
+      </if>
       <if test="record.addr != null">
         addr = #{record.addr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
       </if>
       <if test="record.company_name != null">
         company_name = #{record.company_name,jdbcType=VARCHAR},
       </if>
       <if test="record.type_id != null">
         type_id = #{record.type_id,jdbcType=INTEGER},
-      </if>
-      <if test="record.type_name != null">
-        type_name = #{record.type_name,jdbcType=VARCHAR},
       </if>
       <if test="record.company_num != null">
         company_num = #{record.company_num,jdbcType=INTEGER},
@@ -332,9 +377,6 @@
       <if test="record.isdelete != null">
         isdelete = #{record.isdelete,jdbcType=INTEGER},
       </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
-      </if>
       <if test="record.audit != null">
         audit = #{record.audit,jdbcType=INTEGER},
       </if>
@@ -347,9 +389,6 @@
       <if test="record.update_time != null">
         update_time = #{record.update_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.agree != null">
-        agree = #{record.agree,jdbcType=VARCHAR},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -361,10 +400,11 @@
       user_id = #{record.user_id,jdbcType=INTEGER},
       pro_id = #{record.pro_id,jdbcType=INTEGER},
       city_id = #{record.city_id,jdbcType=INTEGER},
+      area_id = #{record.area_id,jdbcType=INTEGER},
       addr = #{record.addr,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
       company_name = #{record.company_name,jdbcType=VARCHAR},
       type_id = #{record.type_id,jdbcType=INTEGER},
-      type_name = #{record.type_name,jdbcType=VARCHAR},
       company_num = #{record.company_num,jdbcType=INTEGER},
       corporate_rep = #{record.corporate_rep,jdbcType=VARCHAR},
       contact = #{record.contact,jdbcType=VARCHAR},
@@ -373,12 +413,10 @@
       license_img = #{record.license_img,jdbcType=VARCHAR},
       logo = #{record.logo,jdbcType=VARCHAR},
       isdelete = #{record.isdelete,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=INTEGER},
       audit = #{record.audit,jdbcType=INTEGER},
       create_time = #{record.create_time,jdbcType=TIMESTAMP},
       audit_time = #{record.audit_time,jdbcType=TIMESTAMP},
-      update_time = #{record.update_time,jdbcType=TIMESTAMP},
-      agree = #{record.agree,jdbcType=VARCHAR}
+      update_time = #{record.update_time,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -395,17 +433,20 @@
       <if test="city_id != null">
         city_id = #{city_id,jdbcType=INTEGER},
       </if>
+      <if test="area_id != null">
+        area_id = #{area_id,jdbcType=INTEGER},
+      </if>
       <if test="addr != null">
         addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
       </if>
       <if test="company_name != null">
         company_name = #{company_name,jdbcType=VARCHAR},
       </if>
       <if test="type_id != null">
         type_id = #{type_id,jdbcType=INTEGER},
-      </if>
-      <if test="type_name != null">
-        type_name = #{type_name,jdbcType=VARCHAR},
       </if>
       <if test="company_num != null">
         company_num = #{company_num,jdbcType=INTEGER},
@@ -431,9 +472,6 @@
       <if test="isdelete != null">
         isdelete = #{isdelete,jdbcType=INTEGER},
       </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
       <if test="audit != null">
         audit = #{audit,jdbcType=INTEGER},
       </if>
@@ -446,9 +484,6 @@
       <if test="update_time != null">
         update_time = #{update_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="agree != null">
-        agree = #{agree,jdbcType=VARCHAR},
-      </if>
     </set>
     where company_id = #{company_id,jdbcType=INTEGER}
   </update>
@@ -457,10 +492,11 @@
     set user_id = #{user_id,jdbcType=INTEGER},
       pro_id = #{pro_id,jdbcType=INTEGER},
       city_id = #{city_id,jdbcType=INTEGER},
+      area_id = #{area_id,jdbcType=INTEGER},
       addr = #{addr,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
       company_name = #{company_name,jdbcType=VARCHAR},
       type_id = #{type_id,jdbcType=INTEGER},
-      type_name = #{type_name,jdbcType=VARCHAR},
       company_num = #{company_num,jdbcType=INTEGER},
       corporate_rep = #{corporate_rep,jdbcType=VARCHAR},
       contact = #{contact,jdbcType=VARCHAR},
@@ -469,12 +505,10 @@
       license_img = #{license_img,jdbcType=VARCHAR},
       logo = #{logo,jdbcType=VARCHAR},
       isdelete = #{isdelete,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER},
       audit = #{audit,jdbcType=INTEGER},
       create_time = #{create_time,jdbcType=TIMESTAMP},
       audit_time = #{audit_time,jdbcType=TIMESTAMP},
-      update_time = #{update_time,jdbcType=TIMESTAMP},
-      agree = #{agree,jdbcType=VARCHAR}
+      update_time = #{update_time,jdbcType=TIMESTAMP}
     where company_id = #{company_id,jdbcType=INTEGER}
   </update>
 </mapper>

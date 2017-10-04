@@ -1,19 +1,35 @@
 package cn.zx.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OiRole {
     private Integer o_r_id;
 
-    private String o_r_userid;
+    private String name;
 
-    private String o_r_password;
-
-    private String title;
-
-    private Byte status;
+    private Integer status;
 
     private String rules;
+    
+    private List<Integer> rule=new ArrayList<Integer>();
+    
+    
+    @Override
+	public String toString() {
+		return "OiRole [o_r_id=" + o_r_id + ", name=" + name + ", status=" + status + ", rules=" + rules + ", rule="
+				+ rule + "]";
+	}
 
-    public Integer getO_r_id() {
+	public List<Integer> getRule() {
+		return rule;
+	}
+
+	public void setRule(List<Integer> rule) {
+		this.rule = rule;
+	}
+
+	public Integer getO_r_id() {
         return o_r_id;
     }
 
@@ -21,35 +37,19 @@ public class OiRole {
         this.o_r_id = o_r_id;
     }
 
-    public String getO_r_userid() {
-        return o_r_userid;
+    public String getName() {
+        return name;
     }
 
-    public void setO_r_userid(String o_r_userid) {
-        this.o_r_userid = o_r_userid == null ? null : o_r_userid.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public String getO_r_password() {
-        return o_r_password;
-    }
-
-    public void setO_r_password(String o_r_password) {
-        this.o_r_password = o_r_password == null ? null : o_r_password.trim();
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
-
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

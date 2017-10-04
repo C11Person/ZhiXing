@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-
-<!-- 设置首页 -->
- <welcome-file-list>
-    <welcome-file>/WEB-INF/jsp/staff/oi_staff_login.jsp</welcome-file>
-</welcome-file-list> 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <welcome-file-list>
+    <welcome-file> index.jsp</welcome-file>
+  </welcome-file-list>
   
-<!-- 初始化参数，加载配置文件  spring+mybatis整合文件 -->  
+  <!-- 初始化参数，加载配置文件  spring+mybatis整合文件 -->  
  <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:SpringConfig.xml</param-value>
@@ -68,13 +66,31 @@
 		</listener-class>
   </listener> 
 
-     <context-param>   
+<!--      <context-param>   
          <param-name>webAppRootKey</param-name>   
          <param-value>zx.root</param-value>   
-    </context-param> 
-  
-  
-  
-  
+    </context-param>  -->
+    
+    <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WeChatServlet</servlet-name>
+    <servlet-class>com.wechat.servlet.WeChatServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>qqq</servlet-name>
+    <servlet-class>com.wechat.servlet.qqq</servlet-class>
+  </servlet>
 
+
+  <servlet-mapping>
+    <servlet-name>WeChatServlet</servlet-name>
+    <url-pattern>/WeChatServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>qqq</servlet-name>
+    <url-pattern>/servlet/qqq</url-pattern>
+  </servlet-mapping>
 </web-app>

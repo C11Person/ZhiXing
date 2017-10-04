@@ -8,6 +8,27 @@ import cn.zx.pojo.CompanyStaffer;
 import cn.zx.pojo.CompanyStafferExample;
 
 public interface CompanyStafferService {
+	/**
+     * 查询
+     * @param user_id
+     * @param company_id
+     * @return
+     */
+    public List<CompanyStaffer> selectStaffer( Integer user_id, Integer company_id);
+    
+    /**
+     * 添加
+     * @param record
+     * @return
+     */
+    public int insertSelective(CompanyStaffer record);
+    
+    /**
+     * 修改
+     * @param record
+     * @return
+     */
+    public int updateByPrimaryKeySelective(List<CompanyStaffer> list);
     /**
      * 根据公司ID和部门ID查询员工
      */

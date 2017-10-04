@@ -255,4 +255,21 @@
       update_time = #{update_time,jdbcType=TIMESTAMP}
     where post_id = #{post_id,jdbcType=INTEGER}
   </update>
+  <select id="selectPost" resultType="CompanyPost">
+  	SELECT post_id,company_id,post_name,post_remark,o,isdelete,create_time,update_time FROM company_post
+  	<where>
+  		isdelete=1
+  		<if test="company_id !=null">
+  			and company_id=#{company_id} 
+  		</if>
+  		<if test="post_id !=null">
+  			and post_id=#{post_id} 
+  		</if>
+  	</where>
+	ORDER BY o DESC
+  </select>
+  <insert id="insertPost" parameterType="CompanyPost">
+ 	insert into company_post(company_id,post_name,post_remark,o,isdelete,create_time)
+VALUES(#{company_id},#{post_name},#{post_remark},#{o},#{isdelete},#{create_time})
+ </insert>
 </mapper>

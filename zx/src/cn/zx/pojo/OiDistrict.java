@@ -1,27 +1,48 @@
 package cn.zx.pojo;
 
-public class OiDistrict {
-    private Short district_id;
+import java.util.ArrayList;
+import java.util.List;
 
-    private Short pid;
+public class OiDistrict {
+    private Integer district_id;
+
+    private Integer pid;
 
     private String district;
 
-    private Boolean level;
+    private Integer level;
 
-    public Short getDistrict_id() {
+    private Integer status;
+    
+    private List<OiDistrict> nodes = new ArrayList<OiDistrict>();
+
+    @Override
+	public String toString() {
+		return "OiDistrict [district_id=" + district_id + ", pid=" + pid + ", district=" + district + ", level=" + level
+				+ ", status=" + status + ", nodes=" + nodes + "]";
+	}
+
+	public List<OiDistrict> getNodes() {
+		return nodes;
+	}
+
+	public void setNodes(List<OiDistrict> nodes) {
+		this.nodes = nodes;
+	}
+
+	public Integer getDistrict_id() {
         return district_id;
     }
 
-    public void setDistrict_id(Short district_id) {
+    public void setDistrict_id(Integer district_id) {
         this.district_id = district_id;
     }
 
-    public Short getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(Short pid) {
+    public void setPid(Integer pid) {
         this.pid = pid;
     }
 
@@ -33,11 +54,19 @@ public class OiDistrict {
         this.district = district == null ? null : district.trim();
     }
 
-    public Boolean getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(Boolean level) {
+    public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

@@ -8,6 +8,7 @@
     <result column="use_task" jdbcType="VARCHAR" property="use_task" />
     <result column="task_status" jdbcType="INTEGER" property="task_status" />
     <result column="task_point" jdbcType="INTEGER" property="task_point" />
+    <result column="company_id" jdbcType="INTEGER" property="company_id" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    s_t_id, use_id, task_title, use_task, task_status, task_point
+    s_t_id, use_id, task_title, use_task, task_status, task_point, company_id
   </sql>
   <select id="selectByExample" parameterType="cn.zx.pojo.StaffTaskExample" resultMap="BaseResultMap">
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="cn.zx.pojo.StaffTask">
     insert into staff_task (s_t_id, use_id, task_title, 
-      use_task, task_status, task_point
-      )
+      use_task, task_status, task_point, 
+      company_id)
     values (#{s_t_id,jdbcType=INTEGER}, #{use_id,jdbcType=INTEGER}, #{task_title,jdbcType=VARCHAR}, 
-      #{use_task,jdbcType=VARCHAR}, #{task_status,jdbcType=INTEGER}, #{task_point,jdbcType=INTEGER}
-      )
+      #{use_task,jdbcType=VARCHAR}, #{task_status,jdbcType=INTEGER}, #{task_point,jdbcType=INTEGER}, 
+      #{company_id,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.StaffTask">
     insert into staff_task
@@ -129,6 +130,9 @@
       <if test="task_point != null">
         task_point,
       </if>
+      <if test="company_id != null">
+        company_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="s_t_id != null">
@@ -148,6 +152,9 @@
       </if>
       <if test="task_point != null">
         #{task_point,jdbcType=INTEGER},
+      </if>
+      <if test="company_id != null">
+        #{company_id,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.task_point != null">
         task_point = #{record.task_point,jdbcType=INTEGER},
       </if>
+      <if test="record.company_id != null">
+        company_id = #{record.company_id,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       task_title = #{record.task_title,jdbcType=VARCHAR},
       use_task = #{record.use_task,jdbcType=VARCHAR},
       task_status = #{record.task_status,jdbcType=INTEGER},
-      task_point = #{record.task_point,jdbcType=INTEGER}
+      task_point = #{record.task_point,jdbcType=INTEGER},
+      company_id = #{record.company_id,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="task_point != null">
         task_point = #{task_point,jdbcType=INTEGER},
       </if>
+      <if test="company_id != null">
+        company_id = #{company_id,jdbcType=INTEGER},
+      </if>
     </set>
     where s_t_id = #{s_t_id,jdbcType=INTEGER}
   </update>
@@ -222,7 +236,8 @@
       task_title = #{task_title,jdbcType=VARCHAR},
       use_task = #{use_task,jdbcType=VARCHAR},
       task_status = #{task_status,jdbcType=INTEGER},
-      task_point = #{task_point,jdbcType=INTEGER}
+      task_point = #{task_point,jdbcType=INTEGER},
+      company_id = #{company_id,jdbcType=INTEGER}
     where s_t_id = #{s_t_id,jdbcType=INTEGER}
   </update>
 </mapper>

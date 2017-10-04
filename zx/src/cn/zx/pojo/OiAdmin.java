@@ -11,7 +11,7 @@ public class OiAdmin {
 
     private String head;
 
-    private Short role;
+    private Integer role;
 
     private String email;
 
@@ -25,7 +25,17 @@ public class OiAdmin {
 
     private String last_ip;
 
-    public Integer getAdmin_id() {
+    private Integer status;
+
+    @Override
+	public String toString() {
+		return "OiAdmin [admin_id=" + admin_id + ", user_name=" + user_name + ", password=" + password + ", head="
+				+ head + ", role=" + role + ", email=" + email + ", phone=" + phone + ", create_time=" + create_time
+				+ ", create_ip=" + create_ip + ", last_time=" + last_time + ", last_ip=" + last_ip + ", status="
+				+ status + "]";
+	}
+
+	public Integer getAdmin_id() {
         return admin_id;
     }
 
@@ -57,11 +67,11 @@ public class OiAdmin {
         this.head = head == null ? null : head.trim();
     }
 
-    public Short getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(Short role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
@@ -111,5 +121,13 @@ public class OiAdmin {
 
     public void setLast_ip(String last_ip) {
         this.last_ip = last_ip == null ? null : last_ip.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

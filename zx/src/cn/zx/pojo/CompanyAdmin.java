@@ -2,6 +2,7 @@ package cn.zx.pojo;
 
 import java.util.Date;
 
+
 public class CompanyAdmin {
     private Integer admin_id;
 
@@ -10,6 +11,8 @@ public class CompanyAdmin {
     private String password;
 
     private Integer role;
+    
+    private Integer company_id;
 
     private String email;
 
@@ -22,12 +25,33 @@ public class CompanyAdmin {
     private Date last_time;
 
     private String last_ip;
+    
+    private String random;
 
-    public Integer getAdmin_id() {
+    
+    
+    
+    public String getRandom() {
+		return random;
+	}
+
+	public void setRandom(String random) {
+		this.random = random;
+	}
+
+	public Integer getAdmin_id() {
         return admin_id;
     }
 
-    public void setAdmin_id(Integer admin_id) {
+    public Integer getCompany_id() {
+		return company_id;
+	}
+
+	public void setCompany_id(Integer company_id) {
+		this.company_id = company_id;
+	}
+
+	public void setAdmin_id(Integer admin_id) {
         this.admin_id = admin_id;
     }
 

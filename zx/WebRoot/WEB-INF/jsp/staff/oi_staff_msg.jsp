@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    	<div class="stuff_container">
         <!--标题-->
-        <div class="weui-tab">
+        <div class="weui-tab" id="oi_sf_msg_container">
             <div class="weui-navbar">
                 <!--企业公告-->
                 <a class="weui-navbar__item weui-bar__item--on" href="#oi_enter_pub">
@@ -327,6 +327,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="${pageContext.request.contextPath }/statics/js/oi_sf_msg.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/oi_staff_msg.js"></script>
     <script src="${pageContext.request.contextPath }/statics/js/oi_staff_allpage.js"></script>
-   
   </body>
 </html>

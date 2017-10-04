@@ -13,6 +13,8 @@ public class StaffTask {
 
     private Integer task_point;
 
+    private Integer company_id;
+
     public Integer getS_t_id() {
         return s_t_id;
     }
@@ -59,5 +61,13 @@ public class StaffTask {
 
     public void setTask_point(Integer task_point) {
         this.task_point = task_point;
+    }
+
+    public Integer getCompany_id() {
+        return company_id;
+    }
+
+    public void setCompany_id(Integer company_id) {
+        this.company_id = company_id;
     }
 }

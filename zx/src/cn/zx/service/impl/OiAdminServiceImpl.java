@@ -1,15 +1,47 @@
-/**
- * 
- */
 package cn.zx.service.impl;
 
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.zx.dao.OiAdminMapper;
+import cn.zx.pojo.BootstrapTable;
+import cn.zx.pojo.OiAdmin;
+import cn.zx.pojo.OiAdminExample;
 import cn.zx.service.OiAdminService;
+@Service("OiAdminService")
+public class OiAdminServiceimpl implements OiAdminService {
+@Autowired
+OiAdminMapper oiAdminMapper;
 
-/**
- * @author AYao
- *
- */
-public class OiAdminServiceImpl implements OiAdminService {
+	@Override
+	public OiAdmin getOiAdminByid(Integer admin_id) {
+		// TODO Auto-generated method stub
+		return oiAdminMapper.selectByPrimaryKey(admin_id);
+	}
 
+	@Override
+	public int removeAdmin(OiAdmin oiAdmin) {
+		// TODO Auto-generated method stub
+		return oiAdminMapper.updateByPrimaryKeySelective(oiAdmin);
+	}
+
+	@Override
+	public int updateAdmin(OiAdmin oiAdmin) {
+		// TODO Auto-generated method stub
+		return oiAdminMapper.updateByPrimaryKey(oiAdmin);
+	}
+
+	@Override
+	public int addAdmin(OiAdmin oiAdmin) {
+		// TODO Auto-generated method stub
+		return oiAdminMapper.insertSelective(oiAdmin);
+	}
+
+	@Override
+	public List<OiAdmin> getAdmin(BootstrapTable bootstrapTable) {
+		// TODO Auto-generated method stub
+		return oiAdminMapper.selectAdmin(bootstrapTable);
+	}
 }

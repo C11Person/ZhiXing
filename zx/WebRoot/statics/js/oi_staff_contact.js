@@ -17,7 +17,7 @@ function selectStaffByCompanyId() {
 						+data[i].realname+"</span><small>"+data[i].dept_name+"</small></h4><p class='weui-media-box__desc'><strong>" 
 						+data[i].phone+"</strong></p><ul class='weui-media-box__info'><li class='weui-media-box__info__meta'>质量：" 
 						+data[i].qualityavg+"</li><li class='weui-media-box__info__meta'>效率：" 
-						+data[i].efficiencyavg+"</li><li class='weui-media-box__info__meta font_strong'><a href='oi_staff_publish.html'>发任务</a></li></ul></div></div></div>";
+						+data[i].efficiencyavg+"</li><li class='weui-media-box__info__meta font_strong'><a href='staff/oi_staff_publish.html'>发任务</a></li></ul></div></div></div>";
 	        }
 			$("#sf_tsk_backlog_4").html(table);
 		},

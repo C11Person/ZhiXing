@@ -3,10 +3,10 @@
 <mapper namespace="cn.zx.dao.CompanyRoleMapper">
   <resultMap id="BaseResultMap" type="cn.zx.pojo.CompanyRole">
     <id column="user_id" jdbcType="INTEGER" property="user_id" />
-    <result column="c_r_userid" jdbcType="VARCHAR" property="c_r_userid" />
-    <result column="c_r_password" jdbcType="VARCHAR" property="c_r_password" />
+    <result column="admin_id" jdbcType="INTEGER" property="admin_id" />
     <result column="title" jdbcType="CHAR" property="title" />
     <result column="status" jdbcType="INTEGER" property="status" />
+     <result column="company_id" jdbcType="INTEGER" property="company_id" />
     <result column="rules" jdbcType="VARCHAR" property="rules" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, c_r_userid, c_r_password, title, status, rules
+    user_id, admin_id, title, status, rules
   </sql>
   <select id="selectByExample" parameterType="cn.zx.pojo.CompanyRoleExample" resultMap="BaseResultMap">
     select
@@ -101,10 +101,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.zx.pojo.CompanyRole">
-    insert into company_role (user_id, c_r_userid, c_r_password, 
-      title, status, rules)
-    values (#{user_id,jdbcType=INTEGER}, #{c_r_userid,jdbcType=VARCHAR}, #{c_r_password,jdbcType=VARCHAR}, 
-      #{title,jdbcType=CHAR}, #{status,jdbcType=INTEGER}, #{rules,jdbcType=VARCHAR})
+    insert into company_role (user_id, admin_id, title, 
+      status, rules)
+    values (#{user_id,jdbcType=INTEGER}, #{admin_id,jdbcType=INTEGER}, #{title,jdbcType=CHAR}, 
+      #{status,jdbcType=INTEGER}, #{rules,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.zx.pojo.CompanyRole">
     insert into company_role
@@ -112,11 +112,8 @@
       <if test="user_id != null">
         user_id,
       </if>
-      <if test="c_r_userid != null">
-        c_r_userid,
-      </if>
-      <if test="c_r_password != null">
-        c_r_password,
+      <if test="admin_id != null">
+        admin_id,
       </if>
       <if test="title != null">
         title,
@@ -132,11 +129,8 @@
       <if test="user_id != null">
         #{user_id,jdbcType=INTEGER},
       </if>
-      <if test="c_r_userid != null">
-        #{c_r_userid,jdbcType=VARCHAR},
-      </if>
-      <if test="c_r_password != null">
-        #{c_r_password,jdbcType=VARCHAR},
+      <if test="admin_id != null">
+        #{admin_id,jdbcType=INTEGER},
       </if>
       <if test="title != null">
         #{title,jdbcType=CHAR},
@@ -158,23 +152,24 @@
   <update id="updateByExampleSelective" parameterType="map">
     update company_role
     <set>
-      <if test="record.user_id != null">
-        user_id = #{record.user_id,jdbcType=INTEGER},
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=INTEGER},
       </if>
-      <if test="record.c_r_userid != null">
-        c_r_userid = #{record.c_r_userid,jdbcType=VARCHAR},
+      <if test="company_id!= null">
+        user_id = #{company_id,jdbcType=INTEGER},
       </if>
-      <if test="record.c_r_password != null">
-        c_r_password = #{record.c_r_password,jdbcType=VARCHAR},
+      
+      <if test="admin_id != null">
+        admin_id = #{admin_id,jdbcType=INTEGER},
       </if>
-      <if test="record.title != null">
-        title = #{record.title,jdbcType=CHAR},
+      <if test="title != null">
+        title = #{title,jdbcType=CHAR},
       </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="record.rules != null">
-        rules = #{record.rules,jdbcType=VARCHAR},
+      <if test="rules != null">
+        rules = #{rules,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -184,8 +179,7 @@
   <update id="updateByExample" parameterType="map">
     update company_role
     set user_id = #{record.user_id,jdbcType=INTEGER},
-      c_r_userid = #{record.c_r_userid,jdbcType=VARCHAR},
-      c_r_password = #{record.c_r_password,jdbcType=VARCHAR},
+      admin_id = #{record.admin_id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=CHAR},
       status = #{record.status,jdbcType=INTEGER},
       rules = #{record.rules,jdbcType=VARCHAR}
@@ -196,11 +190,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.zx.pojo.CompanyRole">
     update company_role
     <set>
-      <if test="c_r_userid != null">
-        c_r_userid = #{c_r_userid,jdbcType=VARCHAR},
+      <if test="admin_id != null">
+        admin_id = #{admin_id,jdbcType=INTEGER},
       </if>
-      <if test="c_r_password != null">
-        c_r_password = #{c_r_password,jdbcType=VARCHAR},
+       <if test="company_id!= null">
+        user_id = #{company_id,jdbcType=INTEGER},
       </if>
       <if test="title != null">
         title = #{title,jdbcType=CHAR},
@@ -216,11 +210,25 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.zx.pojo.CompanyRole">
     update company_role
-    set c_r_userid = #{c_r_userid,jdbcType=VARCHAR},
-      c_r_password = #{c_r_password,jdbcType=VARCHAR},
+    set admin_id = #{admin_id,jdbcType=INTEGER},
       title = #{title,jdbcType=CHAR},
       status = #{status,jdbcType=INTEGER},
       rules = #{rules,jdbcType=VARCHAR}
     where user_id = #{user_id,jdbcType=INTEGER}
   </update>
+   <select id="selectRole" resultType="CompanyRole">
+  	SELECT 
+user_id,admin_id,company_id,title,STATUS,rules
+FROM 
+company_role
+<where>
+	status=1
+	<if test="user_id !=null">
+		and user_id= #{user_id}
+	</if>
+	<if test="company_id !=null">
+		and company_id= #{company_id}
+	</if>
+</where>
+  </select>
 </mapper>

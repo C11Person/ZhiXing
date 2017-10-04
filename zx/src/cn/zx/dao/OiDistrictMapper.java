@@ -10,7 +10,7 @@ public interface OiDistrictMapper {
 
     int deleteByExample(OiDistrictExample example);
 
-    int deleteByPrimaryKey(Short district_id);
+    int deleteByPrimaryKey(Integer district_id);
 
     int insert(OiDistrict record);
 
@@ -18,7 +18,7 @@ public interface OiDistrictMapper {
 
     List<OiDistrict> selectByExample(OiDistrictExample example);
 
-    OiDistrict selectByPrimaryKey(Short district_id);
+    OiDistrict selectByPrimaryKey(Integer district_id);
 
     int updateByExampleSelective(@Param("record") OiDistrict record, @Param("example") OiDistrictExample example);
 

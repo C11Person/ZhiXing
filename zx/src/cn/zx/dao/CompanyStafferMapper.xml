@@ -705,4 +705,20 @@
 		<result column="qualityavg" jdbcType="DOUBLE" property="task_quality" />
 		<result column="efficiencyavg" jdbcType="DOUBLE" property="efficiencyavg" />		</collection>
 	</resultMap> -->
+	
+	<select id="selectStaffer" resultType="CompanyStaffer">
+  	select 
+	user_id,company_id,account,realname,phone,reg_time,in_time,depart,post,postlevel,audit,
+	face,email from company_staffer
+	<where>
+		status=1
+		<if test="user_id != null">
+			and user_id=#{user_id}
+		</if>
+		<if test="company_id != null">
+			and company_id=#{company_id}
+		</if>
+	</where>
+  </select>
+	
 </mapper>

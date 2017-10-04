@@ -27,4 +27,17 @@ public interface CompanyPostMapper {
     int updateByPrimaryKeySelective(CompanyPost record);
 
     int updateByPrimaryKey(CompanyPost record);
+    /**
+     * 查询企业职系表
+     * @param company_id
+     * @return
+     */
+    public List<CompanyPost> selectPost(@Param("post_id") Integer post_id,@Param("company_id") Integer company_id);
+
+	 /**
+     * 插入数据
+     * @param record
+     * @return
+     */
+    public int insertPost(CompanyPost record);
 }

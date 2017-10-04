@@ -1,22 +1,38 @@
 package cn.zx.pojo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class OiCompany {
     private Integer company_id;
 
     private Integer user_id;
+    
+    private String user_name;
 
-    private Integer pro_id;
+	private Integer pro_id;
 
     private Integer city_id;
 
+    private Integer area_id;
+    
+    private String pro_name;
+
+    private String city_name;
+
+    private String area_name;
+
     private String addr;
+
+    private String address;
 
     private String company_name;
 
     private Integer type_id;
-
+    
     private String type_name;
 
     private Integer company_num;
@@ -35,19 +51,80 @@ public class OiCompany {
 
     private Integer isdelete;
 
-    private Integer status;
-
     private Integer audit;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh", timezone = "GMT+8")
     private Date create_time;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh", timezone = "GMT+8")
     private Date audit_time;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh", timezone = "GMT+8")
     private Date update_time;
+    
+    
+    
+    @Override
+	public String toString() {
+		return "OiCompany [company_id=" + company_id + ", user_id=" + user_id + ", user_name=" + user_name + ", pro_id="
+				+ pro_id + ", city_id=" + city_id + ", area_id=" + area_id + ", pro_name=" + pro_name + ", city_name="
+				+ city_name + ", area_name=" + area_name + ", addr=" + addr + ", address=" + address + ", company_name="
+				+ company_name + ", type_id=" + type_id + ", type_name=" + type_name + ", company_num=" + company_num
+				+ ", corporate_rep=" + corporate_rep + ", contact=" + contact + ", phone=" + phone + ", license_id="
+				+ license_id + ", license_img=" + license_img + ", logo=" + logo + ", isdelete=" + isdelete + ", audit="
+				+ audit + ", create_time=" + create_time + ", audit_time=" + audit_time + ", update_time=" + update_time
+				+ ", nodes=" + nodes + "]";
+	}
 
-    private String agree;
+	private List nodes = new ArrayList();
 
-    public Integer getCompany_id() {
+    public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
+	public String getPro_name() {
+		return pro_name;
+	}
+
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
+	}
+
+	public String getCity_name() {
+		return city_name;
+	}
+
+	public void setCity_name(String city_name) {
+		this.city_name = city_name;
+	}
+
+	public String getArea_name() {
+		return area_name;
+	}
+
+	public void setArea_name(String area_name) {
+		this.area_name = area_name;
+	}
+
+	public String getType_name() {
+		return type_name;
+	}
+
+	public void setType_name(String type_name) {
+		this.type_name = type_name;
+	}
+
+    
+    public List getNodes() {
+		return nodes;
+	}
+
+	public void setNodes(List nodes) {
+		this.nodes = nodes;
+	}
+
+	public Integer getCompany_id() {
         return company_id;
     }
 
@@ -79,12 +156,28 @@ public class OiCompany {
         this.city_id = city_id;
     }
 
+    public Integer getArea_id() {
+        return area_id;
+    }
+
+    public void setArea_id(Integer area_id) {
+        this.area_id = area_id;
+    }
+
     public String getAddr() {
         return addr;
     }
 
     public void setAddr(String addr) {
         this.addr = addr == null ? null : addr.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
     public String getCompany_name() {
@@ -101,14 +194,6 @@ public class OiCompany {
 
     public void setType_id(Integer type_id) {
         this.type_id = type_id;
-    }
-
-    public String getType_name() {
-        return type_name;
-    }
-
-    public void setType_name(String type_name) {
-        this.type_name = type_name == null ? null : type_name.trim();
     }
 
     public Integer getCompany_num() {
@@ -175,14 +260,6 @@ public class OiCompany {
         this.isdelete = isdelete;
     }
 
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
     public Integer getAudit() {
         return audit;
     }
@@ -213,13 +290,5 @@ public class OiCompany {
 
     public void setUpdate_time(Date update_time) {
         this.update_time = update_time;
-    }
-
-    public String getAgree() {
-        return agree;
-    }
-
-    public void setAgree(String agree) {
-        this.agree = agree == null ? null : agree.trim();
     }
 }

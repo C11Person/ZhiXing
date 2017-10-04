@@ -29,7 +29,7 @@ public class OiStaffLoginController {
 		cn.zx.pojo.CompanyStafferExample example  = new CompanyStafferExample();
 		cn.zx.pojo.CompanyStafferExample.Criteria criteria=example.createCriteria();
 		criteria.andPhoneEqualTo(sf_username);
-		criteria.andSf_passwordEqualTo(sf_password);
+		criteria.andSfPasswordEqualTo(sf_password);
 		
 		List<CompanyStaffer> companyStaffers = companyStafferService.staffLogin(example);
 		System.out.println(companyStaffers.get(0).getEmail()+"=======================");

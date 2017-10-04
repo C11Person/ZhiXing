@@ -304,52 +304,52 @@ public class OiTypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Byte value) {
+        public Criteria andStatusEqualTo(Integer value) {
             addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Byte value) {
+        public Criteria andStatusNotEqualTo(Integer value) {
             addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Byte value) {
+        public Criteria andStatusGreaterThan(Integer value) {
             addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Byte value) {
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Byte value) {
+        public Criteria andStatusLessThan(Integer value) {
             addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Byte value) {
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
             addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Byte> values) {
+        public Criteria andStatusIn(List<Integer> values) {
             addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Byte> values) {
+        public Criteria andStatusNotIn(List<Integer> values) {
             addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Byte value1, Byte value2) {
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
             addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Byte value1, Byte value2) {
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
@@ -424,52 +424,52 @@ public class OiTypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andLevelEqualTo(Byte value) {
+        public Criteria andLevelEqualTo(Integer value) {
             addCriterion("level =", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelNotEqualTo(Byte value) {
+        public Criteria andLevelNotEqualTo(Integer value) {
             addCriterion("level <>", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelGreaterThan(Byte value) {
+        public Criteria andLevelGreaterThan(Integer value) {
             addCriterion("level >", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelGreaterThanOrEqualTo(Byte value) {
+        public Criteria andLevelGreaterThanOrEqualTo(Integer value) {
             addCriterion("level >=", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelLessThan(Byte value) {
+        public Criteria andLevelLessThan(Integer value) {
             addCriterion("level <", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelLessThanOrEqualTo(Byte value) {
+        public Criteria andLevelLessThanOrEqualTo(Integer value) {
             addCriterion("level <=", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelIn(List<Byte> values) {
+        public Criteria andLevelIn(List<Integer> values) {
             addCriterion("level in", values, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelNotIn(List<Byte> values) {
+        public Criteria andLevelNotIn(List<Integer> values) {
             addCriterion("level not in", values, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelBetween(Byte value1, Byte value2) {
+        public Criteria andLevelBetween(Integer value1, Integer value2) {
             addCriterion("level between", value1, value2, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelNotBetween(Byte value1, Byte value2) {
+        public Criteria andLevelNotBetween(Integer value1, Integer value2) {
             addCriterion("level not between", value1, value2, "level");
             return (Criteria) this;
         }
@@ -484,52 +484,52 @@ public class OiTypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteEqualTo(Byte value) {
+        public Criteria andIsdeleteEqualTo(Integer value) {
             addCriterion("isdelete =", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteNotEqualTo(Byte value) {
+        public Criteria andIsdeleteNotEqualTo(Integer value) {
             addCriterion("isdelete <>", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteGreaterThan(Byte value) {
+        public Criteria andIsdeleteGreaterThan(Integer value) {
             addCriterion("isdelete >", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteGreaterThanOrEqualTo(Byte value) {
+        public Criteria andIsdeleteGreaterThanOrEqualTo(Integer value) {
             addCriterion("isdelete >=", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteLessThan(Byte value) {
+        public Criteria andIsdeleteLessThan(Integer value) {
             addCriterion("isdelete <", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteLessThanOrEqualTo(Byte value) {
+        public Criteria andIsdeleteLessThanOrEqualTo(Integer value) {
             addCriterion("isdelete <=", value, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteIn(List<Byte> values) {
+        public Criteria andIsdeleteIn(List<Integer> values) {
             addCriterion("isdelete in", values, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteNotIn(List<Byte> values) {
+        public Criteria andIsdeleteNotIn(List<Integer> values) {
             addCriterion("isdelete not in", values, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteBetween(Byte value1, Byte value2) {
+        public Criteria andIsdeleteBetween(Integer value1, Integer value2) {
             addCriterion("isdelete between", value1, value2, "isdelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsdeleteNotBetween(Byte value1, Byte value2) {
+        public Criteria andIsdeleteNotBetween(Integer value1, Integer value2) {
             addCriterion("isdelete not between", value1, value2, "isdelete");
             return (Criteria) this;
         }

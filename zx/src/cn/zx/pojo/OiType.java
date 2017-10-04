@@ -1,5 +1,8 @@
 package cn.zx.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OiType {
     private Integer type_id;
 
@@ -7,15 +10,33 @@ public class OiType {
 
     private String type_name;
 
-    private Byte status;
+    private Integer status;
 
     private Integer o;
 
-    private Byte level;
+    private Integer level;
 
-    private Byte isdelete;
+    private Integer isdelete;
+    
+    private List<OiType> nodes = new ArrayList<OiType>();
+    
+    
 
-    public Integer getType_id() {
+    @Override
+	public String toString() {
+		return "OiType [type_id=" + type_id + ", pid=" + pid + ", type_name=" + type_name + ", status=" + status
+				+ ", o=" + o + ", level=" + level + ", isdelete=" + isdelete + ", nodes=" + nodes + "]";
+	}
+
+	public List<OiType> getNodes() {
+		return nodes;
+	}
+
+	public void setNodes(List<OiType> nodes) {
+		this.nodes = nodes;
+	}
+
+	public Integer getType_id() {
         return type_id;
     }
 
@@ -39,11 +60,11 @@ public class OiType {
         this.type_name = type_name == null ? null : type_name.trim();
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -55,19 +76,19 @@ public class OiType {
         this.o = o;
     }
 
-    public Byte getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(Byte level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
-    public Byte getIsdelete() {
+    public Integer getIsdelete() {
         return isdelete;
     }
 
-    public void setIsdelete(Byte isdelete) {
+    public void setIsdelete(Integer isdelete) {
         this.isdelete = isdelete;
     }
 }

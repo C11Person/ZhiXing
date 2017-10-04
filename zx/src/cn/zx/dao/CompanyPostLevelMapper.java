@@ -27,4 +27,12 @@ public interface CompanyPostLevelMapper {
     int updateByPrimaryKeySelective(CompanyPostLevel record);
 
     int updateByPrimaryKey(CompanyPostLevel record);
+
+/**
+     * 查询数据
+     * @param post_le_id
+     * @param company_id
+     * @return
+     */
+    public List<CompanyPostLevel> selectPostlevel(@Param("post_le_id")Integer post_le_id, @Param("company_id")Integer company_id);
 }

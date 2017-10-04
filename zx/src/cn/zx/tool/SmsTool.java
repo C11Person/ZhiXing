@@ -9,8 +9,7 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import cn.zx.pojo.SmsMessage;
 
 public class SmsTool {
-	public String sendSMS(){
-		SmsMessage sms=new SmsMessage();
+	public String sendSMS(SmsMessage sms){
 		HttpClient client = new HttpClient();
 		PostMethod post = new PostMethod("http://utf8.sms.webchinese.cn");
 		post.addRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf8");// 在头文件中设置转码  
@@ -27,6 +26,5 @@ public class SmsTool {
 			e.printStackTrace();
 		}
 		return result;
-		
 	}
 }

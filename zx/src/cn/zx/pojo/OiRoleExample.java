@@ -164,213 +164,73 @@ public class OiRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridIsNull() {
-            addCriterion("o_r_userid is null");
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridIsNotNull() {
-            addCriterion("o_r_userid is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridEqualTo(String value) {
-            addCriterion("o_r_userid =", value, "o_r_userid");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridNotEqualTo(String value) {
-            addCriterion("o_r_userid <>", value, "o_r_userid");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridGreaterThan(String value) {
-            addCriterion("o_r_userid >", value, "o_r_userid");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridGreaterThanOrEqualTo(String value) {
-            addCriterion("o_r_userid >=", value, "o_r_userid");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridLessThan(String value) {
-            addCriterion("o_r_userid <", value, "o_r_userid");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridLessThanOrEqualTo(String value) {
-            addCriterion("o_r_userid <=", value, "o_r_userid");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridLike(String value) {
-            addCriterion("o_r_userid like", value, "o_r_userid");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridNotLike(String value) {
-            addCriterion("o_r_userid not like", value, "o_r_userid");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridIn(List<String> values) {
-            addCriterion("o_r_userid in", values, "o_r_userid");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridNotIn(List<String> values) {
-            addCriterion("o_r_userid not in", values, "o_r_userid");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridBetween(String value1, String value2) {
-            addCriterion("o_r_userid between", value1, value2, "o_r_userid");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andO_r_useridNotBetween(String value1, String value2) {
-            addCriterion("o_r_userid not between", value1, value2, "o_r_userid");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordIsNull() {
-            addCriterion("o_r_password is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordIsNotNull() {
-            addCriterion("o_r_password is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordEqualTo(String value) {
-            addCriterion("o_r_password =", value, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordNotEqualTo(String value) {
-            addCriterion("o_r_password <>", value, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordGreaterThan(String value) {
-            addCriterion("o_r_password >", value, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordGreaterThanOrEqualTo(String value) {
-            addCriterion("o_r_password >=", value, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordLessThan(String value) {
-            addCriterion("o_r_password <", value, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordLessThanOrEqualTo(String value) {
-            addCriterion("o_r_password <=", value, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordLike(String value) {
-            addCriterion("o_r_password like", value, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordNotLike(String value) {
-            addCriterion("o_r_password not like", value, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordIn(List<String> values) {
-            addCriterion("o_r_password in", values, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordNotIn(List<String> values) {
-            addCriterion("o_r_password not in", values, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordBetween(String value1, String value2) {
-            addCriterion("o_r_password between", value1, value2, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andO_r_passwordNotBetween(String value1, String value2) {
-            addCriterion("o_r_password not between", value1, value2, "o_r_password");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleIsNull() {
-            addCriterion("title is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleIsNotNull() {
-            addCriterion("title is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleEqualTo(String value) {
-            addCriterion("title =", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleNotEqualTo(String value) {
-            addCriterion("title <>", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleGreaterThan(String value) {
-            addCriterion("title >", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleGreaterThanOrEqualTo(String value) {
-            addCriterion("title >=", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleLessThan(String value) {
-            addCriterion("title <", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleLessThanOrEqualTo(String value) {
-            addCriterion("title <=", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleLike(String value) {
-            addCriterion("title like", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleNotLike(String value) {
-            addCriterion("title not like", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleIn(List<String> values) {
-            addCriterion("title in", values, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleNotIn(List<String> values) {
-            addCriterion("title not in", values, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleBetween(String value1, String value2) {
-            addCriterion("title between", value1, value2, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleNotBetween(String value1, String value2) {
-            addCriterion("title not between", value1, value2, "title");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 
@@ -384,52 +244,52 @@ public class OiRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Byte value) {
+        public Criteria andStatusEqualTo(Integer value) {
             addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Byte value) {
+        public Criteria andStatusNotEqualTo(Integer value) {
             addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Byte value) {
+        public Criteria andStatusGreaterThan(Integer value) {
             addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Byte value) {
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Byte value) {
+        public Criteria andStatusLessThan(Integer value) {
             addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Byte value) {
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
             addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Byte> values) {
+        public Criteria andStatusIn(List<Integer> values) {
             addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Byte> values) {
+        public Criteria andStatusNotIn(List<Integer> values) {
             addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Byte value1, Byte value2) {
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
             addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Byte value1, Byte value2) {
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
